@@ -20,6 +20,21 @@
 32개 모두 정상 완료했습니다. 사전 지정한 모든 패턴 조건을 만족한 설정은 0개입니다.
 성공한 경우만 골라 남기지 않고 전체 설정·결과를 저장했습니다.
 현재 결과는 반복 3회·bootstrap 999회의 1차 탐색이며 원본의 큰 연산 예산 결과와 구분합니다.
+### 변수 추가·제외 비교
+
+추가로 동일한 기업 표본과 모델·support 설정을 유지하는 32개 변수 설정을 비교했습니다.
+GPS 변수 13개·Mu 변수 16개의 개별 제외와 두 변수군 구성을 포함합니다.
+
+```bash
+.venv/bin/python -m dml_acr.variable_experiments search --output results/variables32
+```
+
+- [변수 비교 설계·실행 방법](docs/VARIABLE_ANALYSIS_KO.md)
+- [변수별 실제 결과 설명](docs/VARIABLE_RESULTS_KO.md)
+- [2025년 기준 대비 변화](results/variables32/variable_comparisons_2025.csv)
+- [변수 비교 전체 결과](results/variables32/all_estimates.csv)
+
+이번에도 전체 요청 패턴을 모두 만족한 설정은 0개입니다. 기준 대비 추정치 변화는 기술적 비교입니다.
 아래는 기존 노트북을 실행하는 방법입니다.
 
 프로젝트 위치: `/workspace/AI_diffusion_to_Labor_Productivity`

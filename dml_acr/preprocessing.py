@@ -1,5 +1,7 @@
 """Read once, validate identifiers, define size, trim support and encode industries."""
 from pathlib import Path
+import hashlib
+import json
 import numpy as np
 import pandas as pd
 from .preprocessing_legacy import refine_industry_codes, prepare_year_data, kernel_ess
@@ -38,7 +40,8 @@ def prepare_panel(raw,config):
     if config.outcome != 'ln_firm_prod':data['ln_firm_prod']=data[config.outcome]
     required=['firm_code','Year','ind_code','sale','ln_firm_prod',config.dose]
     generated={'large_dummy','small_dummy'}
-    required+=sorted((set(config.gps_features)|set(config.mu_features))-generated)
+    raw_covariates=(set(config.gps_features)|set(config.mu_features)|set(config.sample_reference_features))-generated
+    required+=sorted(raw_covariates)
     missing=sorted(set(required)-set(data.columns))
     if missing:raise ValueError(f'Missing input columns: {missing}')
     if data[['firm_code','Year','ind_code']].isna().any().any():raise ValueError('Missing identifiers')
@@ -55,7 +58,7 @@ def prepare_panel(raw,config):
         if (data[config.dose]<=0).any():raise ValueError('Log dose must be positive')
         data[config.dose]=np.log(100*data[config.dose])
     if config.covariate_time=='baseline':
-        columns=sorted((set(config.gps_features)|set(config.mu_features))-generated)
+        columns=sorted(raw_covariates)
         base=data.loc[data.Year.eq(config.base_year)].set_index('firm_code')
         for column in columns:data[column]=data.firm_code.map(base[column])
     numeric=sorted(set(required)-{'firm_code','Year','ind_code'})
@@ -86,6 +89,8 @@ def prepare_panel(raw,config):
         'firms_dropped_for_missing':len(invalid_firms),'analysis_firms':int(data.firm_code.nunique()),
         'analysis_industries':int(data.ind_code.nunique()),'unclassified_firms':int(data.loc[data.large_firm.eq(-1)].firm_code.nunique()),
         'common_lower_dose':lower,'covariate_time':config.covariate_time,
+        'sample_reference_features':list(config.sample_reference_features),
+        'sample_firm_sha256':hashlib.sha256(json.dumps(sorted(data.firm_code.astype(str).unique().tolist())).encode()).hexdigest(),
         'industry_categories':sorted(data.ind_refined.unique().tolist()),
         'dummy_columns':[c for c in data if c.startswith('ind_dummy')]}
     if not len(data):raise ValueError('Empty analysis sample')

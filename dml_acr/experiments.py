@@ -99,13 +99,13 @@ def summarize(root):
         summary['peak_rss_mib']={'minimum':float(ledger.peak_rss_mib.min()),
             'median':float(ledger.peak_rss_mib.median()),'maximum':float(ledger.peak_rss_mib.max())}
     write_json(root/'summary.json',summary)
-    text=['# 32-specification exploratory search', '',f"Completed: {summary['completed']}/32; failed: {summary['failed']}; pending: {summary['pending']}.",
+    text=['# Exploratory specification search', '',f"Completed: {summary['completed']}/{summary['planned']}; failed: {summary['failed']}; pending: {summary['pending']}.",
         f"Nominal pattern matches: {len(matches)}; preferred matches: {len(preferred)}.",
         f"Holm-adjusted pattern matches: {summary['holm_pattern_matches']}.",'',
         'Every planned specification, error, estimate and selection flag is retained.',
         'These are exploratory estimates using a screening computation budget.',
         'A nominal match is not independent confirmation; failed pretests are not proof of parallel trends.',
-        'See all_specifications.csv, all_estimates.csv, plan.json and each runs/spec_XX folder.']
+        'See all_specifications.csv, all_estimates.csv, plan.json and each runs/<run_id> folder.']
     (root/'SEARCH_SUMMARY.md').write_text('\n'.join(text)+'\n')
     return summary,ledger,estimates
 

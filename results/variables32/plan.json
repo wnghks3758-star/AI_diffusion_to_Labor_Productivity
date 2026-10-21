@@ -1,0 +1,424 @@
+{
+  "created_at_utc": "2026-10-21T09:55:07.520902+00:00",
+  "experiment_type": "variable_only_ablation",
+  "planned_runs": 32,
+  "data_sha256": "4b3ed1ab28851b2ed497ff538b2c8cdd8b5c0891b7ab7daa129452a0dff9d52d",
+  "selection": "Fixed baseline + 13 GPS removals + 16 Mu removals + 2 nested covariate blocks.",
+  "budget": "3 repeats, 999 multipliers, step .002; fixed XGB parameters, tuning disabled.",
+  "fixed_sample_reference_features": [
+    "ln_ind_avg_pay",
+    "ln_ind_ast",
+    "ind_rnd_ratio",
+    "ln_cum_patent",
+    "ind_college_share_pre",
+    "ind_large_est_share_pre",
+    "ind_avg_age_pre",
+    "ind_age50_share_pre",
+    "ind_female_share_pre",
+    "ind_permanent_share_pre",
+    "ind_avg_tenure_pre",
+    "ind_avg_hours_pre",
+    "ind_ln_avg_pay_pre",
+    "firm_rnd_ratio",
+    "ln_firm_avg_pay",
+    "ln_firm_ast"
+  ],
+  "sample_note": "Complete cases of the full reference union are used in every specification; realized support may vary with GPS.",
+  "primary_family": [
+    "total",
+    "sme",
+    "large",
+    "moderation"
+  ],
+  "years": [
+    2020,
+    2021,
+    2023,
+    2024,
+    2025
+  ],
+  "pattern_criteria": {
+    "alpha": 0.05,
+    "pre_years": [
+      2020,
+      2021
+    ],
+    "post_years": [
+      2023,
+      2024,
+      2025
+    ],
+    "pre_effects": [
+      "total",
+      "sme",
+      "large",
+      "moderation"
+    ],
+    "decline_effects": [
+      "total",
+      "sme",
+      "large"
+    ],
+    "recovery_effects": [
+      "total",
+      "sme",
+      "large"
+    ],
+    "require_monotonic_recovery": true,
+    "recovery_tolerance": 0.0
+  },
+  "entries": [
+    {
+      "run_id": "var_01",
+      "config": "configs/var_01.json",
+      "config_id": "8191d66a33a5a6fd",
+      "label": "var_01_baseline_baseline",
+      "model_design": "baseline",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "baseline",
+      "variable": "baseline",
+      "variable_description": "전체 변수 기준"
+    },
+    {
+      "run_id": "var_02",
+      "config": "configs/var_02.json",
+      "config_id": "714ab3d2558f23c5",
+      "label": "var_02_gps_remove_ln_ind_avg_pay",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ln_ind_avg_pay",
+      "variable_description": "산업 평균임금(로그)"
+    },
+    {
+      "run_id": "var_03",
+      "config": "configs/var_03.json",
+      "config_id": "b392679538f23606",
+      "label": "var_03_gps_remove_ln_ind_ast",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ln_ind_ast",
+      "variable_description": "산업 자산(로그)"
+    },
+    {
+      "run_id": "var_04",
+      "config": "configs/var_04.json",
+      "config_id": "b75e9d3292973571",
+      "label": "var_04_gps_remove_ind_rnd_ratio",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_rnd_ratio",
+      "variable_description": "산업 R&D 비율"
+    },
+    {
+      "run_id": "var_05",
+      "config": "configs/var_05.json",
+      "config_id": "b1fe27cc503ff733",
+      "label": "var_05_gps_remove_ln_cum_patent",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ln_cum_patent",
+      "variable_description": "누적 특허(로그)"
+    },
+    {
+      "run_id": "var_06",
+      "config": "configs/var_06.json",
+      "config_id": "bd71379e6b8ac804",
+      "label": "var_06_gps_remove_ind_college_share_pre",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_college_share_pre",
+      "variable_description": "사전 대졸자 비중"
+    },
+    {
+      "run_id": "var_07",
+      "config": "configs/var_07.json",
+      "config_id": "46ee0a62de30f0e1",
+      "label": "var_07_gps_remove_ind_large_est_share_pre",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_large_est_share_pre",
+      "variable_description": "사전 대규모 사업체 비중"
+    },
+    {
+      "run_id": "var_08",
+      "config": "configs/var_08.json",
+      "config_id": "f0e5b8bfea8e982f",
+      "label": "var_08_gps_remove_ind_avg_age_pre",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_avg_age_pre",
+      "variable_description": "사전 평균연령"
+    },
+    {
+      "run_id": "var_09",
+      "config": "configs/var_09.json",
+      "config_id": "fb7e3cf314afc14f",
+      "label": "var_09_gps_remove_ind_age50_share_pre",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_age50_share_pre",
+      "variable_description": "사전 50세 이상 비중"
+    },
+    {
+      "run_id": "var_10",
+      "config": "configs/var_10.json",
+      "config_id": "0dc838d1acf05848",
+      "label": "var_10_gps_remove_ind_female_share_pre",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_female_share_pre",
+      "variable_description": "사전 여성 비중"
+    },
+    {
+      "run_id": "var_11",
+      "config": "configs/var_11.json",
+      "config_id": "56ec56c3d437b65f",
+      "label": "var_11_gps_remove_ind_permanent_share_pre",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_permanent_share_pre",
+      "variable_description": "사전 상용직 비중"
+    },
+    {
+      "run_id": "var_12",
+      "config": "configs/var_12.json",
+      "config_id": "b70022e741083923",
+      "label": "var_12_gps_remove_ind_avg_tenure_pre",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_avg_tenure_pre",
+      "variable_description": "사전 평균근속"
+    },
+    {
+      "run_id": "var_13",
+      "config": "configs/var_13.json",
+      "config_id": "fd868f356fdfb375",
+      "label": "var_13_gps_remove_ind_avg_hours_pre",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_avg_hours_pre",
+      "variable_description": "사전 평균근로시간"
+    },
+    {
+      "run_id": "var_14",
+      "config": "configs/var_14.json",
+      "config_id": "523a683eb08c2554",
+      "label": "var_14_gps_remove_ind_ln_avg_pay_pre",
+      "model_design": "gps_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "gps_remove",
+      "variable": "ind_ln_avg_pay_pre",
+      "variable_description": "사전 평균임금(로그)"
+    },
+    {
+      "run_id": "var_15",
+      "config": "configs/var_15.json",
+      "config_id": "b9099ed18f06e457",
+      "label": "var_15_mu_remove_ln_ind_avg_pay",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ln_ind_avg_pay",
+      "variable_description": "산업 평균임금(로그)"
+    },
+    {
+      "run_id": "var_16",
+      "config": "configs/var_16.json",
+      "config_id": "0066bc80424077ee",
+      "label": "var_16_mu_remove_ln_ind_ast",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ln_ind_ast",
+      "variable_description": "산업 자산(로그)"
+    },
+    {
+      "run_id": "var_17",
+      "config": "configs/var_17.json",
+      "config_id": "67ecfc9279e30c40",
+      "label": "var_17_mu_remove_ind_rnd_ratio",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_rnd_ratio",
+      "variable_description": "산업 R&D 비율"
+    },
+    {
+      "run_id": "var_18",
+      "config": "configs/var_18.json",
+      "config_id": "cd6dbd9e4675d4e4",
+      "label": "var_18_mu_remove_ln_cum_patent",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ln_cum_patent",
+      "variable_description": "누적 특허(로그)"
+    },
+    {
+      "run_id": "var_19",
+      "config": "configs/var_19.json",
+      "config_id": "89902cda62d59971",
+      "label": "var_19_mu_remove_ind_college_share_pre",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_college_share_pre",
+      "variable_description": "사전 대졸자 비중"
+    },
+    {
+      "run_id": "var_20",
+      "config": "configs/var_20.json",
+      "config_id": "783eb4a3120f2111",
+      "label": "var_20_mu_remove_ind_large_est_share_pre",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_large_est_share_pre",
+      "variable_description": "사전 대규모 사업체 비중"
+    },
+    {
+      "run_id": "var_21",
+      "config": "configs/var_21.json",
+      "config_id": "7ab55c783ecf167d",
+      "label": "var_21_mu_remove_ind_avg_age_pre",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_avg_age_pre",
+      "variable_description": "사전 평균연령"
+    },
+    {
+      "run_id": "var_22",
+      "config": "configs/var_22.json",
+      "config_id": "e7f744be0c107bfd",
+      "label": "var_22_mu_remove_ind_age50_share_pre",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_age50_share_pre",
+      "variable_description": "사전 50세 이상 비중"
+    },
+    {
+      "run_id": "var_23",
+      "config": "configs/var_23.json",
+      "config_id": "2e4332cfde1e6123",
+      "label": "var_23_mu_remove_ind_female_share_pre",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_female_share_pre",
+      "variable_description": "사전 여성 비중"
+    },
+    {
+      "run_id": "var_24",
+      "config": "configs/var_24.json",
+      "config_id": "d2142ac0f2bf08a6",
+      "label": "var_24_mu_remove_ind_permanent_share_pre",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_permanent_share_pre",
+      "variable_description": "사전 상용직 비중"
+    },
+    {
+      "run_id": "var_25",
+      "config": "configs/var_25.json",
+      "config_id": "cdee2cfce3808083",
+      "label": "var_25_mu_remove_ind_avg_tenure_pre",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_avg_tenure_pre",
+      "variable_description": "사전 평균근속"
+    },
+    {
+      "run_id": "var_26",
+      "config": "configs/var_26.json",
+      "config_id": "76d61a2495b760cc",
+      "label": "var_26_mu_remove_ind_avg_hours_pre",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_avg_hours_pre",
+      "variable_description": "사전 평균근로시간"
+    },
+    {
+      "run_id": "var_27",
+      "config": "configs/var_27.json",
+      "config_id": "c686266073564e03",
+      "label": "var_27_mu_remove_ind_ln_avg_pay_pre",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ind_ln_avg_pay_pre",
+      "variable_description": "사전 평균임금(로그)"
+    },
+    {
+      "run_id": "var_28",
+      "config": "configs/var_28.json",
+      "config_id": "fd523e74dc830359",
+      "label": "var_28_mu_remove_firm_rnd_ratio",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "firm_rnd_ratio",
+      "variable_description": "기업 R&D 비율"
+    },
+    {
+      "run_id": "var_29",
+      "config": "configs/var_29.json",
+      "config_id": "f606af2327562e72",
+      "label": "var_29_mu_remove_ln_firm_avg_pay",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ln_firm_avg_pay",
+      "variable_description": "기업 평균임금(로그)"
+    },
+    {
+      "run_id": "var_30",
+      "config": "configs/var_30.json",
+      "config_id": "19d513bd5a8cd5e9",
+      "label": "var_30_mu_remove_ln_firm_ast",
+      "model_design": "mu_remove",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "mu_remove",
+      "variable": "ln_firm_ast",
+      "variable_description": "기업 자산(로그)"
+    },
+    {
+      "run_id": "var_31",
+      "config": "configs/var_31.json",
+      "config_id": "fe5e5ac59e9d5e9b",
+      "label": "var_31_core_block_core",
+      "model_design": "core_block",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "core_block",
+      "variable": "core",
+      "variable_description": "산업 자산·특허 기본군"
+    },
+    {
+      "run_id": "var_32",
+      "config": "configs/var_32.json",
+      "config_id": "bd783016094ef018",
+      "label": "var_32_add_workforce_block_workforce",
+      "model_design": "add_workforce_block",
+      "support_design": "fixed_ess5_strict",
+      "variable_action": "add_workforce_block",
+      "variable": "workforce",
+      "variable_description": "기본군에 사전 노동구성 9개 추가"
+    }
+  ]
+}

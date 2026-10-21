@@ -1,0 +1,14 @@
+{
+  "unit_tests": 12,
+  "unit_tests_status": "PASS",
+  "specifications_completed": 32,
+  "specifications_failed": 0,
+  "fixed_sample_verified": true,
+  "n_analysis_firms": 1991,
+  "n_analysis_industries": 141,
+  "primary_estimate_rows": 640,
+  "cumulative_primary_rows": 1280,
+  "nominal_pattern_matches": 0,
+  "mu_tuning_disabled": true,
+  "empty_reference_fingerprint_backcompat": "PASS"
+}

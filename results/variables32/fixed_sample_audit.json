@@ -1,0 +1,197 @@
+{
+  "fixed_sample_verified": true,
+  "specifications": [
+    {
+      "run_id": "var_01",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_02",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_03",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_04",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_05",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_06",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_07",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_08",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_09",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_10",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_11",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_12",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_13",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_14",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_15",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_16",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_17",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_18",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_19",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_20",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_21",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_22",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_23",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_24",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_25",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_26",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_27",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_28",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_29",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_30",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_31",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    },
+    {
+      "run_id": "var_32",
+      "n_firms": 1991,
+      "n_industries": 141,
+      "sample_hash": "a56ba54d95e81f8c78fca81724f62e5639b6ab7fa7b8ffc103e945390ccff322"
+    }
+  ]
+}

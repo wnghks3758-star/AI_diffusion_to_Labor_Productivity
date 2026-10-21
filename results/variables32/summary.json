@@ -1,0 +1,28 @@
+{
+  "planned": 32,
+  "completed": 32,
+  "failed": 0,
+  "pending": 0,
+  "nominal_pattern_matches": 0,
+  "nominal_preferred_matches": 0,
+  "holm_pattern_matches": 0,
+  "holm_preferred_matches": 0,
+  "updated_at_utc": "2026-10-21T10:04:27.136875+00:00",
+  "note": "Pattern flags are exploratory. Pre-period non-rejection does not establish parallel trends.",
+  "criteria_counts": {
+    "pre_all_nonsignificant": 6,
+    "initial_significant_decline": 0,
+    "recovery": 27,
+    "sme_crosses_positive_earlier": 31,
+    "sme_2025_significantly_positive": 0,
+    "moderation_negative_significant": 1
+  },
+  "peak_rss_mib": {
+    "minimum": 230.9765625,
+    "median": 235.732421875,
+    "maximum": 246.98046875
+  },
+  "experiment_type": "variable_only_ablation",
+  "fixed_sample_verified": true,
+  "comparison_note": "Estimate changes are descriptive; no p-values for between-specification changes are computed."
+}

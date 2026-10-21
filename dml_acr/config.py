@@ -25,6 +25,7 @@ class AnalysisConfig:
     covariate_time: str = 'current'  # baseline freezes controls at base_year
     gps_features: list = field(default_factory=lambda: list(INDUSTRY_CONTROLS))
     mu_features: list = field(default_factory=lambda: ['large_dummy','small_dummy'] + FIRM_CONTROLS + INDUSTRY_CONTROLS)
+    sample_reference_features: list = field(default_factory=list)
     gps_level: str = 'industry'
     gps_model: str = 'spline'
     gps_n_knots: int = 3
@@ -97,7 +98,7 @@ class AnalysisConfig:
         if self.mu_search_n_iter < 0: raise ValueError('mu_search_n_iter must be >=0')
         if not self.years or len(set(self.years)) != len(self.years) or self.base_year in self.years:
             raise ValueError('years must be unique and exclude base_year')
-        for features in [self.gps_features,self.mu_features]:
+        for features in [self.gps_features,self.mu_features,self.sample_reference_features]:
             if len(features)!=len(set(features)): raise ValueError('Duplicate features')
             if self.dose in features or self.outcome in features or 'Y_diff' in features:
                 raise ValueError('Do not include the dose, outcome or Y_diff as a covariate')
@@ -119,4 +120,6 @@ class AnalysisConfig:
     def fingerprint(self):
         values=self.to_dict()
         for key in ['label','cache_dir']: values.pop(key)
+        # Preserve fingerprints of configurations written before fixed-sample support.
+        if not values['sample_reference_features']: values.pop('sample_reference_features')
         return hashlib.sha256(json.dumps(values,sort_keys=True).encode()).hexdigest()[:16]

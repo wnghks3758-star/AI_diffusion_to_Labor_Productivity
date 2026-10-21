@@ -67,6 +67,7 @@ estimates, status = run_analysis(cfg, 'results/my_spec')
 | data_path, dose, outcome, dose_transform | 데이터·처치·결과·로그변환 |
 | base_year, years, pre_sign | 기준연도·분석 연도·사전 차분 방향 |
 | gps_features, mu_features | 학습에 들어가는 열 목록. dose는 Mu에 자동 추가 |
+| sample_reference_features | 표본 고정용 complete-case 기준 열. 학습에는 자동 추가하지 않음 |
 | gps_level | industry 또는 firm. 산업 수준에서는 산업 안에서 공변량이 일정해야 함 |
 | covariate_time | current 또는 baseline |
 | gps_model, gps_n_knots, gps_degree, ridge_alphas | GPS 비선형성·ridge 후보 |
