@@ -1,0 +1,28 @@
+{
+  "alpha": 0.05,
+  "pre_years": [
+    2020,
+    2021
+  ],
+  "post_years": [
+    2023,
+    2024,
+    2025
+  ],
+  "pre_effects": [
+    "total",
+    "sme",
+    "large",
+    "moderation"
+  ],
+  "decline_effects": [
+    "total"
+  ],
+  "recovery_effects": [
+    "total",
+    "sme",
+    "large"
+  ],
+  "require_monotonic_recovery": true,
+  "recovery_tolerance": 0.0
+}

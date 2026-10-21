@@ -1,0 +1,21 @@
+{
+  "planned_max_attempts": 200,
+  "attempted": 200,
+  "accepted_detailed_cases": 10,
+  "rejected": 124,
+  "failed": 66,
+  "pending": 0,
+  "stop_reason": "budget_exhausted",
+  "nominal_pattern_matches": [],
+  "nominal_preferred_matches": [],
+  "rejection_counts": {
+    "initial_total_decline_not_met": 107,
+    "pre_significant": 17
+  },
+  "random_budget_family_tests": 4000,
+  "cumulative_budget_family_tests": 5280,
+  "updated_at_utc": "2026-10-21T10:49:42.026243+00:00",
+  "note": "Exploratory adaptive selection; non-rejection is not evidence that parallel trends holds. No rejected detailed outcomes retained.",
+  "elapsed_worker_seconds": 627.0518141109969,
+  "peak_rss_mib": 258.09375
+}

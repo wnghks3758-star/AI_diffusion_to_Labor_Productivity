@@ -1,0 +1,2 @@
+# Optional Word report generation; PDF also requires xelatex and Noto Sans CJK KR.
+python-docx==1.2.0

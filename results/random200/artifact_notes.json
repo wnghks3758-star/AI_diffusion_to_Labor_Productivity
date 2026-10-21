@@ -1,0 +1,64 @@
+{
+  "drive_folder": {
+    "id": "1kPW-YoABEiQK0ZUw9yUJiUh8AqwdQIl_",
+    "url": "https://drive.google.com/drive/folders/1kPW-YoABEiQK0ZUw9yUJiUh8AqwdQIl_"
+  },
+  "uploads": {
+    "results": {
+      "id": "1LgUCcegOFYwoYTNghJ0VGqtGVv9wqI-4",
+      "url": "https://drive.google.com/file/d/1LgUCcegOFYwoYTNghJ0VGqtGVv9wqI-4/view?usp=drivesdk",
+      "name": "02_final_random_results.zip"
+    },
+    "source": {
+      "id": "1pxG02V-ZzQ-Ey3_XEnxExw6vfQekQF3r",
+      "url": "https://drive.google.com/file/d/1pxG02V-ZzQ-Ey3_XEnxExw6vfQekQF3r/view?usp=drivesdk",
+      "name": "03_updated_python_source.zip"
+    },
+    "estimates": {
+      "id": "1Ss8zoC8LAJFp-tivBHGs5jy_s0FHpyL5",
+      "url": "https://drive.google.com/file/d/1Ss8zoC8LAJFp-tivBHGs5jy_s0FHpyL5/view?usp=drivesdk",
+      "name": "04_accepted_estimates.csv"
+    },
+    "ledger": {
+      "id": "11pwo745rV9mLCh0ZRXn49f8XdN7ZjMBl",
+      "url": "https://drive.google.com/file/d/11pwo745rV9mLCh0ZRXn49f8XdN7ZjMBl/view?usp=drivesdk",
+      "name": "05_all_attempts.csv"
+    },
+    "guide": {
+      "id": "1xZcoWdxoHq29RdAJNzCqJ_pUsDqFODZ5",
+      "url": "https://drive.google.com/file/d/1xZcoWdxoHq29RdAJNzCqJ_pUsDqFODZ5/view?usp=drivesdk",
+      "name": "06_RANDOM_SEARCH_KO.md"
+    },
+    "pdf": {
+      "id": "172O9SZPQXSt-K2v5XgXKVLQwAU49xNJJ",
+      "url": "https://drive.google.com/file/d/172O9SZPQXSt-K2v5XgXKVLQwAU49xNJJ/view?usp=drivesdk",
+      "name": "07_Random_Search_Report_KO.pdf"
+    },
+    "word": {
+      "id": "1g-QRxL6autaMrZYl1Z6xxjlZayAvTNXr",
+      "url": "https://docs.google.com/document/d/1g-QRxL6autaMrZYl1Z6xxjlZayAvTNXr/edit?usp=drivesdk&ouid=115897385456972979350&rtpof=true&sd=true",
+      "name": "08_Random_Search_Report_KO.docx"
+    },
+    "audit": {
+      "id": "1aCwFLpgHdzoPT8xU4aPeJBXzBBbgWgqx",
+      "url": "https://drive.google.com/file/d/1aCwFLpgHdzoPT8xU4aPeJBXzBBbgWgqx/view?usp=drivesdk",
+      "name": "09_random_search_audit.json"
+    },
+    "summary": {
+      "id": "1vcvZZ9g3zAkVH9_ah3o1jvc1XY1YJAKa",
+      "url": "https://drive.google.com/file/d/1vcvZZ9g3zAkVH9_ah3o1jvc1XY1YJAKa/view?usp=drivesdk",
+      "name": "10_RANDOM_RESULTS_KO.md"
+    }
+  },
+  "result_summary": {
+    "attempted": 200,
+    "accepted_detailed_cases": 10,
+    "rejected": 124,
+    "failed": 66,
+    "nominal_pattern_matches": 0
+  },
+  "report": {
+    "pages": 24,
+    "verified_primary_rows": 200
+  }
+}

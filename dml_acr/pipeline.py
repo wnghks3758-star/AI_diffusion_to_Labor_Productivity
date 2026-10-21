@@ -47,7 +47,7 @@ def joint_inference(estimates,joint_results,config):
     return estimates,{'max_t_critical_value':critical,'family_tests':len(names),'pre_joint_wald_p_value':joint_p,
         'pre_joint_covariance_rank':rank,'n_joint_clusters':len(clusters)}
 
-def run_analysis(config,output_dir=None):
+def run_analysis(config,output_dir=None,year_gate=None,pattern_criteria=None):
     if isinstance(config,(str,Path)):config=AnalysisConfig.load(config)
     elif isinstance(config,dict):config=AnalysisConfig.from_dict(config)
     output=Path(output_dir or Path('results')/config.fingerprint);output.mkdir(parents=True,exist_ok=True)
@@ -72,12 +72,24 @@ def run_analysis(config,output_dir=None):
             pd.concat(all_rows,ignore_index=True).to_csv(output/'estimates.partial.csv',index=False)
             write_json(output/'audit.partial.json',audits)
             progress(year,'completed',{'elapsed_seconds':perf_counter()-started})
+            # Optional staged screening avoids fitting later outcomes after rejection.
+            # The caller controls whether to retain or remove this scratch folder.
+            if year_gate is not None:
+                decision=year_gate(pd.concat(all_rows,ignore_index=True),year,config)
+                if decision is not None:
+                    status={'status':'rejected','label':config.label,'config_id':config.fingerprint,
+                        'data_sha256':data_hash,'elapsed_seconds':perf_counter()-started,
+                        'peak_rss_mib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024,
+                        'years_evaluated':[int(t.year.iloc[0]) for t in all_rows],
+                        'gate':decision,'completed_at_utc':datetime.now(timezone.utc).isoformat()}
+                    write_json(output/'status.json',status)
+                    return pd.concat(all_rows,ignore_index=True),status
         estimates=pd.concat(all_rows,ignore_index=True)
         estimates,joint_audit=joint_inference(estimates,joint,config)
         estimates.to_csv(output/'estimates.csv',index=False)
         pd.concat(all_endpoints,ignore_index=True).to_csv(output/'endpoints.csv',index=False)
         write_json(output/'audit.json',{'preprocessing':preprocessing,'years':audits,'joint':joint_audit})
-        pattern=evaluate_pattern(estimates)
+        pattern=evaluate_pattern(estimates,pattern_criteria)
         write_json(output/'pattern_flags.json',pattern)
         plot_event_study(estimates,output/'event_study.png',config.base_year,title=config.label+' (exploratory; nominal 95% intervals)')
         if config.save_bootstrap_draws:

@@ -35,6 +35,22 @@ GPS 변수 13개·Mu 변수 16개의 개별 제외와 두 변수군 구성을 �
 - [변수 비교 전체 결과](results/variables32/all_estimates.csv)
 
 이번에도 전체 요청 패턴을 모두 만족한 설정은 0개입니다. 기준 대비 추정치 변화는 기술적 비교입니다.
+
+### 무작위 변수·설정 탐색
+
+추가 요청에 따라 최대 200개의 무작위 후보를 고정하고, 사전 8개 효과 비유의와
+2023년 전체 효과의 유의한 하락을 통과한 사례만 상세 저장하는 실행기를 추가했습니다.
+전체 목표를 만족하면 즉시 멈추며, 탈락한 시도의 설정·사유는 감사 장부에 남깁니다.
+
+```bash
+.venv/bin/python -m dml_acr.random_experiments search --output results/random200
+```
+
+- [무작위 탐색 범위·저장 조건·자동 종료·재시작](docs/RANDOM_SEARCH_KO.md)
+- [무작위 탐색 실제 결과와 통과 사례](docs/RANDOM_RESULTS_KO.md)
+- [실행 현황과 종료 사유](results/random200/summary.json)
+- [통과 사례만 포함하는 상세 결과](results/random200/accepted/)
+
 아래는 기존 노트북을 실행하는 방법입니다.
 
 프로젝트 위치: `/workspace/AI_diffusion_to_Labor_Productivity`
