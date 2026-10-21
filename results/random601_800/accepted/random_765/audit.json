@@ -1,0 +1,821 @@
+{
+  "preprocessing": {
+    "input_rows": 13336,
+    "balanced_firms_before_missing": 2028,
+    "firms_dropped_for_missing": 3,
+    "analysis_firms": 1984,
+    "analysis_industries": 137,
+    "unclassified_firms": 23,
+    "common_lower_dose": 2.11404473635336,
+    "covariate_time": "baseline",
+    "sample_reference_features": [
+      "ln_ind_avg_pay",
+      "ln_ind_ast",
+      "ind_rnd_ratio",
+      "ln_cum_patent",
+      "ind_college_share_pre",
+      "ind_large_est_share_pre",
+      "ind_avg_age_pre",
+      "ind_age50_share_pre",
+      "ind_female_share_pre",
+      "ind_permanent_share_pre",
+      "ind_avg_tenure_pre",
+      "ind_avg_hours_pre",
+      "ind_ln_avg_pay_pre",
+      "firm_rnd_ratio",
+      "ln_firm_avg_pay",
+      "ln_firm_ast"
+    ],
+    "sample_firm_sha256": "22334be46edc90a22a31861b4bf7b12ef3fb40844cb782863d10b5776f6e6510",
+    "industry_categories": [
+      "ICT_58_63",
+      "MFG_10_11",
+      "MFG_12_15",
+      "MFG_16_19",
+      "MFG_20_21",
+      "MFG_22_24",
+      "MFG_25_26",
+      "MFG_27_28",
+      "MFG_29_33",
+      "Other",
+      "Primary_Infra",
+      "Professional_Business",
+      "Trade"
+    ],
+    "dummy_columns": []
+  },
+  "years": [
+    {
+      "year": 2020,
+      "grid_points": 1193,
+      "supported_points": {
+        "total": 242,
+        "sme": 193,
+        "large": 236
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1984,
+          "n_in_range_firms": 1238,
+          "n_used_firms": 1238,
+          "n_gap_firms": 533,
+          "coverage": 0.623991935483871,
+          "weight_sum": 0.9999999999999998,
+          "active_endpoints": 85
+        },
+        "sme": {
+          "n_target_firms": 953,
+          "n_in_range_firms": 583,
+          "n_used_firms": 583,
+          "n_gap_firms": 311,
+          "coverage": 0.6117523609653726,
+          "weight_sum": 1.0,
+          "active_endpoints": 64
+        },
+        "large": {
+          "n_target_firms": 1008,
+          "n_in_range_firms": 632,
+          "n_used_firms": 632,
+          "n_gap_firms": 269,
+          "coverage": 0.626984126984127,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        },
+        "common": {
+          "n_target_firms": 1961,
+          "n_in_range_firms": 1228,
+          "n_used_firms": 1228,
+          "n_gap_firms": 529,
+          "coverage": 0.6262111167771545,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        }
+      },
+      "gps": {
+        "cache_hit": false,
+        "cache_key": "3d9cf93d447e46db7096be02",
+        "n_training_rows": 137,
+        "features": [
+          "ln_ind_ast",
+          "ind_rnd_ratio",
+          "ind_large_est_share_pre",
+          "ind_avg_hours_pre"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.3057938898205426
+      },
+      "mu": {
+        "cache_hit": false,
+        "cache_key": "580a861e1b17741d9b700dd7",
+        "features": [
+          "firm_rnd_ratio",
+          "ln_ind_avg_pay",
+          "ind_avg_age_pre",
+          "ind_avg_hours_pre",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": false,
+        "cache_key": "ade834d8930a774848bb5a7a"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 2983936,
+        "n_centers": 94,
+        "predicted_rows": 372992,
+        "original_prediction_rows": 372992
+      },
+      "stored_bootstrap_matrix_shape": [
+        1999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 57235368
+    },
+    {
+      "year": 2021,
+      "grid_points": 1193,
+      "supported_points": {
+        "total": 242,
+        "sme": 193,
+        "large": 236
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1984,
+          "n_in_range_firms": 1238,
+          "n_used_firms": 1238,
+          "n_gap_firms": 533,
+          "coverage": 0.623991935483871,
+          "weight_sum": 0.9999999999999998,
+          "active_endpoints": 85
+        },
+        "sme": {
+          "n_target_firms": 953,
+          "n_in_range_firms": 583,
+          "n_used_firms": 583,
+          "n_gap_firms": 311,
+          "coverage": 0.6117523609653726,
+          "weight_sum": 1.0,
+          "active_endpoints": 64
+        },
+        "large": {
+          "n_target_firms": 1008,
+          "n_in_range_firms": 632,
+          "n_used_firms": 632,
+          "n_gap_firms": 269,
+          "coverage": 0.626984126984127,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        },
+        "common": {
+          "n_target_firms": 1961,
+          "n_in_range_firms": 1228,
+          "n_used_firms": 1228,
+          "n_gap_firms": 529,
+          "coverage": 0.6262111167771545,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        }
+      },
+      "gps": {
+        "cache_hit": true,
+        "cache_key": "3d9cf93d447e46db7096be02",
+        "n_training_rows": 137,
+        "features": [
+          "ln_ind_ast",
+          "ind_rnd_ratio",
+          "ind_large_est_share_pre",
+          "ind_avg_hours_pre"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.3057938898205426
+      },
+      "mu": {
+        "cache_hit": false,
+        "cache_key": "edd525ffc917d6c5fc14b001",
+        "features": [
+          "firm_rnd_ratio",
+          "ln_ind_avg_pay",
+          "ind_avg_age_pre",
+          "ind_avg_hours_pre",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": true,
+        "cache_key": "ade834d8930a774848bb5a7a"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 2983936,
+        "n_centers": 94,
+        "predicted_rows": 372992,
+        "original_prediction_rows": 372992
+      },
+      "stored_bootstrap_matrix_shape": [
+        1999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 57235368
+    },
+    {
+      "year": 2023,
+      "grid_points": 1193,
+      "supported_points": {
+        "total": 242,
+        "sme": 193,
+        "large": 236
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1984,
+          "n_in_range_firms": 1238,
+          "n_used_firms": 1238,
+          "n_gap_firms": 533,
+          "coverage": 0.623991935483871,
+          "weight_sum": 0.9999999999999998,
+          "active_endpoints": 85
+        },
+        "sme": {
+          "n_target_firms": 953,
+          "n_in_range_firms": 583,
+          "n_used_firms": 583,
+          "n_gap_firms": 311,
+          "coverage": 0.6117523609653726,
+          "weight_sum": 1.0,
+          "active_endpoints": 64
+        },
+        "large": {
+          "n_target_firms": 1008,
+          "n_in_range_firms": 632,
+          "n_used_firms": 632,
+          "n_gap_firms": 269,
+          "coverage": 0.626984126984127,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        },
+        "common": {
+          "n_target_firms": 1961,
+          "n_in_range_firms": 1228,
+          "n_used_firms": 1228,
+          "n_gap_firms": 529,
+          "coverage": 0.6262111167771545,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        }
+      },
+      "gps": {
+        "cache_hit": true,
+        "cache_key": "3d9cf93d447e46db7096be02",
+        "n_training_rows": 137,
+        "features": [
+          "ln_ind_ast",
+          "ind_rnd_ratio",
+          "ind_large_est_share_pre",
+          "ind_avg_hours_pre"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.3057938898205426
+      },
+      "mu": {
+        "cache_hit": false,
+        "cache_key": "8ed9a6c803939171abec6e3c",
+        "features": [
+          "firm_rnd_ratio",
+          "ln_ind_avg_pay",
+          "ind_avg_age_pre",
+          "ind_avg_hours_pre",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": true,
+        "cache_key": "ade834d8930a774848bb5a7a"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 2983936,
+        "n_centers": 94,
+        "predicted_rows": 372992,
+        "original_prediction_rows": 372992
+      },
+      "stored_bootstrap_matrix_shape": [
+        1999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 57235368
+    },
+    {
+      "year": 2024,
+      "grid_points": 1193,
+      "supported_points": {
+        "total": 242,
+        "sme": 193,
+        "large": 236
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1984,
+          "n_in_range_firms": 1238,
+          "n_used_firms": 1238,
+          "n_gap_firms": 533,
+          "coverage": 0.623991935483871,
+          "weight_sum": 0.9999999999999998,
+          "active_endpoints": 85
+        },
+        "sme": {
+          "n_target_firms": 953,
+          "n_in_range_firms": 583,
+          "n_used_firms": 583,
+          "n_gap_firms": 311,
+          "coverage": 0.6117523609653726,
+          "weight_sum": 1.0,
+          "active_endpoints": 64
+        },
+        "large": {
+          "n_target_firms": 1008,
+          "n_in_range_firms": 632,
+          "n_used_firms": 632,
+          "n_gap_firms": 269,
+          "coverage": 0.626984126984127,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        },
+        "common": {
+          "n_target_firms": 1961,
+          "n_in_range_firms": 1228,
+          "n_used_firms": 1228,
+          "n_gap_firms": 529,
+          "coverage": 0.6262111167771545,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        }
+      },
+      "gps": {
+        "cache_hit": true,
+        "cache_key": "3d9cf93d447e46db7096be02",
+        "n_training_rows": 137,
+        "features": [
+          "ln_ind_ast",
+          "ind_rnd_ratio",
+          "ind_large_est_share_pre",
+          "ind_avg_hours_pre"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.3057938898205426
+      },
+      "mu": {
+        "cache_hit": false,
+        "cache_key": "d641fe369c1706c05f2d544b",
+        "features": [
+          "firm_rnd_ratio",
+          "ln_ind_avg_pay",
+          "ind_avg_age_pre",
+          "ind_avg_hours_pre",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": true,
+        "cache_key": "ade834d8930a774848bb5a7a"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 2983936,
+        "n_centers": 94,
+        "predicted_rows": 372992,
+        "original_prediction_rows": 372992
+      },
+      "stored_bootstrap_matrix_shape": [
+        1999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 57235368
+    },
+    {
+      "year": 2025,
+      "grid_points": 1193,
+      "supported_points": {
+        "total": 242,
+        "sme": 193,
+        "large": 236
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1984,
+          "n_in_range_firms": 1238,
+          "n_used_firms": 1238,
+          "n_gap_firms": 533,
+          "coverage": 0.623991935483871,
+          "weight_sum": 0.9999999999999998,
+          "active_endpoints": 85
+        },
+        "sme": {
+          "n_target_firms": 953,
+          "n_in_range_firms": 583,
+          "n_used_firms": 583,
+          "n_gap_firms": 311,
+          "coverage": 0.6117523609653726,
+          "weight_sum": 1.0,
+          "active_endpoints": 64
+        },
+        "large": {
+          "n_target_firms": 1008,
+          "n_in_range_firms": 632,
+          "n_used_firms": 632,
+          "n_gap_firms": 269,
+          "coverage": 0.626984126984127,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        },
+        "common": {
+          "n_target_firms": 1961,
+          "n_in_range_firms": 1228,
+          "n_used_firms": 1228,
+          "n_gap_firms": 529,
+          "coverage": 0.6262111167771545,
+          "weight_sum": 1.0,
+          "active_endpoints": 77
+        }
+      },
+      "gps": {
+        "cache_hit": true,
+        "cache_key": "3d9cf93d447e46db7096be02",
+        "n_training_rows": 137,
+        "features": [
+          "ln_ind_ast",
+          "ind_rnd_ratio",
+          "ind_large_est_share_pre",
+          "ind_avg_hours_pre"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 68,
+            "test_rows": 69,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 69,
+            "test_rows": 68,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.3057938898205426
+      },
+      "mu": {
+        "cache_hit": false,
+        "cache_key": "8dd1fe24a41568a6bf4f9e72",
+        "features": [
+          "firm_rnd_ratio",
+          "ln_ind_avg_pay",
+          "ind_avg_age_pre",
+          "ind_avg_hours_pre",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 992,
+            "test_rows": 992,
+            "best_params": {},
+            "cv_score": null
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": true,
+        "cache_key": "ade834d8930a774848bb5a7a"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 2983936,
+        "n_centers": 94,
+        "predicted_rows": 372992,
+        "original_prediction_rows": 372992
+      },
+      "stored_bootstrap_matrix_shape": [
+        1999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 57235368
+    }
+  ],
+  "joint": {
+    "max_t_critical_value": 2.8312650919764755,
+    "family_tests": 20,
+    "pre_joint_wald_p_value": 0.21466485489171502,
+    "pre_joint_covariance_rank": 6,
+    "n_joint_clusters": 137
+  }
+}

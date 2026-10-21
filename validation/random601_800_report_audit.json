@@ -1,0 +1,40 @@
+{
+  "source_summary": {
+    "planned_max_attempts": 200,
+    "attempted": 200,
+    "accepted_detailed_cases": 8,
+    "rejected": 119,
+    "failed": 73,
+    "pending": 0,
+    "stop_reason": "budget_exhausted",
+    "nominal_pattern_matches": [],
+    "nominal_preferred_matches": [],
+    "rejection_counts": {
+      "initial_total_decline_not_met": 95,
+      "pre_significant": 21,
+      "nonfinite_gate": 3
+    },
+    "random_budget_family_tests": 4000,
+    "cumulative_budget_family_tests": 17280,
+    "updated_at_utc": "2026-10-21T13:07:34.818568+00:00",
+    "note": "Exploratory adaptive selection; non-rejection is not evidence that parallel trends holds. No rejected detailed outcomes retained.",
+    "elapsed_worker_seconds": 477.8532554449994,
+    "peak_rss_mib": 242.203125
+  },
+  "report_pages_planned": 20,
+  "verified_primary_rows": 160,
+  "files": {
+    "Random_Search_Report_KO.pdf": {
+      "bytes": 998989,
+      "sha256": "c36057037edd5adab2c9ee207305b3421fa431d7db8fdecb859214a9ae55e0ac"
+    },
+    "Random_Search_Report_KO.docx": {
+      "bytes": 986478,
+      "sha256": "a4b4851faedcab51676bdc60bc20b5d06ce85ed65faa997283818bb9087c1a55"
+    }
+  },
+  "actual_pdf_pages": 20,
+  "docx_table_rows_verified": 160,
+  "pdf_replacement_characters": 0,
+  "layout_overflow_warnings": 0
+}

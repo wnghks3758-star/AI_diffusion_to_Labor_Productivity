@@ -1,0 +1,39 @@
+{
+  "random_planned": 800,
+  "random_attempted": 800,
+  "retained": 33,
+  "rejected": 499,
+  "failed": 268,
+  "nominal_pattern_matches": [],
+  "nominal_preferred_matches": [],
+  "all_random_family_tests": 16000,
+  "all_exploration_family_tests": 17280,
+  "unique_configuration_count": 800,
+  "plans": [
+    {
+      "root": "results/random200",
+      "plan_sha256": "a4baccb479bc259933a36fcc133801ccca497b538fe7a80831212863056d5ae2",
+      "planned": 200,
+      "attempted": 200
+    },
+    {
+      "root": "results/random201_400",
+      "plan_sha256": "cc03414f44208ae5a3bebc0af60bb42833b0e24708cb500b97f1c0ff13ad61da",
+      "planned": 200,
+      "attempted": 200
+    },
+    {
+      "root": "results/random401_600",
+      "plan_sha256": "4dead57e37571100d63eadd52da4cacc67fd365faf777f1e26d3cc8f308ed28d",
+      "planned": 200,
+      "attempted": 200
+    },
+    {
+      "root": "results/random601_800",
+      "plan_sha256": "99b15ddae9cceb5bf66fddce8d19bb4b980425130a7d12eae6f59132376fd376",
+      "planned": 200,
+      "attempted": 200
+    }
+  ],
+  "note": "Only gate-passing cases have retained detailed outcomes. Both batch failures and rejected/unevaluated outcomes remain in correction budgets."
+}

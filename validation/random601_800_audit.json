@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "attempted": 200,
+  "statuses": {
+    "accepted": 8,
+    "rejected": 119,
+    "failed": 73
+  },
+  "stop_reason": "budget_exhausted",
+  "accepted_checks": [
+    {
+      "run_id": "random_614",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "random_629",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "random_632",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "random_660",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "random_688",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "random_720",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "random_765",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "random_796",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    }
+  ],
+  "rejected_detailed_cases_retained": 0,
+  "data_sha256_verified": true,
+  "numerical_source_hashes_verified": true,
+  "verified_primary_rows": 160,
+  "inference_and_multiplicity_checked": true
+}

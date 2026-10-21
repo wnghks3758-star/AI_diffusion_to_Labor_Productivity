@@ -1,0 +1,64 @@
+{
+  "drive_folder": {
+    "success": true,
+    "id": "1ufW_SBD1Mytx6gPjDJ6Oo4FCdCO0SRAq",
+    "url": "https://drive.google.com/drive/folders/1ufW_SBD1Mytx6gPjDJ6Oo4FCdCO0SRAq",
+    "title": "Random_Search_601_800",
+    "parent_id": "1QTYiMgsbY4lCuMtcbtuWOMHKHSrN0Kr2"
+  },
+  "uploads": {
+    "results": {
+      "id": "1PITKQPeRb8lW43JtwHOdh2bHCea2Sjl2",
+      "url": "https://drive.google.com/file/d/1PITKQPeRb8lW43JtwHOdh2bHCea2Sjl2/view?usp=drivesdk",
+      "name": "02_final_results_601_800.zip"
+    },
+    "pdf": {
+      "id": "1_NudKfHqb2yihPLlcWXJgLedAgPZJH0B",
+      "url": "https://drive.google.com/file/d/1_NudKfHqb2yihPLlcWXJgLedAgPZJH0B/view?usp=drivesdk",
+      "name": "03_Report_601_800_KO.pdf"
+    },
+    "word": {
+      "id": "1ynyOHuQKW2PtolB3oXdYTI7W2s4a05SV",
+      "url": "https://docs.google.com/document/d/1ynyOHuQKW2PtolB3oXdYTI7W2s4a05SV/edit?usp=drivesdk&ouid=115897385456972979350&rtpof=true&sd=true",
+      "name": "04_Report_601_800_KO.docx"
+    },
+    "cumulative": {
+      "id": "1_0kkQ64yZEjgqb5PtMBqoAFB4pwxMzP-",
+      "url": "https://drive.google.com/file/d/1_0kkQ64yZEjgqb5PtMBqoAFB4pwxMzP-/view?usp=drivesdk",
+      "name": "05_cumulative_800_retained_estimates.csv"
+    },
+    "source": {
+      "id": "1y_Mc05puhW4FuyaHaeyt6sPLwnMXPHEe",
+      "url": "https://drive.google.com/file/d/1y_Mc05puhW4FuyaHaeyt6sPLwnMXPHEe/view?usp=drivesdk",
+      "name": "06_updated_python_source.zip"
+    },
+    "summary": {
+      "id": "1g3afzpWYKI3enn-N71_MF0x-K5RM9MBu",
+      "url": "https://drive.google.com/file/d/1g3afzpWYKI3enn-N71_MF0x-K5RM9MBu/view?usp=drivesdk",
+      "name": "07_RESULTS_601_800_KO.md"
+    }
+  },
+  "batch": {
+    "attempted": 200,
+    "accepted": 8,
+    "rejected": 119,
+    "failed": 73,
+    "pattern_matches": 0
+  },
+  "cumulative": {
+    "attempted": 800,
+    "accepted": 33,
+    "rejected": 499,
+    "failed": 268,
+    "pattern_matches": 0
+  },
+  "report": {
+    "pages": 20,
+    "verified_primary_rows": 160
+  },
+  "families": {
+    "batch": 4000,
+    "all_random": 16000,
+    "all_exploration": 17280
+  }
+}
