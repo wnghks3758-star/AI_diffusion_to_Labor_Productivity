@@ -1,1 +1,79 @@
-# AI_diffusion_to_Labor_Productivity
+# DML ACR 노트북 실행 환경
+
+프로젝트 위치: `/workspace/AI_diffusion_to_Labor_Productivity`
+
+Python 3.12 가상환경(`.venv`), JupyterLab, 분석 패키지를 설치했습니다.
+노트북과 엑셀 파일은 업로드 원본을 그대로 복사했습니다.
+
+## 실행
+
+```bash
+cd /workspace/AI_diffusion_to_Labor_Productivity
+./start_jupyter.sh
+```
+
+표시되는 JupyterLab 주소를 열고
+`f4_7_DML_ACR_Dart_size_mean_difference_chunked.ipynb`를 여세요.
+커널은 **DML ACR (Python 3.12)** 를 사용하세요.
+첫 코드 셀(함수 정의)을 실행한 뒤 원하는 분석 셀을 실행하면 됩니다.
+실행 스크립트가 프로젝트 폴더를 작업 디렉터리로 지정하므로 상대 데이터 경로가 맞습니다.
+VS Code에서 실행할 때는 `.venv/bin/python`을 커널로 선택하고 작업 디렉터리를 이 폴더로 설정하세요.
+
+## 데이터
+
+```text
+data/main_data/
+├── firm_year_all_ind_dart_add_control_gpt_continuous.xlsx
+├── firm_year_all_ind_dart_add_control_gpt_q50.xlsx
+└── firm_year_all_ind_dart_add_control_gpt_q75.xlsx
+```
+
+현재 노트북의 `action_everything()`은 **continuous** 파일을 읽습니다.
+q50·q75 파일도 같은 폴더에 배치했습니다. 이를 분석하려면 함수 내부의
+`pd.read_excel(...)`에서 파일명을 선택하고 함수 정의 셀을 다시 실행하세요.
+
+노트북의 분석 셀 세 개는 각각 아래 설정입니다.
+
+| 분석 셀 순서 | diff_step | gap_policy | min_ess_prime |
+|---|---:|---|---:|
+| 1 | 0.0005 | bridge | 5 |
+| 2 | 0.00001 | strict | 5 |
+| 3 | 0.00001 | strict | 0 |
+
+모든 셀 실행은 세 가지 분석을 차례로 수행합니다. 각 셀은 XGB 탐색 150개,
+반복 50회, 부트스트랩 5,000회를 사용하므로 계산량이 큽니다.
+
+## 설치 재현
+
+Linux CPU 환경과 Python 3.12 기준입니다. 프로젝트를 옮긴 경우:
+
+```bash
+./setup.sh
+./start_jupyter.sh
+```
+
+`requirements.in`은 직접 의존성, `requirements.lock.txt`는 설치한 전체 패키지의 고정 버전입니다.
+XGBoost는 GPU 의존성이 없는 `xgboost-cpu==3.1.3`을 사용하며,
+노트북의 `from xgboost import XGBRegressor`와 `tree_method='exact'`를 지원합니다.
+NumPy 2.3.5, pandas 2.2.3, SciPy 1.17.0, scikit-learn 1.8.0,
+matplotlib 3.10.8, openpyxl 3.1.5를 사용합니다.
+업로드 노트북에 저장된 과거 실행의 버전 및 검증 메타데이터는 이번 환경의 실행 기록과 구분해야 합니다.
+
+## 환경 점검
+
+```bash
+.venv/bin/python scripts/validate_environment.py
+```
+
+원본 노트북의 첫 코드 셀을 실제 Jupyter 커널에서 실행하고,
+엑셀 3개의 로딩·필수 열·기업-연도 중복·처치변수의 유효성을 검사합니다.
+continuous 데이터 전체 표본으로 bridge와 strict를 축소 실행하여
+학습, 교차적합, 부트스트랩, 연도별 요약, 그래프 생성을 점검합니다.
+
+축소 점검 설정은 2 folds, 반복 1회, 부트스트랩 49회, diff_step=0.05,
+XGB 탐색 2개 및 트리 8/12개입니다. 점검용 변경은 별도 커널 메모리에만 적용됩니다.
+원본 전체 설정 분석은 이번 환경 구축에서 실행하지 않았습니다.
+
+점검 결과는 `validation/environment_report.json`,
+JupyterLab 서버 기동 점검 결과는 `validation/jupyter_server_report.json`에 있습니다.
+임시 실행 노트북과 캐시는 `work/`에 저장합니다.

@@ -1,0 +1,26 @@
+[
+  {
+    "file": "data/main_data/firm_year_all_ind_dart_add_control_gpt_q75.xlsx",
+    "bytes": 4682299,
+    "sha256": "fc5d732fc09b42c3771fea7e2a6074bb444dc3a28110e423fdecf963a58311e4",
+    "unchanged_from_upload": true
+  },
+  {
+    "file": "f4_7_DML_ACR_Dart_size_mean_difference_chunked.ipynb",
+    "bytes": 262721,
+    "sha256": "677ae5d0cfeabb843b99056981c44ec7f50585af74461bf49f99f95ebdd9aa6b",
+    "unchanged_from_upload": true
+  },
+  {
+    "file": "data/main_data/firm_year_all_ind_dart_add_control_gpt_continuous.xlsx",
+    "bytes": 4686794,
+    "sha256": "4b3ed1ab28851b2ed497ff538b2c8cdd8b5c0891b7ab7daa129452a0dff9d52d",
+    "unchanged_from_upload": true
+  },
+  {
+    "file": "data/main_data/firm_year_all_ind_dart_add_control_gpt_q50.xlsx",
+    "bytes": 4678067,
+    "sha256": "7b22a7097910d386116d2c3a0fecd5cc9ec7f672de637444059da4e2141de9a1",
+    "unchanged_from_upload": true
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "jupyterlab_http": "200",
+  "kernel_name": "python3",
+  "display_name": "DML ACR (Python 3.12)",
+  "python": "/workspace/AI_diffusion_to_Labor_Productivity/.venv/bin/python",
+  "server_stopped_after_check": true
+}

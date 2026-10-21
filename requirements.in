@@ -1,0 +1,16 @@
+# Python 3.12; CPU-only XGBoost (same Python API, no CUDA dependency)
+numpy==2.3.5
+pandas==2.2.3
+scipy==1.17.0
+scikit-learn==1.8.0
+matplotlib==3.10.8
+xgboost-cpu==3.1.3
+openpyxl==3.1.5
+joblib==1.5.3
+threadpoolctl==3.6.0
+tqdm
+jupyterlab
+ipykernel
+nbclient
+nbformat
+nbconvert
