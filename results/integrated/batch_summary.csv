@@ -1,0 +1,8 @@
+suite,planned,attempted,current_gate_passed,rejected,failed,historical_fully_completed
+screen32,32,32,2,0,0,32
+variables32,32,32,2,0,0,32
+random200,200,200,10,124,66,0
+random201_400,200,200,8,125,67,0
+random401_600,200,200,7,131,62,0
+random601_800,200,200,8,119,73,0
+adaptive200,200,200,126,74,0,0

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "planned": 1064,
+  "attempted": 1064,
+  "eligible_cases": 163,
+  "verified_primary_rows": 3260,
+  "local_parent_changes_verified": 200,
+  "prior_plans_and_source_results_unchanged": true,
+  "only_gate_passing_cases_described": true,
+  "cumulative_family_tests": 21280,
+  "actual_pdf_pages": 342,
+  "docx_numeric_rows_verified": 3260,
+  "layout_overflow_warnings": 0
+}

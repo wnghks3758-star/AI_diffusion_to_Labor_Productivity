@@ -54,6 +54,9 @@ GPS 변수 13개·Mu 변수 16개의 개별 제외와 두 변수군 구성을 �
 - [후보 401~600의 실제 결과와 누적 결과](docs/RANDOM_RESULTS_401_600_KO.md)
 - [계속 실행: 후보 601~800 설계와 누적 보정](docs/RANDOM_CONTINUATION_601_800_KO.md)
 - [후보 601~800의 실제 결과](docs/RANDOM_RESULTS_601_800_KO.md)
+- [통과 기준 설정 주변의 추가 200개와 통합 보고서](docs/ADAPTIVE_LOCAL_SEARCH_KO.md)
+- [국소 탐색의 실제 결과와 전체 통합 결과](docs/ADAPTIVE_INTEGRATED_RESULTS_KO.md)
+- [전체 통과 사례 통합 현황](results/integrated/summary.json)
 - [실행 현황과 종료 사유](results/random200/summary.json)
 - [통과 사례만 포함하는 상세 결과](results/random200/accepted/)
 

@@ -1,0 +1,47 @@
+{
+  "drive_folder_id": "1iZU_CQbECW3MwUygY_0CW3nPrnG1GPA5",
+  "drive_folder_url": "https://drive.google.com/drive/folders/1iZU_CQbECW3MwUygY_0CW3nPrnG1GPA5",
+  "frozen_plan_file_id": "1uXsxhn4Ddu8NDwIUbuW1b_sOn61AZS30",
+  "progress_file_id": "15ztC8QqSVcjjCgUWfr4cMtjjWEjs1tT_",
+  "final_files": [
+    {
+      "key": "results",
+      "id": "1HagxAMoDqL3Pq71oTl6FqCmKDMsiOaaZ",
+      "url": "https://drive.google.com/file/d/1HagxAMoDqL3Pq71oTl6FqCmKDMsiOaaZ/view?usp=drivesdk",
+      "bytes": 93566230
+    },
+    {
+      "key": "pdf",
+      "id": "1utnsYuolHUDSGDJ16qjHTS4XsV6vZA9x",
+      "url": "https://drive.google.com/file/d/1utnsYuolHUDSGDJ16qjHTS4XsV6vZA9x/view?usp=drivesdk",
+      "bytes": 19327354
+    },
+    {
+      "key": "word",
+      "id": "17lLP2DGnQFDPeWtkfrd48qtSEb28iAas",
+      "url": "https://docs.google.com/document/d/17lLP2DGnQFDPeWtkfrd48qtSEb28iAas/edit?usp=drivesdk&ouid=115897385456972979350&rtpof=true&sd=true",
+      "bytes": 19310009
+    },
+    {
+      "key": "csv",
+      "id": "1_4oRFGSZupOOqm788ytIXYHDWzSoGDfO",
+      "url": "https://drive.google.com/file/d/1_4oRFGSZupOOqm788ytIXYHDWzSoGDfO/view?usp=drivesdk",
+      "bytes": 2235827
+    },
+    {
+      "key": "note",
+      "id": "1lAdAfJE9GbvdhpcjDzrGpHSAdlv9pd6a",
+      "url": "https://drive.google.com/file/d/1lAdAfJE9GbvdhpcjDzrGpHSAdlv9pd6a/view?usp=drivesdk",
+      "bytes": 2691
+    },
+    {
+      "key": "source",
+      "id": "1NTQhqmz3EOdVuvd4_NWdtxYkXMwuoNcr",
+      "url": "https://drive.google.com/file/d/1NTQhqmz3EOdVuvd4_NWdtxYkXMwuoNcr/view?usp=drivesdk",
+      "bytes": 135245
+    }
+  ],
+  "report_pages": 342,
+  "verified_primary_rows": 3260,
+  "only_gate_passing_cases_described": true
+}

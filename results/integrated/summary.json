@@ -1,0 +1,75 @@
+{
+  "planned": 1064,
+  "attempted": 1064,
+  "retained_cases": 163,
+  "batches": [
+    {
+      "suite": "screen32",
+      "planned": 32,
+      "attempted": 32,
+      "current_gate_passed": 2,
+      "rejected": 0,
+      "failed": 0,
+      "historical_fully_completed": 32
+    },
+    {
+      "suite": "variables32",
+      "planned": 32,
+      "attempted": 32,
+      "current_gate_passed": 2,
+      "rejected": 0,
+      "failed": 0,
+      "historical_fully_completed": 32
+    },
+    {
+      "suite": "random200",
+      "planned": 200,
+      "attempted": 200,
+      "current_gate_passed": 10,
+      "rejected": 124,
+      "failed": 66,
+      "historical_fully_completed": 0
+    },
+    {
+      "suite": "random201_400",
+      "planned": 200,
+      "attempted": 200,
+      "current_gate_passed": 8,
+      "rejected": 125,
+      "failed": 67,
+      "historical_fully_completed": 0
+    },
+    {
+      "suite": "random401_600",
+      "planned": 200,
+      "attempted": 200,
+      "current_gate_passed": 7,
+      "rejected": 131,
+      "failed": 62,
+      "historical_fully_completed": 0
+    },
+    {
+      "suite": "random601_800",
+      "planned": 200,
+      "attempted": 200,
+      "current_gate_passed": 8,
+      "rejected": 119,
+      "failed": 73,
+      "historical_fully_completed": 0
+    },
+    {
+      "suite": "adaptive200",
+      "planned": 200,
+      "attempted": 200,
+      "current_gate_passed": 126,
+      "rejected": 74,
+      "failed": 0,
+      "historical_fully_completed": 0
+    }
+  ],
+  "family_tests": 21280,
+  "nominal_pattern_matches": [],
+  "nominal_preferred_matches": [],
+  "verified_primary_rows": 3260,
+  "note": "Only the current gate-passing cases are described. Original 64 results are re-evaluated with the current total-only 2023 decline criterion; historical files unchanged."
+}

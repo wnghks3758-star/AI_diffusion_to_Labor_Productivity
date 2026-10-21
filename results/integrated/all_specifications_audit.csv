@@ -1,0 +1,1065 @@
+suite,run_id,config_id,status,current_gate_passed,reason,source_folder,detailed_in_integrated_document
+screen32,spec_01,67dc35a8b89faceb,completed,False,,,False
+screen32,spec_02,eec2c91acc49a023,completed,False,,,False
+screen32,spec_03,5297e7d3cd006aab,completed,False,,,False
+screen32,spec_04,2cc7b11a735dae04,completed,False,,,False
+screen32,spec_05,99b25cb34808581a,completed,False,,,False
+screen32,spec_06,2e12ba5b9c24da06,completed,False,,,False
+screen32,spec_07,5d1a9c9748871c6b,completed,False,,,False
+screen32,spec_08,84fe6963ce0d59ea,completed,False,,,False
+screen32,spec_09,e6c5fefedb510dc7,completed,False,,,False
+screen32,spec_10,229281b5060cd2cb,completed,False,,,False
+screen32,spec_11,06c4b07ec137a427,completed,False,,,False
+screen32,spec_12,b46e4abc2f020c31,completed,False,,,False
+screen32,spec_13,fd71e32aa89ccc37,completed,False,,,False
+screen32,spec_14,70d94e4e837d1112,completed,False,,,False
+screen32,spec_15,20f7246bb0f5b8f5,completed,True,,results/screen32/runs/spec_15,True
+screen32,spec_16,73cfb5cffca006b3,completed,False,,,False
+screen32,spec_17,efa41e4456c50ef7,completed,False,,,False
+screen32,spec_18,95fc40f4e6ea004a,completed,False,,,False
+screen32,spec_19,e86412e4486217d5,completed,False,,,False
+screen32,spec_20,7e617bf53b251a5b,completed,False,,,False
+screen32,spec_21,85124ef28b09839b,completed,True,,results/screen32/runs/spec_21,True
+screen32,spec_22,8717648141f5bd1e,completed,False,,,False
+screen32,spec_23,480a7fadd8658cd4,completed,False,,,False
+screen32,spec_24,b0a3d2ee20108f32,completed,False,,,False
+screen32,spec_25,7b806f63e0636dbd,completed,False,,,False
+screen32,spec_26,b1b2041c1bbad2e6,completed,False,,,False
+screen32,spec_27,628010d2a13df0bd,completed,False,,,False
+screen32,spec_28,394eec62f9031deb,completed,False,,,False
+screen32,spec_29,07132bfeacfff5dc,completed,False,,,False
+screen32,spec_30,ff41f03787030ca9,completed,False,,,False
+screen32,spec_31,9603a5e0fd3e0d35,completed,False,,,False
+screen32,spec_32,24855210b43aa608,completed,False,,,False
+variables32,var_01,8191d66a33a5a6fd,completed,False,,,False
+variables32,var_02,714ab3d2558f23c5,completed,False,,,False
+variables32,var_03,b392679538f23606,completed,False,,,False
+variables32,var_04,b75e9d3292973571,completed,False,,,False
+variables32,var_05,b1fe27cc503ff733,completed,False,,,False
+variables32,var_06,bd71379e6b8ac804,completed,True,,results/variables32/runs/var_06,True
+variables32,var_07,46ee0a62de30f0e1,completed,False,,,False
+variables32,var_08,f0e5b8bfea8e982f,completed,False,,,False
+variables32,var_09,fb7e3cf314afc14f,completed,False,,,False
+variables32,var_10,0dc838d1acf05848,completed,False,,,False
+variables32,var_11,56ec56c3d437b65f,completed,False,,,False
+variables32,var_12,b70022e741083923,completed,False,,,False
+variables32,var_13,fd868f356fdfb375,completed,False,,,False
+variables32,var_14,523a683eb08c2554,completed,False,,,False
+variables32,var_15,b9099ed18f06e457,completed,False,,,False
+variables32,var_16,0066bc80424077ee,completed,False,,,False
+variables32,var_17,67ecfc9279e30c40,completed,False,,,False
+variables32,var_18,cd6dbd9e4675d4e4,completed,False,,,False
+variables32,var_19,89902cda62d59971,completed,False,,,False
+variables32,var_20,783eb4a3120f2111,completed,False,,,False
+variables32,var_21,7ab55c783ecf167d,completed,False,,,False
+variables32,var_22,e7f744be0c107bfd,completed,False,,,False
+variables32,var_23,2e4332cfde1e6123,completed,False,,,False
+variables32,var_24,d2142ac0f2bf08a6,completed,False,,,False
+variables32,var_25,cdee2cfce3808083,completed,False,,,False
+variables32,var_26,76d61a2495b760cc,completed,False,,,False
+variables32,var_27,c686266073564e03,completed,False,,,False
+variables32,var_28,fd523e74dc830359,completed,False,,,False
+variables32,var_29,f606af2327562e72,completed,False,,,False
+variables32,var_30,19d513bd5a8cd5e9,completed,False,,,False
+variables32,var_31,fe5e5ac59e9d5e9b,completed,False,,,False
+variables32,var_32,bd783016094ef018,completed,True,,results/variables32/runs/var_32,True
+random200,random_001,2119df70e007c76b,rejected,False,initial_total_decline_not_met,,False
+random200,random_002,2649a5b4536589bd,rejected,False,initial_total_decline_not_met,,False
+random200,random_003,cffc2c2e9b486483,rejected,False,initial_total_decline_not_met,,False
+random200,random_004,b1b0aa5ba1edacd1,rejected,False,pre_significant,,False
+random200,random_005,77bb6304a4214c82,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_006,2df8cc674b43c84e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_007,35de181c43754140,rejected,False,initial_total_decline_not_met,,False
+random200,random_008,a5c58a282c4454cd,rejected,False,initial_total_decline_not_met,,False
+random200,random_009,f05fac5e37d7112b,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_010,86d2fadb84bada45,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_011,857de7f499fc4938,rejected,False,initial_total_decline_not_met,,False
+random200,random_012,4790ae578495dbae,rejected,False,initial_total_decline_not_met,,False
+random200,random_013,85dd11cb60a97ed9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_014,73df639b1acc0376,rejected,False,pre_significant,,False
+random200,random_015,55a81c41f261ee4c,rejected,False,initial_total_decline_not_met,,False
+random200,random_016,f63299ebbb202675,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_017,8256901ac28030ad,rejected,False,initial_total_decline_not_met,,False
+random200,random_018,659b8deed3feacdb,rejected,False,pre_significant,,False
+random200,random_019,27cd1d8ae1583cd9,rejected,False,initial_total_decline_not_met,,False
+random200,random_020,1eab793ccc57c040,rejected,False,initial_total_decline_not_met,,False
+random200,random_021,c9e9b1a5bdd1999c,rejected,False,pre_significant,,False
+random200,random_022,8cd7060e9d28c147,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_023,b5a07f6a1edfbc08,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_024,0f11dce72712281f,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_025,8a9e5025fae95397,rejected,False,initial_total_decline_not_met,,False
+random200,random_026,88a00af8e4510566,rejected,False,initial_total_decline_not_met,,False
+random200,random_027,62f85c578447bc1a,rejected,False,initial_total_decline_not_met,,False
+random200,random_028,798fd36fd2ce3ff0,rejected,False,initial_total_decline_not_met,,False
+random200,random_029,debbe189b4420d70,rejected,False,initial_total_decline_not_met,,False
+random200,random_030,304912b31a8ace4b,rejected,False,initial_total_decline_not_met,,False
+random200,random_031,3f1fd503e8be30a9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_032,7ffb0c920562c998,accepted,True,,results/random200/accepted/random_032,True
+random200,random_033,063d2910689b5f69,rejected,False,initial_total_decline_not_met,,False
+random200,random_034,af5f1f2f6b91121e,accepted,True,,results/random200/accepted/random_034,True
+random200,random_035,31eba2a1e2845adc,rejected,False,initial_total_decline_not_met,,False
+random200,random_036,5066d9bc83aa46a7,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_037,992f9aeddde4eff0,rejected,False,initial_total_decline_not_met,,False
+random200,random_038,3a6e6289c77ed60f,rejected,False,initial_total_decline_not_met,,False
+random200,random_039,4d1dfbcb2c70559f,rejected,False,initial_total_decline_not_met,,False
+random200,random_040,6663fdb491e78465,rejected,False,initial_total_decline_not_met,,False
+random200,random_041,9f61b690f67eb2bb,rejected,False,initial_total_decline_not_met,,False
+random200,random_042,454733a6db60928d,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_043,1f04545180937138,rejected,False,initial_total_decline_not_met,,False
+random200,random_044,e74895ed9f3f2311,rejected,False,initial_total_decline_not_met,,False
+random200,random_045,55c9f286f09063d5,rejected,False,initial_total_decline_not_met,,False
+random200,random_046,368cfaee03bc30ae,rejected,False,initial_total_decline_not_met,,False
+random200,random_047,07f206bf4eb6b49f,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_048,4908dfec0760852c,rejected,False,initial_total_decline_not_met,,False
+random200,random_049,49669aa3509c22dc,rejected,False,initial_total_decline_not_met,,False
+random200,random_050,4bb41010f11d1b87,rejected,False,initial_total_decline_not_met,,False
+random200,random_051,f5ce6aa96d7572ec,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_052,3d25f1ff3bf40366,rejected,False,initial_total_decline_not_met,,False
+random200,random_053,15a2a6d82e13b695,rejected,False,initial_total_decline_not_met,,False
+random200,random_054,50b419093bd07eb0,accepted,True,,results/random200/accepted/random_054,True
+random200,random_055,181ad2e1045e5781,rejected,False,initial_total_decline_not_met,,False
+random200,random_056,f7cbfd67f36a8d1f,accepted,True,,results/random200/accepted/random_056,True
+random200,random_057,4e1025dad1b67935,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_058,bff1fa56a0f8f428,rejected,False,initial_total_decline_not_met,,False
+random200,random_059,b2c7ddd7158916a0,rejected,False,initial_total_decline_not_met,,False
+random200,random_060,f2a45a5c28a7f0f3,rejected,False,initial_total_decline_not_met,,False
+random200,random_061,d9df765e6f01a6c3,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_062,e44a14c04aad7338,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_063,b67a40c967c8823d,rejected,False,pre_significant,,False
+random200,random_064,eb9796f5113f0e3c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_065,aaa7daa2b122bc04,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_066,01aab125bf1029fe,accepted,True,,results/random200/accepted/random_066,True
+random200,random_067,9225163785508375,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_068,050610254a4f49e4,rejected,False,pre_significant,,False
+random200,random_069,db2170329cf20aae,rejected,False,pre_significant,,False
+random200,random_070,7883c19e1d365832,rejected,False,initial_total_decline_not_met,,False
+random200,random_071,196a6b09483254ac,accepted,True,,results/random200/accepted/random_071,True
+random200,random_072,7f6ae14253f72908,rejected,False,initial_total_decline_not_met,,False
+random200,random_073,2ebcaa5df67f44c2,rejected,False,initial_total_decline_not_met,,False
+random200,random_074,5f98a4414a814595,rejected,False,initial_total_decline_not_met,,False
+random200,random_075,9d67933ceffc100f,rejected,False,initial_total_decline_not_met,,False
+random200,random_076,08d275e852955384,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_077,d7152326bbe3a05c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_078,12d7e5439997ed4e,rejected,False,initial_total_decline_not_met,,False
+random200,random_079,4871484189c98581,rejected,False,initial_total_decline_not_met,,False
+random200,random_080,70538cb3e0174cf2,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_081,07c64aa2c36f379c,rejected,False,initial_total_decline_not_met,,False
+random200,random_082,9b85a03cc0e527b2,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_083,e0651ac5d71194a0,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_084,3d9b42649c70ee5d,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_085,9e13af0002378879,rejected,False,initial_total_decline_not_met,,False
+random200,random_086,bfe55ce31ae41068,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_087,1bcc10e7788f99c0,rejected,False,initial_total_decline_not_met,,False
+random200,random_088,bb98139948232ffd,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_089,4099e1676cdd1411,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_090,1017dd0deff4ca6f,rejected,False,initial_total_decline_not_met,,False
+random200,random_091,15e8ae9a3d07ee7a,rejected,False,initial_total_decline_not_met,,False
+random200,random_092,c6929a23e98e21ae,rejected,False,pre_significant,,False
+random200,random_093,7083ec69a521a725,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_094,21426205ee329dac,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_095,9ea9c1bfa56b2579,accepted,True,,results/random200/accepted/random_095,True
+random200,random_096,4d28be54e3fc4a87,rejected,False,initial_total_decline_not_met,,False
+random200,random_097,53542c7b2b7f195e,rejected,False,pre_significant,,False
+random200,random_098,6759ece6724d54a7,rejected,False,initial_total_decline_not_met,,False
+random200,random_099,34be731dfe78e838,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_100,2bde75b0e68baf0b,rejected,False,pre_significant,,False
+random200,random_101,8330d0ebf2c54576,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_102,d122661dab03874b,rejected,False,initial_total_decline_not_met,,False
+random200,random_103,8fbd3175fca9e71d,rejected,False,initial_total_decline_not_met,,False
+random200,random_104,25778ebb88be7037,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_105,047e2e4296299026,rejected,False,initial_total_decline_not_met,,False
+random200,random_106,5cf673d6234a781e,rejected,False,initial_total_decline_not_met,,False
+random200,random_107,4dcc8f5fab45f371,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_108,4ec8764140b606fe,rejected,False,initial_total_decline_not_met,,False
+random200,random_109,f8f65977d50e87ba,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_110,c733f105470aa921,rejected,False,initial_total_decline_not_met,,False
+random200,random_111,52356edab39d1cd9,accepted,True,,results/random200/accepted/random_111,True
+random200,random_112,27f5f8f214334cf2,rejected,False,initial_total_decline_not_met,,False
+random200,random_113,281873d78ae96a27,rejected,False,initial_total_decline_not_met,,False
+random200,random_114,8ca22491b4dd8b33,rejected,False,initial_total_decline_not_met,,False
+random200,random_115,4b3d525327eaef8a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_116,fe91b507ea4a475a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_117,73bb99084c3b8886,rejected,False,initial_total_decline_not_met,,False
+random200,random_118,f7b5bf7d145432cc,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_119,56c96e36fc292ec5,rejected,False,initial_total_decline_not_met,,False
+random200,random_120,f28d5183f70583bf,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_121,a052c90e99f389b0,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_122,d48d960c72465cc4,rejected,False,initial_total_decline_not_met,,False
+random200,random_123,5f53768af7208e5f,rejected,False,initial_total_decline_not_met,,False
+random200,random_124,280f0dd1e525c0fe,rejected,False,initial_total_decline_not_met,,False
+random200,random_125,edf9a99c8a542cb2,rejected,False,pre_significant,,False
+random200,random_126,6829cd55317a3546,rejected,False,initial_total_decline_not_met,,False
+random200,random_127,c43dfba6eb46b580,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_128,2293e1a30218486c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_129,b3d2f8807877e3d3,rejected,False,initial_total_decline_not_met,,False
+random200,random_130,62251ccbd45d5665,accepted,True,,results/random200/accepted/random_130,True
+random200,random_131,bff8d480128c2b5c,rejected,False,initial_total_decline_not_met,,False
+random200,random_132,80eefbfe2b1c2fe1,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_133,19564e83598d2c64,accepted,True,,results/random200/accepted/random_133,True
+random200,random_134,c917024544e4cfb7,rejected,False,initial_total_decline_not_met,,False
+random200,random_135,efc7d77c3a9cec29,rejected,False,initial_total_decline_not_met,,False
+random200,random_136,b194f46150327dd4,rejected,False,initial_total_decline_not_met,,False
+random200,random_137,2725a41d270e589e,rejected,False,initial_total_decline_not_met,,False
+random200,random_138,5d10435f14d1002a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_139,2df1dbf01b5ab22b,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_140,d5ac68b6e7349921,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_141,4f32a53160c3b3df,rejected,False,initial_total_decline_not_met,,False
+random200,random_142,a674f8312216f0e6,rejected,False,initial_total_decline_not_met,,False
+random200,random_143,0bcf32396df9e814,rejected,False,initial_total_decline_not_met,,False
+random200,random_144,f7b094d19b9d8da2,rejected,False,initial_total_decline_not_met,,False
+random200,random_145,663236263ee767ea,rejected,False,pre_significant,,False
+random200,random_146,c1db192fd490d983,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_147,ffb02366f51f238c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_148,38f97428f3bfe040,rejected,False,pre_significant,,False
+random200,random_149,afd7d4dbc7a42d2b,rejected,False,initial_total_decline_not_met,,False
+random200,random_150,b4c5cf3d22d3b30f,rejected,False,pre_significant,,False
+random200,random_151,5767584a5bb37571,rejected,False,initial_total_decline_not_met,,False
+random200,random_152,7316c57d99113f93,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_153,5feaafa62e0f81a6,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_154,d4c9bf42ced188fd,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_155,c047de2766226047,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_156,a01e684c7ae8a493,rejected,False,initial_total_decline_not_met,,False
+random200,random_157,a813ccc12011851b,rejected,False,initial_total_decline_not_met,,False
+random200,random_158,e6d65c525bb626cd,rejected,False,initial_total_decline_not_met,,False
+random200,random_159,7e6eeca6d4174b8c,rejected,False,initial_total_decline_not_met,,False
+random200,random_160,3f8019aaec3732db,rejected,False,pre_significant,,False
+random200,random_161,2ffc66d8afc8cb68,rejected,False,initial_total_decline_not_met,,False
+random200,random_162,cd031246c95e441d,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_163,e9486468e6aacc0e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_164,e7f6f10c83c4b525,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_165,1ed4726af14a158e,rejected,False,initial_total_decline_not_met,,False
+random200,random_166,c0f251ead3cd7977,rejected,False,initial_total_decline_not_met,,False
+random200,random_167,7bef90dc633a3622,rejected,False,initial_total_decline_not_met,,False
+random200,random_168,d1695a53a20e553b,rejected,False,initial_total_decline_not_met,,False
+random200,random_169,5e326cb924ddb3d1,rejected,False,initial_total_decline_not_met,,False
+random200,random_170,bd79cc41df9f0aed,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_171,9ad55bf5dac83ce9,rejected,False,initial_total_decline_not_met,,False
+random200,random_172,80f4745f8e58a17b,rejected,False,initial_total_decline_not_met,,False
+random200,random_173,785c651067dc3f0a,rejected,False,initial_total_decline_not_met,,False
+random200,random_174,1ea47feb0b555c83,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_175,56fac3c0b8d8a716,rejected,False,initial_total_decline_not_met,,False
+random200,random_176,fd0c4af997d30f90,rejected,False,initial_total_decline_not_met,,False
+random200,random_177,ff95e24ef24285cf,rejected,False,pre_significant,,False
+random200,random_178,4168a3176cf1747f,rejected,False,initial_total_decline_not_met,,False
+random200,random_179,6aaf3f24113bede4,rejected,False,initial_total_decline_not_met,,False
+random200,random_180,7a07307ad05162a1,rejected,False,initial_total_decline_not_met,,False
+random200,random_181,51aef8a83737fea1,rejected,False,initial_total_decline_not_met,,False
+random200,random_182,6ba8efdba205e6c1,rejected,False,initial_total_decline_not_met,,False
+random200,random_183,3c525c534efc23ab,rejected,False,initial_total_decline_not_met,,False
+random200,random_184,5a21f0b8e20ce172,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_185,ad36475a6b0d20d3,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_186,6a982b52bfe63f77,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_187,b263d622d11f6916,rejected,False,initial_total_decline_not_met,,False
+random200,random_188,895135ba648a56b9,rejected,False,initial_total_decline_not_met,,False
+random200,random_189,315045ed171672be,rejected,False,initial_total_decline_not_met,,False
+random200,random_190,874e6f847d87fefe,rejected,False,pre_significant,,False
+random200,random_191,939de5922066bcad,rejected,False,initial_total_decline_not_met,,False
+random200,random_192,653c8c4eb8f99bc0,rejected,False,initial_total_decline_not_met,,False
+random200,random_193,478345bd9aca6c55,rejected,False,initial_total_decline_not_met,,False
+random200,random_194,a8ca2f4d31a1f41d,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_195,4f0249b2e0ef31ff,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_196,39cb544a4061bf7d,rejected,False,initial_total_decline_not_met,,False
+random200,random_197,eb86d52d76a38c79,rejected,False,initial_total_decline_not_met,,False
+random200,random_198,fc0becf76aa404ed,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_199,3dcdab915ae347fe,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random200,random_200,9a7650d44d44471e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_201,de868a8b7581870b,rejected,False,pre_significant,,False
+random201_400,random_202,e8ac6aaa988bf9fc,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_203,520ff0b9e0336882,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_204,a745f13b5f5e88bf,rejected,False,pre_significant,,False
+random201_400,random_205,cb79f06be3e2b082,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_206,02ff7e493869493f,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_207,f21b0496621047a0,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_208,876ae79745c9c274,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_209,99b2829c4986db6c,rejected,False,pre_significant,,False
+random201_400,random_210,de3a6f62669fa5be,rejected,False,pre_significant,,False
+random201_400,random_211,c898e2f69b50fdf2,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_212,8446b31cf6adcf15,accepted,True,,results/random201_400/accepted/random_212,True
+random201_400,random_213,874cee385a8e158e,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_214,1c7af13c8002189d,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_215,868817e1458b9ec4,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_216,20bb12597b6be649,rejected,False,nonfinite_gate,,False
+random201_400,random_217,9ed386b305286cc8,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_218,f0587df36af91d9b,rejected,False,pre_significant,,False
+random201_400,random_219,5e668204efddcab0,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_220,82114e53ad1f50a8,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_221,7f0d4104d3f2e91e,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_222,c2229cf9e4a45636,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_223,dca8da841448be02,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_224,eee2fd5656f0dc03,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_225,ced7de64e623693e,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_226,5a1e702e24289b85,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_227,7ce46a1736a36803,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_228,23208302f5f752bd,rejected,False,pre_significant,,False
+random201_400,random_229,23f48b741043a56a,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_230,e55b4ab6e44f16a5,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_231,b8a8f2061787d312,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_232,838c3e9be1f78f53,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_233,ccdee55e3d7001a8,rejected,False,pre_significant,,False
+random201_400,random_234,5880f82bc183bcee,accepted,True,,results/random201_400/accepted/random_234,True
+random201_400,random_235,5d2c3982def1bf3c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_236,8fb177a2175cb4d2,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_237,d1f9962f68af07ec,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_238,09b9570a6a7ca24c,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_239,1638d9a5a36f6c19,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_240,9aac4ab11ccbc16b,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_241,6e0d8de18843732f,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_242,e2f49a01033a2e18,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_243,1123da6c91007ef4,rejected,False,pre_significant,,False
+random201_400,random_244,6f8ca6d53cb23c79,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_245,0bb3b88794b13fdb,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_246,305ca5109a689cea,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_247,c4a1bbf57144189d,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_248,19334edc0e712dc3,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_249,502111bb2dab2623,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_250,74ea2598c3fb240c,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_251,4cab351e768f8390,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_252,74c48e0ae0ff930f,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_253,4fe1846dca30bc72,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_254,1ac3891420aa6b23,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_255,e2986284cf58d63c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_256,e51110f46d857013,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_257,b45604ae9f2f9d06,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_258,8336399fabdb2a6c,rejected,False,nonfinite_gate,,False
+random201_400,random_259,e37a38b5d0370f5c,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_260,cad48235004c6dbb,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_261,4ad04c726d2d0b15,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_262,5e31e7fe20ff0e4b,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_263,7dbd1878ad0fa6b0,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_264,64a9a1f5d05ce6f0,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_265,795329274697c544,accepted,True,,results/random201_400/accepted/random_265,True
+random201_400,random_266,b1476a9f152adc0b,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_267,3634f1be2e06ecfe,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_268,2ae6814af8470ed0,accepted,True,,results/random201_400/accepted/random_268,True
+random201_400,random_269,0a1ed512da4e765d,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_270,607e989f10fc9951,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_271,f43090b7e49b3446,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_272,f3c0a76fb2e4df83,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_273,391bc13ca219ab84,rejected,False,pre_significant,,False
+random201_400,random_274,09d88b713f542cf0,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_275,53447a2af3978ff5,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_276,fe77a60dcde110da,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_277,47313e450cac510f,rejected,False,pre_significant,,False
+random201_400,random_278,fd26fb6b28a779f2,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_279,0abbd2f9ecf6d329,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_280,b1692eca07f34b58,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_281,26e3a8f7c9c3a9c6,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_282,20d6e0a214b5d15a,rejected,False,pre_significant,,False
+random201_400,random_283,b47fe9477f7644fc,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_284,409594be21e3e4c2,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_285,58d897e26a254b54,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_286,d9fc8326ad45edfb,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_287,749c73408cb55f42,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_288,ec3487b9a7c3df47,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_289,da82f22b7ecb8679,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_290,d7e05318c7a2f561,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_291,6eb93ac963964b91,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_292,74e07599b0bfcfdc,rejected,False,nonfinite_gate,,False
+random201_400,random_293,af6cc75abffa77f2,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_294,c6d495b9fc474ff7,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_295,9ce84ad88d735c95,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_296,b1fc106896548024,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_297,8a91f9a0bc489012,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_298,c9d828f24add5ccc,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_299,19362268d612737b,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_300,aa1521bcfeb7fc95,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_301,f57e07c770647b61,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_302,f8e69dbe7673250d,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_303,29bac76f06996967,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_304,b5a753ad02543a16,rejected,False,pre_significant,,False
+random201_400,random_305,3aa10e060e5c9019,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_306,4aa89fb9ef516d78,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_307,7dc5e49d20cb6f3a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_308,eb2b2aa06e2fda88,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_309,9800444e1b227272,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_310,db9c9c39a45af7cb,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_311,459ae17075ad94b5,rejected,False,nonfinite_gate,,False
+random201_400,random_312,c8a64103b7a14faf,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_313,74c2706c10b04732,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_314,3e683043b822f0c4,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_315,1d4d9e035adcf968,accepted,True,,results/random201_400/accepted/random_315,True
+random201_400,random_316,203626f0967e8212,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_317,9e949d98a8688f96,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_318,bb95edf66963a061,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_319,25ea1262b7df40fd,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_320,8545dac18543b1dc,accepted,True,,results/random201_400/accepted/random_320,True
+random201_400,random_321,51be7663a2cb5d20,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_322,59248491c65c8698,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_323,8862aa5cef041265,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_324,eaf5d29d782bf3b9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_325,e9d6436fcb369931,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_326,fc730772e4196c88,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_327,797be43525ae1287,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_328,a8853066ddffddae,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_329,893c27989d513acf,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_330,7ab9a5b11d301ce3,accepted,True,,results/random201_400/accepted/random_330,True
+random201_400,random_331,4d27118f920bd59e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_332,52ddda6309f23754,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_333,17571a75aa886609,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_334,c07339bc577a2be9,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_335,f67cf9ace4d5e320,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_336,87ea75e1e0133e4f,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_337,0b3be06166299358,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_338,d3fc71e5a3181e37,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_339,3cfc642988b728d2,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_340,48fd5e89c0fcb061,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_341,b5ae10f0ef296225,rejected,False,pre_significant,,False
+random201_400,random_342,68dca117c93d1a1f,accepted,True,,results/random201_400/accepted/random_342,True
+random201_400,random_343,bdbfca408b22eccc,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_344,00f32de9ba455d13,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_345,5f86f6428725e783,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_346,fb0511e44532cb0d,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_347,90e6c1a3564da42a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_348,bc6e54673eee9bc1,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_349,f5916254e2bec613,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_350,4d570314c9ce8d67,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_351,180f6d79b52905b4,rejected,False,nonfinite_gate,,False
+random201_400,random_352,df7a042e1f5f7de1,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_353,52f3bb799d6b1090,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_354,06aec76a0019f7dd,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_355,193a8f9cd91e72a9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_356,8abe437fc08c6913,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_357,29f202d1d2e9fa7b,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_358,40ba1e9f678e0863,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_359,398e1c561e050ddd,rejected,False,pre_significant,,False
+random201_400,random_360,377c05f42301f6db,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_361,810dc105db028ab8,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_362,28593520c3122abb,rejected,False,pre_significant,,False
+random201_400,random_363,2c1da68a7050059a,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_364,3e99e7ba46ce994b,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_365,47676dca119e65dc,rejected,False,pre_significant,,False
+random201_400,random_366,141fe7539ff5100a,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_367,00fada6274b05f62,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_368,b8c2526446e6f32c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_369,52449ef2250a5cd9,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_370,b484238baf3e7424,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_371,6ff5ab8199553b46,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_372,540aaabf722166ab,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_373,2f3f9e9f023c4e84,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_374,8c4faf7f443cc77e,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_375,775d4194f5818bbf,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_376,11e582c1b208fa3b,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_377,8ecd3b2a335ee6b9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_378,52b268b58581de29,rejected,False,pre_significant,,False
+random201_400,random_379,b6e2cd29c4f0fa85,rejected,False,pre_significant,,False
+random201_400,random_380,0514e9ff33c08950,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_381,245137c0473844b2,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_382,229e93b416096863,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_383,aa41d7e1fc3f0c65,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_384,d147bc2545146463,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_385,a213b66f96ecf4b3,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_386,a037f73cd7f15bbc,rejected,False,pre_significant,,False
+random201_400,random_387,692a68dd4cc4bab7,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_388,d75a521329387c43,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_389,0b6ae8459ae933f7,rejected,False,pre_significant,,False
+random201_400,random_390,4e4bf11950ed631c,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_391,bb12cadb42747b1d,rejected,False,pre_significant,,False
+random201_400,random_392,1e9c92a4f58ff69c,rejected,False,pre_significant,,False
+random201_400,random_393,b7f7150a1758fee3,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_394,77ca6496e5a31847,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_395,f0bc0ff25eba14e8,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_396,60747654a40ae778,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_397,fdea0f90a1873019,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_398,d8fac35da2d215fe,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random201_400,random_399,33dd00cb5fb9ee1e,rejected,False,initial_total_decline_not_met,,False
+random201_400,random_400,33b1e41ba569eb9d,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_401,9daebead9cf027de,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_402,100a9ba6409781b3,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_403,3b88b3f376f741b7,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_404,726aafbf8e9228bb,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_405,58868c98a38cdb41,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_406,3151ae871c56df28,rejected,False,pre_significant,,False
+random401_600,random_407,46fac8f606a48021,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_408,256350f3ffe511ec,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_409,d43ede0a748a27d8,accepted,True,,results/random401_600/accepted/random_409,True
+random401_600,random_410,7a412f6ac073138e,rejected,False,pre_significant,,False
+random401_600,random_411,2572971778fb42e5,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_412,fc9d5d47e92c0378,rejected,False,pre_significant,,False
+random401_600,random_413,85394c8875fcb21c,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_414,1d9f605e667e12b5,rejected,False,pre_significant,,False
+random401_600,random_415,354321315f2bf1f0,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_416,937fd41507bab699,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_417,998629c6b8728b2f,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_418,c8ac891ad17f40a2,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_419,58b6ae696dbd3696,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_420,63d2533bc4206ee3,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_421,5d792080aa5456c2,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_422,16e80d1f3282bf19,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_423,f001e8b15dabc77b,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_424,24d92653d1e29602,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_425,4decbf5e0cfb2d4f,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_426,968ab82795d8d81c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_427,a04ff4760e8ad0f4,rejected,False,pre_significant,,False
+random401_600,random_428,4fbba44ac8a616f8,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_429,e8dcc91c4c4a6328,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_430,6c279eba14e57325,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_431,d66838f0b063f170,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_432,cd5dd37a70f2758c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_433,af5c4e7198963bb8,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_434,67cbd6c5050ee969,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_435,4d1375d225d076b8,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_436,1c0699562676768e,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_437,f5b20af117a139fb,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_438,96b1000c51fc18a4,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_439,a7d3c17f95769c9f,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_440,6b74d21cf6ffd8fb,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_441,856d6a29cd9a5fcb,rejected,False,pre_significant,,False
+random401_600,random_442,e7d022f66609ae9d,rejected,False,pre_significant,,False
+random401_600,random_443,f8cbbcd88c85c249,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_444,a616bca8c35bf5ca,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_445,912f6a1a0fffcf55,rejected,False,pre_significant,,False
+random401_600,random_446,2e515c8f3f2456fd,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_447,968c924dad9648b7,rejected,False,pre_significant,,False
+random401_600,random_448,a51b892d4902c0d7,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_449,56a2cf3206892a55,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_450,8445344b1c11ca17,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_451,84d7c2c9ee38a039,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_452,4d3178f68f90706d,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_453,505e703e4533b7ac,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_454,425fbdbd968f1ea4,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_455,2249f123d928f8a1,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_456,298d28db57bcf7c9,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_457,1988f26b9d2253ba,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_458,8d87a8fcda086fa1,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_459,5e9921e0e89a7b23,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_460,5574f2c991709cc0,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_461,855959ff279701a9,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_462,38d50b5cb0563b0c,rejected,False,nonfinite_gate,,False
+random401_600,random_463,a84f76e80d12ad31,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_464,fe647cf486513a52,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_465,66ac2028ec6430f7,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_466,24c28f16f22e856e,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_467,6e93bc8266e4a5e7,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_468,2ed34a3374eb35e6,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_469,45eff105333e93f0,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_470,a7ae0895ac64930e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_471,7aa6a1be0388087f,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_472,40192448a886b970,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_473,e3934d5d4e628f84,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_474,de65b964b00fa380,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_475,29377ed5dc918bdd,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_476,6be54877dbb20dd3,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_477,7ecdc193c2331fbf,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_478,7eb2f683c95d19f5,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_479,48addc80f81db7cc,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_480,ec8c7d60788cec1c,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_481,705e6965e1473e1e,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_482,127b6ae9dae49c4a,rejected,False,pre_significant,,False
+random401_600,random_483,a58d5b0fd12216ef,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_484,1f4ade9861ccaf08,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_485,6762f05904038e86,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_486,4636fa74770b22f0,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_487,5ea3336af81254b3,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_488,beb485a2ee907686,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_489,c0dc4cc7ec8aac38,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_490,efa59d96d2b7b200,rejected,False,pre_significant,,False
+random401_600,random_491,8ddb2436ea415bb9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_492,a586843dccf438cb,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_493,f5d135aa1c8e4c16,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_494,51513adb4f8268a4,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_495,ceab5e74da2569aa,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_496,68af1858a524a522,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_497,61ab278599906f0d,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_498,17c7149b61cc53a1,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_499,00c3a69ab3b932a6,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_500,2b2bd1fd519c16f6,rejected,False,pre_significant,,False
+random401_600,random_501,296a8fd0ac878988,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_502,1d39c2a4248e739b,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_503,0bc0ce587ec2faf0,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_504,048996673bfaf88b,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_505,c2299919de1350e0,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_506,83ec54589ba712a4,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_507,da06d125e5f4d514,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_508,4526bbf9919b0a6d,accepted,True,,results/random401_600/accepted/random_508,True
+random401_600,random_509,1791897b6e6a1499,rejected,False,pre_significant,,False
+random401_600,random_510,4604c8814b22c61d,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_511,7949283f09e4daa5,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_512,20318bf9b031d9ff,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_513,474797ee66f17a4d,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_514,88b9d22629997336,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_515,3d53d18e73690055,rejected,False,pre_significant,,False
+random401_600,random_516,3501b99932890e12,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_517,4c926236bb1d73b3,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_518,46a15d2cefcdd192,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_519,57303b8ebd4533b9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_520,f9942f2422a7ddb6,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_521,8739517cbc92e748,accepted,True,,results/random401_600/accepted/random_521,True
+random401_600,random_522,0636f4448826aa24,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_523,92330139b64fd270,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_524,52ae801dd18eeafc,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_525,15c7221e22fe886e,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_526,7ec34cb93dcdf9bb,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_527,169099448fee3e10,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_528,fd79cb23edcf18a1,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_529,0aca85600e71c6c7,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_530,ff556c95561f0951,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_531,b3fff174dc842966,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_532,9678e9aabfc54b15,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_533,d6ace13e5bf235c7,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_534,69e1a2a9339ec8a6,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_535,030fb7e19135db60,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_536,41c690734807f1cd,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_537,6b93a9c6624b8a58,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_538,6e61baf29ec9a428,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_539,7fa671d6e4b4f4c6,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_540,4943c4eee92af872,accepted,True,,results/random401_600/accepted/random_540,True
+random401_600,random_541,5cf773d7a6daf0f9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_542,bfde3dc596c89630,rejected,False,pre_significant,,False
+random401_600,random_543,f16735e11a3ff870,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_544,ebf58025d797fe72,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_545,357f4467538f36d8,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_546,220e10c53930e221,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_547,894ba01090cf1fd1,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_548,7f191eef1dada313,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_549,f117c0d1a3c74990,rejected,False,pre_significant,,False
+random401_600,random_550,717da84b560f7546,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_551,2c2d03a7d5117154,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_552,0702e4e459869d45,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_553,ac0aafec2a3ec51b,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_554,6460c78f5158832a,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_555,d29a92728e1ccf52,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_556,c312410b39e25e0a,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_557,fc65bde566442b52,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_558,7d2e1a24694aaea8,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_559,2b6be3c909b8e895,accepted,True,,results/random401_600/accepted/random_559,True
+random401_600,random_560,3b31489a42a67684,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_561,a8131064337b70cc,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_562,7c606d4fe1a9164b,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_563,9fe662bebf2c8652,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_564,49c29c2658de5e32,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_565,b87d18bcaabd0346,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_566,dae32fc2ea7fab1a,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_567,76a6404855a7b05e,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_568,8858b6e3d1164096,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_569,a95933d38d3a45b5,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_570,22a4df6c8d303bc7,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_571,b7d669d0abd1c5c4,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_572,6a80eb9d7d02913d,accepted,True,,results/random401_600/accepted/random_572,True
+random401_600,random_573,b336c166eddc9c00,rejected,False,pre_significant,,False
+random401_600,random_574,684cc88c593743ee,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_575,6cd5809e8a2dbef5,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_576,b8f5bac80921ebc4,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_577,ef391ca3262282d4,accepted,True,,results/random401_600/accepted/random_577,True
+random401_600,random_578,0adf821a796bd489,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_579,d4e48b3c0bbff41c,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_580,7ea0edaeb5e315ab,rejected,False,pre_significant,,False
+random401_600,random_581,e56a65810b07ece0,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_582,e4210db4962c76f1,rejected,False,pre_significant,,False
+random401_600,random_583,fcd531684fbf923f,rejected,False,nonfinite_gate,,False
+random401_600,random_584,775f3e8698907020,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_585,33b293b759550ff6,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_586,d566c362c7bfd88c,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_587,139d274d2a75d63b,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_588,e65c3a37e7181c7d,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_589,ca52edf824664171,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_590,5d7998e05a5ffa4b,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_591,5b212064813768bc,rejected,False,pre_significant,,False
+random401_600,random_592,e46224014fe0d24f,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_593,fcd0c62ef142b6db,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_594,f6c73aa40200c60a,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_595,e2d7f4b7ee841276,rejected,False,pre_significant,,False
+random401_600,random_596,7b7022560673ea65,rejected,False,pre_significant,,False
+random401_600,random_597,584cbc76690fc598,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_598,3d2a8dd65604ea15,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random401_600,random_599,d198ab8d454009fe,rejected,False,initial_total_decline_not_met,,False
+random401_600,random_600,3b1f8e4a634e3ca6,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_601,aabf36cc8de8e5bd,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_602,d367897cf11965b4,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_603,a680388d59ce68e5,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_604,3b22040f5abe7e67,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_605,4220b4699bfcdaef,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_606,9b1828b67c5871c1,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_607,67f583ae0774ee11,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_608,276c0b029307aa34,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_609,dd05931531eb6093,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_610,9ff105390118f390,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_611,181456c84b907964,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_612,47390229d2ff26ca,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_613,eb0801b40118aa0e,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_614,ea6c66568f8c70c2,accepted,True,,results/random601_800/accepted/random_614,True
+random601_800,random_615,09026e022a59853a,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_616,b7349f6577263315,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_617,a4cf0d8e5be4ee9e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_618,ffb6594627ba8749,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_619,b82ad84a9f0ebd55,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_620,a3c47d39395f5c48,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_621,630385454624ce01,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_622,db1317c21be25835,rejected,False,pre_significant,,False
+random601_800,random_623,bde6a74bcb5b5f21,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_624,bbea283d4b5bea3e,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_625,bbd38c54ea93d1ff,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_626,4330e4bb6a608829,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_627,dd2bbfdf01ad5318,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_628,01828741bca01176,rejected,False,pre_significant,,False
+random601_800,random_629,fe44156317d0e95c,accepted,True,,results/random601_800/accepted/random_629,True
+random601_800,random_630,bd11cceab34d3f7c,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_631,70c75b66e9293439,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_632,51f6e404bb056f11,accepted,True,,results/random601_800/accepted/random_632,True
+random601_800,random_633,96feeacbf2a2f04a,rejected,False,pre_significant,,False
+random601_800,random_634,b948a99a0b0f21c9,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_635,d075b5e6ffa1d3d9,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_636,819423d534065b46,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_637,31fa93cb6c5fb3a7,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_638,48b44b1d0731cb5c,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_639,7c16821ebb7135b5,rejected,False,nonfinite_gate,,False
+random601_800,random_640,453f2da746749915,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_641,9af65911e6254c27,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_642,412d30ac176b5ad2,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_643,6e1aff9b24d53181,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_644,8533ecc2a3c31d58,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_645,4fc53f1bee4237cb,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_646,eff0d256beb03ca7,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_647,633d5f583c1302cf,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_648,835d8e70d06719f9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_649,134845e83cb9a221,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_650,b0b369c5dfa8058c,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_651,42637d2d37edf016,rejected,False,pre_significant,,False
+random601_800,random_652,0dd29d45ec15dd41,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_653,65fae97a3c035d45,rejected,False,pre_significant,,False
+random601_800,random_654,03cbe878195cc50b,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_655,3c24ebb8e6b95b8e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_656,723f4a4301579baa,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_657,73f4f2399971b3a3,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_658,16fd80a8b925b098,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_659,4c53af1121858e1c,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_660,35028795d42dfc59,accepted,True,,results/random601_800/accepted/random_660,True
+random601_800,random_661,8b431111dec18848,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_662,f876531a43bfb6ed,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_663,eed5af4368bfa720,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_664,e77e0c72d06ab481,rejected,False,pre_significant,,False
+random601_800,random_665,11f210b4d4507eef,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_666,51bc9393230f89ae,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_667,7c826cc318eed0a8,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_668,7f6b56c697330aa1,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_669,efcf17b1910fe37e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_670,e09621b7f8662891,rejected,False,pre_significant,,False
+random601_800,random_671,7b845d18b80d4511,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_672,d4b68b13b8d21460,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_673,df0d581ba37ae416,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_674,778a01bc9a8893ff,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_675,3646d2ed443a0344,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_676,c3773fb7700648cb,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_677,b33c64394e491f7b,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_678,e5f9b3f2537d4067,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_679,f69b99d7da2e8b95,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_680,de0d823372c5354a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_681,005915b2abe609d7,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_682,373de6a475d69d7c,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_683,ec030851cfa9901a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_684,4de36054aa47bab1,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_685,f918cb6c9dfa5009,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_686,2bd04b4c4a375845,rejected,False,pre_significant,,False
+random601_800,random_687,49831bd0dce0826e,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_688,ca120c2fbca4587e,accepted,True,,results/random601_800/accepted/random_688,True
+random601_800,random_689,1f6e2ef26c7d7cae,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_690,2e5afdd9b1dfabc4,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_691,6280f4f7a1d3cba0,rejected,False,pre_significant,,False
+random601_800,random_692,864221167e0394eb,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_693,8b5eb3f2755a8685,rejected,False,pre_significant,,False
+random601_800,random_694,3407070bd3218058,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_695,32609fa1fdfa8275,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_696,bf3668f92c981820,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_697,ecfa0a371db2b93a,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_698,1a3f8ddffe203f5e,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_699,9d0dc17e922a9f48,rejected,False,pre_significant,,False
+random601_800,random_700,2390851f9aba9a59,rejected,False,pre_significant,,False
+random601_800,random_701,d23db2626d710200,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_702,50393240b6027d41,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_703,9171c4d37a4fe916,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_704,a177da48099c03a0,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_705,a6f645d490aa0edc,rejected,False,pre_significant,,False
+random601_800,random_706,b0fefeec1f1e9994,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_707,38d99f6678acb358,rejected,False,pre_significant,,False
+random601_800,random_708,17264b5747c650d1,rejected,False,nonfinite_gate,,False
+random601_800,random_709,85ea44033e8e1c74,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_710,267f887f1cde413d,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_711,4d5c9e9924f2d690,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_712,35e738511b49b19b,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_713,7f1b644fc5f7ca43,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_714,5dabfa788ebd0c0c,rejected,False,pre_significant,,False
+random601_800,random_715,bb3cffe8d57491de,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_716,8eb81eea5ecbba2e,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_717,6dc898fc9886bb93,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_718,c8f3df0c30d0229c,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_719,d47d67e42a576436,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_720,aaef82b13525ae46,accepted,True,,results/random601_800/accepted/random_720,True
+random601_800,random_721,2a08065efe96529b,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_722,d8f8904b3d1543db,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_723,44873263e90ffca0,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_724,4d4101bb18d5704b,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_725,a94ec6983bf51f86,rejected,False,pre_significant,,False
+random601_800,random_726,0b8ab8fb1f3ddabb,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_727,00cab47eaa33aa90,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_728,907a275309601636,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_729,d02829417ec40197,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_730,e7f807753c4a72fc,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_731,9e73ed426fc24dd8,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_732,4e723f04755c4dcd,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_733,3854d7fc890158fa,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_734,48aed4b0318009ae,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_735,f0cfbacce1c5e886,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_736,10889e888ecbce25,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_737,866c0381d169cb0d,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_738,cafb0c3c9c9e543f,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_739,c5ce09289fa0f10b,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_740,d59fc029b8355e4b,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_741,f30d20662000cd05,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_742,f4852b02473cbe2a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_743,569bb00ea76c85a3,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_744,82bab4c398ad91e0,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_745,353f9651cfa88b52,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_746,6b2eed554a1548eb,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_747,b71cc2da51f2084e,rejected,False,pre_significant,,False
+random601_800,random_748,803958ef73943d44,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_749,507d560525e7678b,rejected,False,pre_significant,,False
+random601_800,random_750,5b5274ac64fb97a0,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_751,a74fccc0c19631bd,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_752,6f575f5fe6a2a51a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_753,15c06554d15ad730,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_754,55e721f6f85c0cf6,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_755,5cc40fc4dd4ab7ed,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_756,a1b4d17ac2099c5e,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_757,40702593790abdd3,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_758,6f6ede528c09d9a2,rejected,False,pre_significant,,False
+random601_800,random_759,a6576da5ceb2db25,rejected,False,nonfinite_gate,,False
+random601_800,random_760,7b8bf3a08af05d20,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_761,f17ae671a9682d54,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_762,be74131cf78d485a,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_763,ed8d1646d1134440,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_764,5584db88549a05a1,rejected,False,pre_significant,,False
+random601_800,random_765,5ead2e51a5471f11,accepted,True,,results/random601_800/accepted/random_765,True
+random601_800,random_766,16aaf47416c751d9,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_767,29bf96c0f158299d,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_768,6ff8643d35639c2a,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_769,7b1e5c0f9c31446e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_770,4cbf34cce3ecbef1,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_771,4f45d186e6d43257,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_772,3bdfde808995e5d6,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_773,4bbe31abbbc5b814,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_774,d49b21ef43a64ab6,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_775,39db0573584b5047,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_776,502c6a8f92268ef6,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_777,41792dfd938ea5ce,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_778,7b0f44dca00c4cf7,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_779,fe8ede410692bf0b,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_780,2522c09bd00c70b5,rejected,False,pre_significant,,False
+random601_800,random_781,7fe3f09dff830e8e,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_782,1678dd04453c2217,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_783,4356b426aff7f70e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_784,66369a81c3a533eb,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_785,d790045500727677,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_786,001b1eedf90ad00d,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_787,396b242a7b5823aa,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_788,ee9f77b5d799c1a2,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_789,41aba9d501b4a10b,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_790,35c84b6063d14f3e,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_791,a18d60930b6492ca,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_792,c6035699aff25584,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_793,949ca0e449eaf4d9,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_794,4675896a5b0b7b57,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_795,81ee31a154b0c187,failed,False,Each industry stratum must contain >=2 industries; change dummy rules,,False
+random601_800,random_796,77370bbe3210d68f,accepted,True,,results/random601_800/accepted/random_796,True
+random601_800,random_797,c4eb05e57ba4e2cd,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_798,b998191916862327,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_799,d4d02eccaa7dd952,rejected,False,initial_total_decline_not_met,,False
+random601_800,random_800,6d911c04440f0911,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_801,ebd8a2771ee66b14,rejected,False,pre_significant,,False
+adaptive200,local_802,270570adb61388b7,accepted,True,,results/adaptive200/accepted/local_802,True
+adaptive200,local_803,f71acca10d4878de,accepted,True,,results/adaptive200/accepted/local_803,True
+adaptive200,local_804,eb0b5005131b73d0,accepted,True,,results/adaptive200/accepted/local_804,True
+adaptive200,local_805,d33375bbae3f969a,accepted,True,,results/adaptive200/accepted/local_805,True
+adaptive200,local_806,3103837b8e7f204c,accepted,True,,results/adaptive200/accepted/local_806,True
+adaptive200,local_807,3846d5f44b9622b8,accepted,True,,results/adaptive200/accepted/local_807,True
+adaptive200,local_808,0bffa9a97244b05f,rejected,False,pre_significant,,False
+adaptive200,local_809,e70474ad7cdbfb74,accepted,True,,results/adaptive200/accepted/local_809,True
+adaptive200,local_810,1e86a986c1d6d198,accepted,True,,results/adaptive200/accepted/local_810,True
+adaptive200,local_811,25ca1ca383340589,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_812,d7fdc0c4af90ca74,accepted,True,,results/adaptive200/accepted/local_812,True
+adaptive200,local_813,c3a9eaf23c3589a4,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_814,7ebaf9399f549264,accepted,True,,results/adaptive200/accepted/local_814,True
+adaptive200,local_815,4b43b738eeefe243,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_816,3a466b8bec543852,accepted,True,,results/adaptive200/accepted/local_816,True
+adaptive200,local_817,e4b9c2044e7077cb,accepted,True,,results/adaptive200/accepted/local_817,True
+adaptive200,local_818,7e4a0fe590371e0f,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_819,0cb214d5914494b6,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_820,8dbe4d373ca568ca,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_821,2aacba077ed73568,accepted,True,,results/adaptive200/accepted/local_821,True
+adaptive200,local_822,2954820361f95dae,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_823,fe2b2b39bbed8866,accepted,True,,results/adaptive200/accepted/local_823,True
+adaptive200,local_824,de886d05ad580f22,accepted,True,,results/adaptive200/accepted/local_824,True
+adaptive200,local_825,5bbf3920ba1dc740,accepted,True,,results/adaptive200/accepted/local_825,True
+adaptive200,local_826,94c8e50f2bf017fb,accepted,True,,results/adaptive200/accepted/local_826,True
+adaptive200,local_827,ea37145bb3738c54,accepted,True,,results/adaptive200/accepted/local_827,True
+adaptive200,local_828,661ef8dd615eb408,accepted,True,,results/adaptive200/accepted/local_828,True
+adaptive200,local_829,c7e342e3ca36a066,accepted,True,,results/adaptive200/accepted/local_829,True
+adaptive200,local_830,642af29ae119f0aa,accepted,True,,results/adaptive200/accepted/local_830,True
+adaptive200,local_831,d0e2fa59a27dbac8,rejected,False,pre_significant,,False
+adaptive200,local_832,22f6dcba1e23fc15,accepted,True,,results/adaptive200/accepted/local_832,True
+adaptive200,local_833,cc477773b00662da,accepted,True,,results/adaptive200/accepted/local_833,True
+adaptive200,local_834,a8e3706a71dc9b75,accepted,True,,results/adaptive200/accepted/local_834,True
+adaptive200,local_835,16e0c316cdc11d80,accepted,True,,results/adaptive200/accepted/local_835,True
+adaptive200,local_836,e832412c6b5b9559,accepted,True,,results/adaptive200/accepted/local_836,True
+adaptive200,local_837,350cc7f8f8b80ed0,accepted,True,,results/adaptive200/accepted/local_837,True
+adaptive200,local_838,5120e887ba549423,accepted,True,,results/adaptive200/accepted/local_838,True
+adaptive200,local_839,beee3970ce798e82,accepted,True,,results/adaptive200/accepted/local_839,True
+adaptive200,local_840,274cc03fe4475f62,accepted,True,,results/adaptive200/accepted/local_840,True
+adaptive200,local_841,81e005f6593c28d4,rejected,False,pre_significant,,False
+adaptive200,local_842,43a533500e37c7f3,accepted,True,,results/adaptive200/accepted/local_842,True
+adaptive200,local_843,ae8c88090576e3d2,accepted,True,,results/adaptive200/accepted/local_843,True
+adaptive200,local_844,b8fc814c52641daa,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_845,5589749e67738fb8,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_846,8cfd7e82bb15f456,accepted,True,,results/adaptive200/accepted/local_846,True
+adaptive200,local_847,d63179efec1bb26e,accepted,True,,results/adaptive200/accepted/local_847,True
+adaptive200,local_848,8c2efbf23ca978b9,accepted,True,,results/adaptive200/accepted/local_848,True
+adaptive200,local_849,6e8186c863ab52d1,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_850,1d989ec714dd90b4,accepted,True,,results/adaptive200/accepted/local_850,True
+adaptive200,local_851,cf3b7fa739175789,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_852,f865839e3e84f572,accepted,True,,results/adaptive200/accepted/local_852,True
+adaptive200,local_853,56f4c4387ce291f3,accepted,True,,results/adaptive200/accepted/local_853,True
+adaptive200,local_854,243fb8aa6d6d2d84,accepted,True,,results/adaptive200/accepted/local_854,True
+adaptive200,local_855,d64454ce87a6438c,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_856,2709359a3bcae5b7,rejected,False,pre_significant,,False
+adaptive200,local_857,2ec0da8f24d5816c,accepted,True,,results/adaptive200/accepted/local_857,True
+adaptive200,local_858,224ab49cd03c4109,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_859,c287f18ba26b8fc6,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_860,fe6e401dd26a7713,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_861,2de2a2397c6697d6,rejected,False,pre_significant,,False
+adaptive200,local_862,6740100a2024e9dc,accepted,True,,results/adaptive200/accepted/local_862,True
+adaptive200,local_863,f60570ed9ddf40aa,accepted,True,,results/adaptive200/accepted/local_863,True
+adaptive200,local_864,f7ce4e90d5378941,accepted,True,,results/adaptive200/accepted/local_864,True
+adaptive200,local_865,4c8d5a8d4e37dfa7,accepted,True,,results/adaptive200/accepted/local_865,True
+adaptive200,local_866,891c4e18fcb2a105,accepted,True,,results/adaptive200/accepted/local_866,True
+adaptive200,local_867,10970c6f22f856d1,accepted,True,,results/adaptive200/accepted/local_867,True
+adaptive200,local_868,4995790c09903ae2,accepted,True,,results/adaptive200/accepted/local_868,True
+adaptive200,local_869,a86f693f2410898a,accepted,True,,results/adaptive200/accepted/local_869,True
+adaptive200,local_870,3601b08c4b8ee505,accepted,True,,results/adaptive200/accepted/local_870,True
+adaptive200,local_871,9309076ab372248c,rejected,False,pre_significant,,False
+adaptive200,local_872,8e99a6b6c5896986,accepted,True,,results/adaptive200/accepted/local_872,True
+adaptive200,local_873,7a8a4eeedb0220be,accepted,True,,results/adaptive200/accepted/local_873,True
+adaptive200,local_874,18345e3b676de907,accepted,True,,results/adaptive200/accepted/local_874,True
+adaptive200,local_875,7bb2bfc92f537837,accepted,True,,results/adaptive200/accepted/local_875,True
+adaptive200,local_876,c7b7dccc4b98690c,accepted,True,,results/adaptive200/accepted/local_876,True
+adaptive200,local_877,6d9bda8b59fe9222,rejected,False,pre_significant,,False
+adaptive200,local_878,c31e90a1abef26de,accepted,True,,results/adaptive200/accepted/local_878,True
+adaptive200,local_879,1497f179df000bdf,rejected,False,pre_significant,,False
+adaptive200,local_880,b0b187f2a3e833a7,rejected,False,pre_significant,,False
+adaptive200,local_881,fd80bc8e210cca10,accepted,True,,results/adaptive200/accepted/local_881,True
+adaptive200,local_882,80a2f0a4469423ae,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_883,da227b972d67372a,accepted,True,,results/adaptive200/accepted/local_883,True
+adaptive200,local_884,12cbf517080f3704,accepted,True,,results/adaptive200/accepted/local_884,True
+adaptive200,local_885,f342934519589e92,accepted,True,,results/adaptive200/accepted/local_885,True
+adaptive200,local_886,b7b0181ef26908a0,accepted,True,,results/adaptive200/accepted/local_886,True
+adaptive200,local_887,c21b555b5904ea6f,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_888,90b71d274e96ac48,rejected,False,pre_significant,,False
+adaptive200,local_889,1ad41d8f706ecaec,accepted,True,,results/adaptive200/accepted/local_889,True
+adaptive200,local_890,8072f3d36ea4c95b,accepted,True,,results/adaptive200/accepted/local_890,True
+adaptive200,local_891,7b1da8ec859cbfa3,accepted,True,,results/adaptive200/accepted/local_891,True
+adaptive200,local_892,36f0417fa7da3eb5,rejected,False,pre_significant,,False
+adaptive200,local_893,e1f02cdb045b3925,accepted,True,,results/adaptive200/accepted/local_893,True
+adaptive200,local_894,bd4879ebe26f0fde,accepted,True,,results/adaptive200/accepted/local_894,True
+adaptive200,local_895,858f097022fd4ff5,accepted,True,,results/adaptive200/accepted/local_895,True
+adaptive200,local_896,fe000c41507c84d2,accepted,True,,results/adaptive200/accepted/local_896,True
+adaptive200,local_897,852a2760e0e634f9,accepted,True,,results/adaptive200/accepted/local_897,True
+adaptive200,local_898,4afd9625451f32ad,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_899,64c0141b565b0fe3,accepted,True,,results/adaptive200/accepted/local_899,True
+adaptive200,local_900,06d63abea7cd2af9,accepted,True,,results/adaptive200/accepted/local_900,True
+adaptive200,local_901,9c17f27572544866,rejected,False,pre_significant,,False
+adaptive200,local_902,86acc9f373de0c15,rejected,False,pre_significant,,False
+adaptive200,local_903,270c5645daa257e0,accepted,True,,results/adaptive200/accepted/local_903,True
+adaptive200,local_904,104a023f23a1d81c,accepted,True,,results/adaptive200/accepted/local_904,True
+adaptive200,local_905,ae0e3502e3aa5a09,accepted,True,,results/adaptive200/accepted/local_905,True
+adaptive200,local_906,345920c033887bd1,accepted,True,,results/adaptive200/accepted/local_906,True
+adaptive200,local_907,3bf888fecdcdda60,accepted,True,,results/adaptive200/accepted/local_907,True
+adaptive200,local_908,f04500f63cedfdbd,rejected,False,pre_significant,,False
+adaptive200,local_909,04fcd62007a7196e,accepted,True,,results/adaptive200/accepted/local_909,True
+adaptive200,local_910,ad6519e48a201603,accepted,True,,results/adaptive200/accepted/local_910,True
+adaptive200,local_911,c421a9bbbf7af847,rejected,False,pre_significant,,False
+adaptive200,local_912,adffaff85779d2fc,rejected,False,pre_significant,,False
+adaptive200,local_913,e3b97ea57ac40d65,accepted,True,,results/adaptive200/accepted/local_913,True
+adaptive200,local_914,29fffadca3130a4f,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_915,c4c2fd6a0643e3a5,rejected,False,pre_significant,,False
+adaptive200,local_916,6ba28835285a2d40,accepted,True,,results/adaptive200/accepted/local_916,True
+adaptive200,local_917,bbe68e9f4abb9974,accepted,True,,results/adaptive200/accepted/local_917,True
+adaptive200,local_918,f9faddfdb4ce0a99,rejected,False,pre_significant,,False
+adaptive200,local_919,d95e5512494818be,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_920,3aff8d1c7bfd0386,accepted,True,,results/adaptive200/accepted/local_920,True
+adaptive200,local_921,f07a885080c7a131,rejected,False,pre_significant,,False
+adaptive200,local_922,b9badfdb2075ee99,accepted,True,,results/adaptive200/accepted/local_922,True
+adaptive200,local_923,61e1708fe945f5ac,accepted,True,,results/adaptive200/accepted/local_923,True
+adaptive200,local_924,1624c9d57ef991f7,accepted,True,,results/adaptive200/accepted/local_924,True
+adaptive200,local_925,d3282ba912f94916,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_926,00fd7389d2d14ee4,accepted,True,,results/adaptive200/accepted/local_926,True
+adaptive200,local_927,bfcdce1ab8f91a67,accepted,True,,results/adaptive200/accepted/local_927,True
+adaptive200,local_928,450be2384fef06c0,rejected,False,pre_significant,,False
+adaptive200,local_929,c6cf4417227f1a19,accepted,True,,results/adaptive200/accepted/local_929,True
+adaptive200,local_930,574778d59252268d,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_931,8e25bc482dd1430a,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_932,73628321dba4c8ab,accepted,True,,results/adaptive200/accepted/local_932,True
+adaptive200,local_933,1549f186268dc558,accepted,True,,results/adaptive200/accepted/local_933,True
+adaptive200,local_934,a9e364910f873ec5,accepted,True,,results/adaptive200/accepted/local_934,True
+adaptive200,local_935,fa691ab1c5315d78,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_936,f25e0d744c948ca2,accepted,True,,results/adaptive200/accepted/local_936,True
+adaptive200,local_937,1783af466eb5b855,rejected,False,pre_significant,,False
+adaptive200,local_938,45b348302c20b3f1,rejected,False,pre_significant,,False
+adaptive200,local_939,cf097ac265f78118,accepted,True,,results/adaptive200/accepted/local_939,True
+adaptive200,local_940,837100f6a6cd9113,rejected,False,pre_significant,,False
+adaptive200,local_941,5a992079b75d7cfe,accepted,True,,results/adaptive200/accepted/local_941,True
+adaptive200,local_942,9e914aa7b51ace45,accepted,True,,results/adaptive200/accepted/local_942,True
+adaptive200,local_943,de7b4f47aef01d30,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_944,e259f4b17234e62d,accepted,True,,results/adaptive200/accepted/local_944,True
+adaptive200,local_945,e0a8db6269fac6ab,accepted,True,,results/adaptive200/accepted/local_945,True
+adaptive200,local_946,dd5782bc781a6155,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_947,1c93c7fc55ee1e67,accepted,True,,results/adaptive200/accepted/local_947,True
+adaptive200,local_948,0624ca94fc9d8435,accepted,True,,results/adaptive200/accepted/local_948,True
+adaptive200,local_949,9a2964465663ec6d,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_950,95b120dab6a52b89,rejected,False,pre_significant,,False
+adaptive200,local_951,72b0f320ecb2e4af,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_952,b6a11d3a1158862e,rejected,False,pre_significant,,False
+adaptive200,local_953,b7951a511f5b6997,accepted,True,,results/adaptive200/accepted/local_953,True
+adaptive200,local_954,ab9090825d763188,accepted,True,,results/adaptive200/accepted/local_954,True
+adaptive200,local_955,457a5ed604f6f071,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_956,78e228df426b9c4e,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_957,d00f41ab230294b8,accepted,True,,results/adaptive200/accepted/local_957,True
+adaptive200,local_958,2ca9178d47193cb0,accepted,True,,results/adaptive200/accepted/local_958,True
+adaptive200,local_959,2c70f092b94882ca,accepted,True,,results/adaptive200/accepted/local_959,True
+adaptive200,local_960,1b72da5195c88ca7,rejected,False,pre_significant,,False
+adaptive200,local_961,2704098c7bb53809,rejected,False,pre_significant,,False
+adaptive200,local_962,787be2cf53d8e9a9,accepted,True,,results/adaptive200/accepted/local_962,True
+adaptive200,local_963,e96a328bcef60849,accepted,True,,results/adaptive200/accepted/local_963,True
+adaptive200,local_964,cb883c93a246ef4c,accepted,True,,results/adaptive200/accepted/local_964,True
+adaptive200,local_965,256b7109740d243c,accepted,True,,results/adaptive200/accepted/local_965,True
+adaptive200,local_966,566b2fa6cc25d9a1,accepted,True,,results/adaptive200/accepted/local_966,True
+adaptive200,local_967,323a19de7a042540,accepted,True,,results/adaptive200/accepted/local_967,True
+adaptive200,local_968,863d0b7f2d9c0220,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_969,d4242b9ccafa7dd2,accepted,True,,results/adaptive200/accepted/local_969,True
+adaptive200,local_970,4217fbfb328e0f40,accepted,True,,results/adaptive200/accepted/local_970,True
+adaptive200,local_971,8f435e94cf41b249,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_972,d30f10e0a223082c,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_973,e0a35b31e0e7e8b7,accepted,True,,results/adaptive200/accepted/local_973,True
+adaptive200,local_974,1f4e90ee6ee925cc,accepted,True,,results/adaptive200/accepted/local_974,True
+adaptive200,local_975,8ff1095b7f921715,accepted,True,,results/adaptive200/accepted/local_975,True
+adaptive200,local_976,320772a280d186d3,rejected,False,pre_significant,,False
+adaptive200,local_977,10d29b2751639c3e,rejected,False,pre_significant,,False
+adaptive200,local_978,d00eb599124151bf,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_979,c1a4699749b402d2,accepted,True,,results/adaptive200/accepted/local_979,True
+adaptive200,local_980,a460c855e8ad3859,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_981,d315982acd37ad69,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_982,31909ad4e25451b0,accepted,True,,results/adaptive200/accepted/local_982,True
+adaptive200,local_983,bee1c0ff50920bfb,accepted,True,,results/adaptive200/accepted/local_983,True
+adaptive200,local_984,ddb16bffa77b11c4,accepted,True,,results/adaptive200/accepted/local_984,True
+adaptive200,local_985,7fe2aad38b01bf35,accepted,True,,results/adaptive200/accepted/local_985,True
+adaptive200,local_986,59a3f887adc4e2f7,accepted,True,,results/adaptive200/accepted/local_986,True
+adaptive200,local_987,0aff8450223aac5a,accepted,True,,results/adaptive200/accepted/local_987,True
+adaptive200,local_988,4e816e0aa3744260,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_989,8c72da355d592cbd,accepted,True,,results/adaptive200/accepted/local_989,True
+adaptive200,local_990,a770da3962636761,accepted,True,,results/adaptive200/accepted/local_990,True
+adaptive200,local_991,8c5b833d6e88aca6,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_992,3912328805a3ef74,rejected,False,pre_significant,,False
+adaptive200,local_993,c9b31a8c195ad1c3,rejected,False,pre_significant,,False
+adaptive200,local_994,1fcd20aec56a081e,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_995,c877f22ad3876c8d,accepted,True,,results/adaptive200/accepted/local_995,True
+adaptive200,local_996,3df386e25f5fcc4e,accepted,True,,results/adaptive200/accepted/local_996,True
+adaptive200,local_997,6d8ab865b82af01e,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_998,1cafa12f9dfdec4f,rejected,False,initial_total_decline_not_met,,False
+adaptive200,local_999,0b8395707033428d,accepted,True,,results/adaptive200/accepted/local_999,True
+adaptive200,local_1000,008bf1afaff6e8f4,rejected,False,pre_significant,,False

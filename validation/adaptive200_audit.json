@@ -1,0 +1,773 @@
+{
+  "passed": true,
+  "attempted": 200,
+  "statuses": {
+    "accepted": 126,
+    "rejected": 74,
+    "failed": 0
+  },
+  "stop_reason": "budget_exhausted",
+  "accepted_checks": [
+    {
+      "run_id": "local_802",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_803",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_804",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_805",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_806",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_807",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_809",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_810",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_812",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_814",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_816",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_817",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_821",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_823",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_824",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_825",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_826",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_827",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_828",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_829",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_830",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_832",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_833",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_834",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_835",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_836",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_837",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_838",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_839",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_840",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_842",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_843",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_846",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_847",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_848",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_850",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_852",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_853",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_854",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_857",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_862",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_863",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_864",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_865",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_866",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_867",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_868",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_869",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_870",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_872",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_873",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_874",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_875",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_876",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_878",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_881",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_883",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_884",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_885",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_886",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_889",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_890",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_891",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_893",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_894",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_895",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_896",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_897",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_899",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_900",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_903",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_904",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_905",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_906",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_907",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_909",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_910",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_913",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_916",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_917",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_920",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_922",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_923",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_924",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_926",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_927",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_929",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_932",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_933",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_934",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_936",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_939",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_941",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_942",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_944",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_945",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_947",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_948",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_953",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_954",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_957",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_958",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_959",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_962",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_963",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_964",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_965",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_966",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_967",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_969",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_970",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_973",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_974",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_975",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_979",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_982",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_983",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_984",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_985",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_986",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_987",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_989",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_990",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_995",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_996",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    },
+    {
+      "run_id": "local_999",
+      "gate_verified": true,
+      "primary_rows": 20,
+      "pattern_match": false
+    }
+  ],
+  "rejected_detailed_cases_retained": 0,
+  "data_sha256_verified": true,
+  "numerical_source_hashes_verified": true,
+  "verified_primary_rows": 2520,
+  "inference_and_multiplicity_checked": true
+}

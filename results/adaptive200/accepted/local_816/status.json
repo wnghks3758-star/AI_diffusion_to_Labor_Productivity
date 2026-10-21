@@ -1,0 +1,34 @@
+{
+  "status": "completed",
+  "label": "local_816",
+  "config_id": "3a466b8bec543852",
+  "data_sha256": "4b3ed1ab28851b2ed497ff538b2c8cdd8b5c0891b7ab7daa129452a0dff9d52d",
+  "elapsed_seconds": 8.711099477997777,
+  "peak_rss_mib": 240.66796875,
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "xgboost-cpu": "3.1.3",
+    "joblib": "1.5.3"
+  },
+  "completed_at_utc": "2026-10-21T13:24:36.294498+00:00",
+  "inference_note": "Exploratory specification search; conditional on fitted nuisances, selected support and averaging weights.",
+  "pattern": {
+    "complete": true,
+    "inference_column": "p_value",
+    "pre_all_nonsignificant": true,
+    "initial_significant_decline": true,
+    "recovery": true,
+    "sme_first_positive_year": null,
+    "large_first_positive_year": null,
+    "sme_crosses_positive_earlier": false,
+    "sme_2025_significantly_positive": false,
+    "moderation_negative_significant": false,
+    "pattern_match": false,
+    "preferred_match": false,
+    "criteria_passed": 3
+  }
+}

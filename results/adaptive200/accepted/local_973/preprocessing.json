@@ -1,0 +1,33 @@
+{
+  "input_rows": 13336,
+  "balanced_firms_before_missing": 2028,
+  "firms_dropped_for_missing": 3,
+  "analysis_firms": 2014,
+  "analysis_industries": 148,
+  "unclassified_firms": 27,
+  "common_lower_dose": 1.118780772013417,
+  "covariate_time": "current",
+  "sample_reference_features": [
+    "ln_ind_avg_pay",
+    "ln_ind_ast",
+    "ind_rnd_ratio",
+    "ln_cum_patent",
+    "ind_college_share_pre",
+    "ind_large_est_share_pre",
+    "ind_avg_age_pre",
+    "ind_age50_share_pre",
+    "ind_female_share_pre",
+    "ind_permanent_share_pre",
+    "ind_avg_tenure_pre",
+    "ind_avg_hours_pre",
+    "ind_ln_avg_pay_pre",
+    "firm_rnd_ratio",
+    "ln_firm_avg_pay",
+    "ln_firm_ast"
+  ],
+  "sample_firm_sha256": "25ad326975e2b1734049df4a832f1197229d34c5904d6164bd1de5ab3d06f31f",
+  "industry_categories": [
+    "All"
+  ],
+  "dummy_columns": []
+}

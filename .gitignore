@@ -6,3 +6,5 @@ validation/environment_check.executed.ipynb
 results/**/checkpoints/
 results/**/worker.log
 results/**/progress.jsonl
+# Recreated from the immutable original case folders by integrated_results.
+results/integrated/accepted/
