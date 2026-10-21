@@ -1,0 +1,61 @@
+{
+  "drive_folder": {
+    "id": "14iEdHHlM6I4dTCsRS3LEyAsyI7sFrQvD",
+    "url": "https://drive.google.com/drive/folders/14iEdHHlM6I4dTCsRS3LEyAsyI7sFrQvD"
+  },
+  "uploads": {
+    "results": {
+      "id": "15XmW-M5MbvhgXoRhrGUC__jC7ufJSMzL",
+      "url": "https://drive.google.com/file/d/15XmW-M5MbvhgXoRhrGUC__jC7ufJSMzL/view?usp=drivesdk",
+      "name": "02_final_results_401_600.zip"
+    },
+    "pdf": {
+      "id": "1i2aE99gTARM6huu2xSb6Jze7Vg-n6bIH",
+      "url": "https://drive.google.com/file/d/1i2aE99gTARM6huu2xSb6Jze7Vg-n6bIH/view?usp=drivesdk",
+      "name": "03_Report_401_600_KO.pdf"
+    },
+    "word": {
+      "id": "16kccp4vpUu9eW4zLGXuOrrv2qxHxoNog",
+      "url": "https://docs.google.com/document/d/16kccp4vpUu9eW4zLGXuOrrv2qxHxoNog/edit?usp=drivesdk&ouid=115897385456972979350&rtpof=true&sd=true",
+      "name": "04_Report_401_600_KO.docx"
+    },
+    "cumulative": {
+      "id": "1mHrYFOw4lJvCNflNFRiv1IKWiNLYBSoJ",
+      "url": "https://drive.google.com/file/d/1mHrYFOw4lJvCNflNFRiv1IKWiNLYBSoJ/view?usp=drivesdk",
+      "name": "05_cumulative_600_retained_estimates.csv"
+    },
+    "source": {
+      "id": "117vaurRWQ-rDIdOwYW5DHeSf-o_gZfoO",
+      "url": "https://drive.google.com/file/d/117vaurRWQ-rDIdOwYW5DHeSf-o_gZfoO/view?usp=drivesdk",
+      "name": "06_updated_python_source.zip"
+    },
+    "summary": {
+      "id": "1EHVqHOBrkpvDh2Uo21O2xUDOieTwsaXU",
+      "url": "https://drive.google.com/file/d/1EHVqHOBrkpvDh2Uo21O2xUDOieTwsaXU/view?usp=drivesdk",
+      "name": "07_RESULTS_401_600_KO.md"
+    }
+  },
+  "batch": {
+    "attempted": 200,
+    "accepted": 7,
+    "rejected": 131,
+    "failed": 62,
+    "pattern_matches": 0
+  },
+  "cumulative": {
+    "attempted": 600,
+    "accepted": 25,
+    "rejected": 380,
+    "failed": 195,
+    "pattern_matches": 0
+  },
+  "report": {
+    "pages": 18,
+    "verified_primary_rows": 140
+  },
+  "families": {
+    "batch": 4000,
+    "all_random": 12000,
+    "all_exploration": 13280
+  }
+}

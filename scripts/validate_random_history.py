@@ -19,6 +19,11 @@ def validate_history(root):
     records=[];entries=[];tables=[];planned=0
     for folder in roots:
         frozen=json.loads((folder/'plan.json').read_text());planned+=frozen['max_attempts']
+        # Check every link in the history, including batches earlier than the last.
+        if 'previous_plan' in frozen:
+            prior=frozen['previous_plan'];prior_path=Path(prior['path'])
+            assert file_hash(prior_path)==prior['sha256']
+            assert file_hash(prior_path.parent/'all_attempts.jsonl')==prior['ledger_sha256']
         entries.extend(frozen['entries'])
         assert frozen['numerical_source_hashes']==plan['numerical_source_hashes']
         assert frozen['data_sha256']==plan['data_sha256']

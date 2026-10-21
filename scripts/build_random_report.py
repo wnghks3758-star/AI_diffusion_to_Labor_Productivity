@@ -54,7 +54,7 @@ def build(root,output):
         p(f"통과 사례의 주요 p값에는 이번 계획 {summary['random_budget_family_tests']:,}개 검정 및 이전 {prior}개 설정을 포함한 {summary['cumulative_budget_family_tests']:,}개 검정의 Bonferroni 보정을 함께 제공한다.")
     ]]
     if history:
-        pages[0].insert(3,p(f"두 배치 누적: {history['random_attempted']}개 시도, 상세 보관 {history['retained']}개, 전체 목표 충족 {len(history['nominal_pattern_matches'])}개. 무작위 계획 {history['random_planned']}개 전체가 중복 없이 생성됐다."))
+        pages[0].insert(3,p(f"전체 배치 누적: {history['random_attempted']}개 시도, 상세 보관 {history['retained']}개, 전체 목표 충족 {len(history['nominal_pattern_matches'])}개. 무작위 계획 {history['random_planned']}개 전체가 중복 없이 생성됐다."))
     pages.append([
         h('1. 후보 생성과 고정 범위'),
         p(f"새 결과 계산 전 후보 {plan['max_attempts']}개와 기준을 고정했다. 생성기 seed={plan['generator_seed']}; 모형 seed=42. 새 결과를 보고 후보를 교체하지 않았다. 실행 오류도 시도 수에 포함한다."),

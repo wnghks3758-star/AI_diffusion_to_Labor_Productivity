@@ -22,9 +22,9 @@ def summarize(root,output,drive_url=None):
     cumulative_path=root/'cumulative/cumulative_summary.json'
     if cumulative_path.exists():
         c=json.loads(cumulative_path.read_text())
-        text += ['## 두 배치 누적','',
+        text += ['## 전체 배치 누적','',
             f"누적 무작위 시도 {c['random_attempted']}개, 상세 보관 {c['retained']}개, 조건 탈락 {c['rejected']}개, 실행 오류 {c['failed']}개입니다. 누적 전체 목표 충족 {len(c['nominal_pattern_matches'])}개입니다.",
-            f"두 배치 계획 후보 {c['unique_configuration_count']}개의 설정 식별자가 모두 다릅니다. 원래 난수 흐름을 이어갔으며 첫 배치의 설정·결과를 보존했습니다.",'']
+            f"계획 후보 {c['unique_configuration_count']}개의 설정 식별자가 모두 다릅니다. 원래 난수 흐름을 이어갔으며 이전 배치의 설정·결과를 보존했습니다.",'']
     text += ['## 이번 배치의 상세 보관 사례','',
         '| 후보 | 2023 전체 추정치 (p) | 2025 SME 추정치 (p) | 2025 조절효과 추정치 (p) | 전체 목표 |',
         '|---|---:|---:|---:|---|']
