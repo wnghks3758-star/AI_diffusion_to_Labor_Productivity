@@ -30,14 +30,17 @@ def build(root,output):
         directory=work/name;directory.mkdir(exist_ok=True);os.environ[var]=str(directory)
     renderers.WORK=work;renderers.OUT=output
     plan=json.loads((root/'plan.json').read_text());summary=json.loads((root/'summary.json').read_text())
+    prior=plan['prior_specifications'];offset=plan.get('generator_offset',0)
     ledger=[json.loads(line) for line in (root/'all_attempts.jsonl').read_text().splitlines() if line]
     accepted=[r for r in ledger if r['status']=='accepted']
     data=pd.read_csv(root/'accepted_estimates.csv') if accepted else pd.DataFrame()
     # User-facing prose is Korean; status codes are reproduced literally for audit.
     end_ko={'target_found':'전체 목표 충족 사례를 찾아 자동 종료','budget_exhausted':'최대 시도 수에 도달해 종료','running':'중간 실행 상태'}
+    cumulative_path=root/'cumulative/cumulative_summary.json'
+    history=json.loads(cumulative_path.read_text()) if cumulative_path.exists() else None
     pages=[[
         {'kind':'title','text':'노동생산성 연속 DiD\n무작위 변수·설정 탐색 보고서'},
-        p('2026년 10월 21일 · 탐색 결과 · 조건 통과 사례만 상세 보관'),
+        p(f"2026년 10월 21일 · 후보 {offset+1}~{offset+plan['max_attempts']} · 조건 통과 사례만 상세 보관"),
         t(['최대 / 실제 시도','상세 보관','탈락 / 실행 오류'],[[f"{plan['max_attempts']} / {summary['attempted']}",
             str(summary['accepted_detailed_cases']),f"{summary['rejected']} / {summary['failed']}" ]],size=10),
         h('실제 종료 결과'),p(end_ko[summary['stop_reason']]+f" ({summary['stop_reason']})."),
@@ -47,9 +50,11 @@ def build(root,output):
         p('2020·2021년의 전체·SME·Large·조절효과 8개가 모두 명목 p≥.05이고, 2023년 전체 효과가 음수이며 p<.05일 때만 상세 결과를 남겼다. 초기 SME와 Large의 하락은 요구하지 않았다.'),
         p('사전 연도에서 탈락하면 후속 연도 학습을 생략했다. 탈락한 추정치·그림은 임시 폴더에서 삭제했다. 설정·시도 번호·탈락 사유는 선택 과정을 확인할 수 있도록 장부에 남겼다.'),
         h('탐색이라는 해석 범위'),
-        p('요구한 유의성 패턴을 찾은 경우에도 확인적 증거로 부르지 않는다. 기존 64개 설정을 본 뒤 추가로 실시한 탐색이며, 비유의한 사전 효과는 평행추세의 입증이 아니다.'),
-        p(f"통과 사례의 주요 p값에는 전체 계획 {summary['random_budget_family_tests']:,}개 검정 및 이전 64개 설정을 포함한 {summary['cumulative_budget_family_tests']:,}개 검정의 Bonferroni 보정을 함께 제공한다.")
+        p(f'요구한 유의성 패턴을 찾은 경우에도 확인적 증거로 부르지 않는다. 기존 {prior}개 설정을 본 뒤 추가로 실시한 탐색이며, 비유의한 사전 효과는 평행추세의 입증이 아니다.'),
+        p(f"통과 사례의 주요 p값에는 이번 계획 {summary['random_budget_family_tests']:,}개 검정 및 이전 {prior}개 설정을 포함한 {summary['cumulative_budget_family_tests']:,}개 검정의 Bonferroni 보정을 함께 제공한다.")
     ]]
+    if history:
+        pages[0].insert(3,p(f"두 배치 누적: {history['random_attempted']}개 시도, 상세 보관 {history['retained']}개, 전체 목표 충족 {len(history['nominal_pattern_matches'])}개. 무작위 계획 {history['random_planned']}개 전체가 중복 없이 생성됐다."))
     pages.append([
         h('1. 후보 생성과 고정 범위'),
         p(f"새 결과 계산 전 후보 {plan['max_attempts']}개와 기준을 고정했다. 생성기 seed={plan['generator_seed']}; 모형 seed=42. 새 결과를 보고 후보를 교체하지 않았다. 실행 오류도 시도 수에 포함한다."),
@@ -90,7 +95,7 @@ def build(root,output):
     ])
     pages.append([
         h('3. 검증·재현·한계'),
-        p('검증: 사전 p값 임계치 및 비유한 값 처리, 2023년 전체만 하락하는 저장 조건, 탈락 후 후속 연도 학습 생략, 탈락 파일 제거, 첫 전체 통과에서 정지, 재시작 시 재계산 방지를 테스트했다. 기존 계산 검증과 함께 16개 테스트를 통과했다.'),
+        p('검증: 사전 p값 임계치 및 비유한 값 처리, 2023년 전체만 하락하는 저장 조건, 탈락 후 후속 연도 학습 생략, 탈락 파일 제거, 첫 전체 통과에서 정지, 재시작 시 재계산 방지 및 난수 흐름의 중복 없는 연속 생성을 테스트했다. 기존 계산 검증과 함께 17개 테스트를 통과했다.'),
         p(f"모든 worker 누적 실행 시간 {summary.get('elapsed_worker_seconds',0):.1f}초; worker 최대 RSS {summary.get('peak_rss_mib',0):.1f} MiB. 이 시간은 보고서 작성·Drive 업로드·프로세스 시작 등 전체 대기 시간을 포함하지 않는다."),
         t(['파일','내용'],[
             ['plan.json','전체 후보 설정·순서, 난수 시드, 범위, 기준, 데이터·수치 소스 해시'],
@@ -103,7 +108,7 @@ def build(root,output):
         h('해석의 제한'),
         p('부트스트랩은 학습된 nuisance, 선택한 지지 및 가중치에 조건부이며 학습·선택 전체를 재추정하지 않는다. 동시기 통제변수는 사후 변수일 수 있다. 통제 시점과 지지 변경으로 평균 대상이 바뀔 수 있다. 산업 노출은 정적이며 완전한 동적 처치 이력 모형이 아니다.'),
         p('Haddad 및 Callaway 논문은 기본 추정과 식별 논의의 참고 자료다. 구현이 논문과 완전히 동일하거나 요청한 패턴이 인과 식별을 보장한다고 주장하지 않는다. 기존 METHODS_KO.md의 한계도 함께 적용된다.'),
-        p('원자료와 학습 모형 캐시는 결과 ZIP에 포함하지 않았다. Google Drive Labor_Productivity / Random_Search_200에 계획, 중간 체크포인트, 최종 결과와 보고서를 저장한다.')
+        p('원자료와 학습 모형 캐시는 결과 ZIP에 포함하지 않았다. Google Drive Labor_Productivity 아래 탐색 차수별 폴더에 계획, 중간 체크포인트, 최종 결과와 보고서를 저장한다.')
     ])
     reported=[]
     for r in accepted:
@@ -118,7 +123,7 @@ def build(root,output):
             reported.append({'run_id':run,'year':row.year,'effect':row.effect,'estimate':row.estimate,'p_value':row.p_value})
         pages.append([
             h(f'상세 사례 {run}: 연도별 주요 효과'),
-            p('명목 95% 신뢰구간과 명목 p값이다. 마지막 열은 이전 64개 설정을 포함한 누적 탐색 Bonferroni p값이다. 표시 값은 반올림했으며 판정은 원래 값으로 했다.'),
+            p(f'명목 95% 신뢰구간과 명목 p값이다. 마지막 열은 이전 {prior}개 설정을 포함한 누적 탐색 Bonferroni p값이다. 표시 값은 반올림했으며 판정은 원래 값으로 했다.'),
             t(['연도','효과','추정치','명목 95% 구간','명목 p','누적 보정 p'],table_rows,[.5,.8,.8,1.9,.8,.9],8.8),
             p('전체 목표: '+str(r['pattern']['pattern_match'])+'; 우수 조건 포함: '+str(r['pattern']['preferred_match'])+'.'),
             p(f"실현 표본: 기업 {audit['analysis_firms']:,}개, 산업 {audit['analysis_industries']}개. Fold 요청 {config['n_splits']}, 반복 {config['n_repeats']}. 통제변수 시점: {config['covariate_time']}.")

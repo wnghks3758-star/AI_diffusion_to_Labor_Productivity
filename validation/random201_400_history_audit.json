@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "random_attempted": 400,
+  "planned_unique_candidates": 400,
+  "retained_cases": 18,
+  "verified_primary_rows": 360,
+  "previous_plan_and_ledger_unchanged": true,
+  "no_duplicate_configurations": true,
+  "cumulative_estimates_match_sources": true,
+  "cumulative_corrections_verified": true
+}

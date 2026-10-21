@@ -7,7 +7,7 @@ from types import SimpleNamespace
 import numpy as np
 import pandas as pd
 from dml_acr.config import AnalysisConfig
-from dml_acr.random_experiments import make_random_plan, screen_gate, run_random, PRIMARY
+from dml_acr.random_experiments import make_random_plan, make_continuation_plan, screen_gate, run_random, PRIMARY
 from dml_acr.pipeline import run_analysis
 from dml_acr.io import write_json
 
@@ -17,6 +17,21 @@ def pre_table(year):
 
 
 class RandomExperimentTests(unittest.TestCase):
+    def test_continuation_preserves_random_stream_and_expands_family(self):
+        with TemporaryDirectory() as temp:
+            a=Path(temp)/'first';b=Path(temp)/'second';c=Path(temp)/'complete'
+            first=make_random_plan(a,max_attempts=3,seed=31)
+            write_json(a/'summary.json',{'attempted':3,'stop_reason':'budget_exhausted'})
+            (a/'all_attempts.jsonl').write_text('[]\n')
+            second=make_continuation_plan(a,b,max_attempts=4)
+            complete=make_random_plan(c,max_attempts=7,seed=31)
+            self.assertEqual(second['entries'],complete['entries'][3:])
+            self.assertEqual(second['entries'][0]['run_id'],'random_004')
+            self.assertEqual(second['prior_specifications'],67)
+            self.assertEqual(second['all_random_planned_attempts'],7)
+            self.assertFalse({e['config_id'] for e in first['entries']}&{e['config_id'] for e in second['entries']})
+            with self.assertRaises(FileExistsError):make_continuation_plan(a,b,max_attempts=4)
+
     def test_gate_requires_finite_pretests_and_only_total_initial_decline(self):
         c=AnalysisConfig();table=pre_table(2020)
         self.assertIsNone(screen_gate(table,2020,c))

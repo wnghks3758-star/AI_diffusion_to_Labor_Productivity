@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import zipfile
+from tempfile import TemporaryDirectory
 import numpy as np
 import pandas as pd
 from .config import AnalysisConfig, INDUSTRY_CONTROLS, FIRM_CONTROLS
@@ -102,6 +103,38 @@ def make_random_plan(root='results/random200',max_attempts=200,seed=20261021):
     return plan
 
 
+def make_continuation_plan(previous_root,root='results/random201_400',max_attempts=200):
+    """Continue the same random stream; preserve the completed batch and its hashes."""
+    previous_root=Path(previous_root);root=Path(root)
+    if (root/'plan.json').exists():raise FileExistsError('Frozen plan exists; resume it')
+    previous=json.loads((previous_root/'plan.json').read_text())
+    summary=json.loads((previous_root/'summary.json').read_text())
+    if summary['attempted']!=previous['max_attempts'] or summary['stop_reason']!='budget_exhausted':
+        raise ValueError('Continuation requires a completed, exhausted previous batch')
+    if previous['numerical_source_hashes']!=numerical_source_hashes():raise ValueError('Numerical source changed')
+    if previous['data_sha256']!=file_hash(AnalysisConfig().data_path):raise ValueError('Input data changed')
+    offset=previous.get('generator_offset',0)+previous['max_attempts']
+    Path('work').mkdir(exist_ok=True)
+    with TemporaryDirectory(prefix='random_plan_continuation_',dir='work') as temporary:
+        complete=make_random_plan(temporary,offset+max_attempts,previous['generator_seed'])
+    start=previous.get('generator_offset',0)
+    if complete['entries'][start:offset]!=previous['entries']:
+        raise ValueError('Random stream did not reproduce the previous frozen candidates')
+    entries=complete['entries'][offset:]
+    previous_ids={e['config_id'] for e in complete['entries'][:offset]}
+    if any(e['config_id'] in previous_ids for e in entries):raise ValueError('Duplicate candidate')
+    plan={**complete,'max_attempts':max_attempts,'entries':entries,
+        'generator_offset':offset,'all_random_planned_attempts':offset+max_attempts,
+        'batch_number':previous.get('batch_number',1)+1,
+        'prior_specifications':previous['prior_specifications']+previous['max_attempts'],
+        'prior_plan_roots':previous.get('prior_plan_roots',[])+[str(previous_root)],
+        'previous_plan':{'path':str(previous_root/'plan.json'),'sha256':file_hash(previous_root/'plan.json'),
+            'ledger_sha256':file_hash(previous_root/'all_attempts.jsonl'),'attempted':summary['attempted']},
+        'inference_note':'Exploratory continuation. Batch and cumulative families include every planned candidate, including earlier rejected and failed cases.'}
+    write_json(root/'plan.json',plan);write_json(root/'pattern_criteria.json',plan['pattern_criteria'])
+    return plan
+
+
 def screen_gate(table,year,config):
     """Return a rejection reason, or None to continue. Missing cells never pass."""
     if year not in [2020,2021,2023]:return None
@@ -163,7 +196,7 @@ def summarize_random(root):
         '저장 조건: 2020·2021 전체/SME/Large/조절효과 8개 p≥0.05, 2023년 전체 효과 음수 및 p<0.05.',
         '전체 패턴: 저장 조건 + 세 집단의 2023→2024→2025 단조 회복 + SME의 더 빠른 양수 전환 + 음수 조절효과의 지속/강화.',
         '2025년 SME 유의한 양수는 우수 조건이며 자동 정지의 필수 조건은 아닙니다.',
-        f'보정: 모든 계획 후보를 포함한 {family}개 검정, 기존 64개 설정 포함 {cumulative}개 검정 Bonferroni.',
+        f"보정: 이번 계획 {family}개 검정, 이전 {plan['prior_specifications']}개 설정 포함 {cumulative}개 검정 Bonferroni.",
         '탈락 상세 결과는 삭제하고, plan.json과 all_attempts.jsonl/CSV에 설정 및 탈락 사유만 남겼습니다.',
         '결과를 보고 선택한 탐색 결과이며 사전 비유의는 평행추세의 입증이 아닙니다.']
     (root/'SEARCH_SUMMARY_KO.md').write_text('\n'.join(text)+'\n')
@@ -239,12 +272,14 @@ def run_random(root='results/random200',limit=None):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('command',choices=['plan','search','summarize','worker'])
+    parser=argparse.ArgumentParser();parser.add_argument('command',choices=['plan','continue-plan','search','summarize','worker'])
     parser.add_argument('--output',default='results/random200');parser.add_argument('--config')
+    parser.add_argument('--previous',default='results/random200')
     parser.add_argument('--max-attempts',type=int,default=200);parser.add_argument('--seed',type=int,default=20261021)
     parser.add_argument('--limit',type=int);args=parser.parse_args()
-    if args.command=='plan':
-        plan=make_random_plan(args.output,args.max_attempts,args.seed)
+    if args.command in ['plan','continue-plan']:
+        plan=(make_random_plan(args.output,args.max_attempts,args.seed) if args.command=='plan' else
+              make_continuation_plan(args.previous,args.output,args.max_attempts))
         result={key:value for key,value in plan.items() if key not in ['entries','domains','numerical_source_hashes']}
     elif args.command=='worker':
         from .pipeline import run_analysis

@@ -14,7 +14,7 @@ from dml_acr.io import file_hash,write_json
 from dml_acr.random_experiments import numerical_source_hashes
 
 
-def validate(root,require_finished=True):
+def validate(root,require_finished=True,audit_output=None):
     root=Path(root);plan=json.loads((root/'plan.json').read_text());summary=json.loads((root/'summary.json').read_text())
     records=[json.loads(line) for line in (root/'all_attempts.jsonl').read_text().splitlines() if line]
     assert len(records)==summary['attempted']<=plan['max_attempts']
@@ -74,11 +74,12 @@ def validate(root,require_finished=True):
            'accepted_checks':checks,'rejected_detailed_cases_retained':0,
            'data_sha256_verified':True,'numerical_source_hashes_verified':True,
            'verified_primary_rows':len(accepted)*20,'inference_and_multiplicity_checked':True}
-    write_json(ROOT/'validation/random_search_audit.json',audit)
+    write_json(audit_output or ROOT/'validation/random_search_audit.json',audit)
     return audit
 
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--root',default='results/random200')
     parser.add_argument('--allow-running',action='store_true');args=parser.parse_args()
-    print(json.dumps(validate(args.root,not args.allow_running),ensure_ascii=False))
+    print(json.dumps(validate(args.root,not args.allow_running,
+        ROOT/'validation'/f'{Path(args.root).name}_audit.json'),ensure_ascii=False))

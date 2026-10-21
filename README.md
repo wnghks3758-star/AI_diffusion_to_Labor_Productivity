@@ -48,6 +48,8 @@ GPS 변수 13개·Mu 변수 16개의 개별 제외와 두 변수군 구성을 �
 
 - [무작위 탐색 범위·저장 조건·자동 종료·재시작](docs/RANDOM_SEARCH_KO.md)
 - [무작위 탐색 실제 결과와 통과 사례](docs/RANDOM_RESULTS_KO.md)
+- [추가 200개: 후보 201~400 실행·재개·누적 보정](docs/RANDOM_CONTINUATION_KO.md)
+- [후보 201~400의 실제 결과와 누적 결과](docs/RANDOM_RESULTS_201_400_KO.md)
 - [실행 현황과 종료 사유](results/random200/summary.json)
 - [통과 사례만 포함하는 상세 결과](results/random200/accepted/)
 
