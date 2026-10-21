@@ -1,5 +1,27 @@
 # DML ACR 노트북 실행 환경
 
+## 모듈형 Python 분석과 32개 설정 탐색
+
+노트북 없이 실행하는 `dml_acr/` 모듈을 추가했습니다.
+전처리, GPS·Mu 학습, ESS·트리밍, ATET/ACR 합산, 시각화, 설정 탐색을 단계별로 분리했습니다.
+
+```bash
+.venv/bin/python -m dml_acr run --config configs/smoke.json --output results/my_run
+.venv/bin/python -m dml_acr run --config configs/smoke.json --set gps_model=linear --set ess=8 --output results/my_linear
+.venv/bin/python -m dml_acr search --output results/screen32
+```
+
+- [모듈 구조와 설정·실행 안내](docs/USAGE_KO.md)
+- [추정식, 논문과의 관계, 추론과 해석](docs/METHODS_KO.md)
+- [32개 설정의 실제 탐색 결과](docs/RESULTS_SCREEN32_KO.md)
+- [전체 설정·조건별 판정](results/screen32/all_specifications.csv)
+- [전체 추정치와 다중비교 보정](results/screen32/all_estimates.csv)
+
+32개 모두 정상 완료했습니다. 사전 지정한 모든 패턴 조건을 만족한 설정은 0개입니다.
+성공한 경우만 골라 남기지 않고 전체 설정·결과를 저장했습니다.
+현재 결과는 반복 3회·bootstrap 999회의 1차 탐색이며 원본의 큰 연산 예산 결과와 구분합니다.
+아래는 기존 노트북을 실행하는 방법입니다.
+
 프로젝트 위치: `/workspace/AI_diffusion_to_Labor_Productivity`
 
 Python 3.12 가상환경(`.venv`), JupyterLab, 분석 패키지를 설치했습니다.

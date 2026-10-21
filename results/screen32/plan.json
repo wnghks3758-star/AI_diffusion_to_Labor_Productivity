@@ -1,0 +1,308 @@
+{
+  "created_at_utc": "2026-10-21T08:51:13.957119+00:00",
+  "planned_runs": 32,
+  "data_sha256": "4b3ed1ab28851b2ed497ff538b2c8cdd8b5c0891b7ab7daa129452a0dff9d52d",
+  "selection": "Fixed 8 model/control designs × 4 support designs; no outcome-adaptive search.",
+  "budget": "Exploratory screen: 3 repetitions, 999 multipliers, step .002; XGB histogram, 4 search candidates.",
+  "primary_family": [
+    "total",
+    "sme",
+    "large",
+    "moderation"
+  ],
+  "years": [
+    2020,
+    2021,
+    2023,
+    2024,
+    2025
+  ],
+  "pattern_criteria": {
+    "alpha": 0.05,
+    "pre_years": [
+      2020,
+      2021
+    ],
+    "post_years": [
+      2023,
+      2024,
+      2025
+    ],
+    "pre_effects": [
+      "total",
+      "sme",
+      "large",
+      "moderation"
+    ],
+    "decline_effects": [
+      "total",
+      "sme",
+      "large"
+    ],
+    "recovery_effects": [
+      "total",
+      "sme",
+      "large"
+    ],
+    "require_monotonic_recovery": true,
+    "recovery_tolerance": 0.0
+  },
+  "entries": [
+    {
+      "run_id": "spec_01",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_01.json",
+      "config_id": "67dc35a8b89faceb",
+      "label": "spec_01_base_ess5_strict",
+      "model_design": "base",
+      "support_design": "ess5_strict"
+    },
+    {
+      "run_id": "spec_02",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_02.json",
+      "config_id": "eec2c91acc49a023",
+      "label": "spec_02_base_ess8_trim05",
+      "model_design": "base",
+      "support_design": "ess8_trim05"
+    },
+    {
+      "run_id": "spec_03",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_03.json",
+      "config_id": "5297e7d3cd006aab",
+      "label": "spec_03_base_ess10_bw07",
+      "model_design": "base",
+      "support_design": "ess10_bw07"
+    },
+    {
+      "run_id": "spec_04",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_04.json",
+      "config_id": "2cc7b11a735dae04",
+      "label": "spec_04_base_ess5_bridge",
+      "model_design": "base",
+      "support_design": "ess5_bridge"
+    },
+    {
+      "run_id": "spec_05",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_05.json",
+      "config_id": "99b25cb34808581a",
+      "label": "spec_05_gps_linear_ess5_strict",
+      "model_design": "gps_linear",
+      "support_design": "ess5_strict"
+    },
+    {
+      "run_id": "spec_06",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_06.json",
+      "config_id": "2e12ba5b9c24da06",
+      "label": "spec_06_gps_linear_ess8_trim05",
+      "model_design": "gps_linear",
+      "support_design": "ess8_trim05"
+    },
+    {
+      "run_id": "spec_07",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_07.json",
+      "config_id": "5d1a9c9748871c6b",
+      "label": "spec_07_gps_linear_ess10_bw07",
+      "model_design": "gps_linear",
+      "support_design": "ess10_bw07"
+    },
+    {
+      "run_id": "spec_08",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_08.json",
+      "config_id": "84fe6963ce0d59ea",
+      "label": "spec_08_gps_linear_ess5_bridge",
+      "model_design": "gps_linear",
+      "support_design": "ess5_bridge"
+    },
+    {
+      "run_id": "spec_09",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_09.json",
+      "config_id": "e6c5fefedb510dc7",
+      "label": "spec_09_gps_flexible_ess5_strict",
+      "model_design": "gps_flexible",
+      "support_design": "ess5_strict"
+    },
+    {
+      "run_id": "spec_10",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_10.json",
+      "config_id": "229281b5060cd2cb",
+      "label": "spec_10_gps_flexible_ess8_trim05",
+      "model_design": "gps_flexible",
+      "support_design": "ess8_trim05"
+    },
+    {
+      "run_id": "spec_11",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_11.json",
+      "config_id": "06c4b07ec137a427",
+      "label": "spec_11_gps_flexible_ess10_bw07",
+      "model_design": "gps_flexible",
+      "support_design": "ess10_bw07"
+    },
+    {
+      "run_id": "spec_12",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_12.json",
+      "config_id": "b46e4abc2f020c31",
+      "label": "spec_12_gps_flexible_ess5_bridge",
+      "model_design": "gps_flexible",
+      "support_design": "ess5_bridge"
+    },
+    {
+      "run_id": "spec_13",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_13.json",
+      "config_id": "fd71e32aa89ccc37",
+      "label": "spec_13_mu_ridge_ess5_strict",
+      "model_design": "mu_ridge",
+      "support_design": "ess5_strict"
+    },
+    {
+      "run_id": "spec_14",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_14.json",
+      "config_id": "70d94e4e837d1112",
+      "label": "spec_14_mu_ridge_ess8_trim05",
+      "model_design": "mu_ridge",
+      "support_design": "ess8_trim05"
+    },
+    {
+      "run_id": "spec_15",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_15.json",
+      "config_id": "20f7246bb0f5b8f5",
+      "label": "spec_15_mu_ridge_ess10_bw07",
+      "model_design": "mu_ridge",
+      "support_design": "ess10_bw07"
+    },
+    {
+      "run_id": "spec_16",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_16.json",
+      "config_id": "73cfb5cffca006b3",
+      "label": "spec_16_mu_ridge_ess5_bridge",
+      "model_design": "mu_ridge",
+      "support_design": "ess5_bridge"
+    },
+    {
+      "run_id": "spec_17",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_17.json",
+      "config_id": "efa41e4456c50ef7",
+      "label": "spec_17_mu_spline_ess5_strict",
+      "model_design": "mu_spline",
+      "support_design": "ess5_strict"
+    },
+    {
+      "run_id": "spec_18",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_18.json",
+      "config_id": "95fc40f4e6ea004a",
+      "label": "spec_18_mu_spline_ess8_trim05",
+      "model_design": "mu_spline",
+      "support_design": "ess8_trim05"
+    },
+    {
+      "run_id": "spec_19",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_19.json",
+      "config_id": "e86412e4486217d5",
+      "label": "spec_19_mu_spline_ess10_bw07",
+      "model_design": "mu_spline",
+      "support_design": "ess10_bw07"
+    },
+    {
+      "run_id": "spec_20",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_20.json",
+      "config_id": "7e617bf53b251a5b",
+      "label": "spec_20_mu_spline_ess5_bridge",
+      "model_design": "mu_spline",
+      "support_design": "ess5_bridge"
+    },
+    {
+      "run_id": "spec_21",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_21.json",
+      "config_id": "85124ef28b09839b",
+      "label": "spec_21_shared_controls_ess5_strict",
+      "model_design": "shared_controls",
+      "support_design": "ess5_strict"
+    },
+    {
+      "run_id": "spec_22",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_22.json",
+      "config_id": "8717648141f5bd1e",
+      "label": "spec_22_shared_controls_ess8_trim05",
+      "model_design": "shared_controls",
+      "support_design": "ess8_trim05"
+    },
+    {
+      "run_id": "spec_23",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_23.json",
+      "config_id": "480a7fadd8658cd4",
+      "label": "spec_23_shared_controls_ess10_bw07",
+      "model_design": "shared_controls",
+      "support_design": "ess10_bw07"
+    },
+    {
+      "run_id": "spec_24",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_24.json",
+      "config_id": "b0a3d2ee20108f32",
+      "label": "spec_24_shared_controls_ess5_bridge",
+      "model_design": "shared_controls",
+      "support_design": "ess5_bridge"
+    },
+    {
+      "run_id": "spec_25",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_25.json",
+      "config_id": "7b806f63e0636dbd",
+      "label": "spec_25_baseline_pre_controls_ess5_strict",
+      "model_design": "baseline_pre_controls",
+      "support_design": "ess5_strict"
+    },
+    {
+      "run_id": "spec_26",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_26.json",
+      "config_id": "b1b2041c1bbad2e6",
+      "label": "spec_26_baseline_pre_controls_ess8_trim05",
+      "model_design": "baseline_pre_controls",
+      "support_design": "ess8_trim05"
+    },
+    {
+      "run_id": "spec_27",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_27.json",
+      "config_id": "628010d2a13df0bd",
+      "label": "spec_27_baseline_pre_controls_ess10_bw07",
+      "model_design": "baseline_pre_controls",
+      "support_design": "ess10_bw07"
+    },
+    {
+      "run_id": "spec_28",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_28.json",
+      "config_id": "394eec62f9031deb",
+      "label": "spec_28_baseline_pre_controls_ess5_bridge",
+      "model_design": "baseline_pre_controls",
+      "support_design": "ess5_bridge"
+    },
+    {
+      "run_id": "spec_29",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_29.json",
+      "config_id": "07132bfeacfff5dc",
+      "label": "spec_29_no_industry_dummies_ess5_strict",
+      "model_design": "no_industry_dummies",
+      "support_design": "ess5_strict"
+    },
+    {
+      "run_id": "spec_30",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_30.json",
+      "config_id": "ff41f03787030ca9",
+      "label": "spec_30_no_industry_dummies_ess8_trim05",
+      "model_design": "no_industry_dummies",
+      "support_design": "ess8_trim05"
+    },
+    {
+      "run_id": "spec_31",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_31.json",
+      "config_id": "9603a5e0fd3e0d35",
+      "label": "spec_31_no_industry_dummies_ess10_bw07",
+      "model_design": "no_industry_dummies",
+      "support_design": "ess10_bw07"
+    },
+    {
+      "run_id": "spec_32",
+      "config": "/workspace/AI_diffusion_to_Labor_Productivity/results/screen32/configs/spec_32.json",
+      "config_id": "24855210b43aa608",
+      "label": "spec_32_no_industry_dummies_ess5_bridge",
+      "model_design": "no_industry_dummies",
+      "support_design": "ess5_bridge"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "input_rows": 13336,
+  "balanced_firms_before_missing": 2028,
+  "firms_dropped_for_missing": 3,
+  "analysis_firms": 2025,
+  "analysis_industries": 151,
+  "unclassified_firms": 27,
+  "common_lower_dose": -2.234013207257788,
+  "covariate_time": "current",
+  "industry_categories": [
+    "ICT_58_63",
+    "MFG_10",
+    "MFG_11_14",
+    "MFG_15_18",
+    "MFG_19_21",
+    "MFG_22_24",
+    "MFG_25_26",
+    "MFG_27_28",
+    "MFG_29_33",
+    "Other",
+    "Primary_Infra",
+    "Professional_Business",
+    "Trade"
+  ],
+  "dummy_columns": []
+}

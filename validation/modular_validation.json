@@ -1,0 +1,27 @@
+{
+  "core_tests": 9,
+  "core_tests_status": "PASS",
+  "completed_specifications": 32,
+  "failed_specifications": 0,
+  "notebook_parity_status": "PASS",
+  "largest_point_or_se_difference": 5.551115123125783e-17,
+  "data_sha256": "4b3ed1ab28851b2ed497ff538b2c8cdd8b5c0891b7ab7daa129452a0dff9d52d",
+  "source_files_sha256": {
+    "dml_acr/__init__.py": "6141ddc54865a359daa0734c6bce617df03bdd063cca3f551fbd56e8a37f2776",
+    "dml_acr/__main__.py": "2339602519e416e7e7edd26f2bd01315f18957c1775b781c158c03053f94b829",
+    "dml_acr/aggregation.py": "3b596976363641e6365e91c82ce4e0d412b825ccb275f1029a62d30f0ca369e4",
+    "dml_acr/config.py": "8fcab11124a4cc99c5ce6f2095a8807d79a1a0fac2171961768fecff17c008fd",
+    "dml_acr/criteria.py": "ddd1fa3516987a170e3e69fc0f15ff644800b67bef42229a7477eebd47a457bb",
+    "dml_acr/estimation.py": "a949b92d26b5ab3d948a862c5e453f55c5d5e2ef9ebe7dddb21e6d12bd41ff54",
+    "dml_acr/experiments.py": "0182c882a7d6ac38a4e1ad948523f0aa13420762d9b718e346611fcf3152366e",
+    "dml_acr/io.py": "eba14b65f7f4f16c9ed17f9baff1fda68e16d697d569a6ac9d5580cce9faea43",
+    "dml_acr/models.py": "52576b93bde931d5af5c96b1dba079b7037097995a32e0efa7d73c00a6d319e5",
+    "dml_acr/pipeline.py": "bea9dd34f68c107c4c7d999f9d61ff2e80b5ff905c7dd79bc843b2ca45b9035a",
+    "dml_acr/preprocessing.py": "0f9c74cf1980078533bd1263415c7f27cfd76c3b485333e1e46ef8be43db6fe8",
+    "dml_acr/preprocessing_legacy.py": "17dbba7293976f47890ec0c5d9f0b302126fee0bc5d66d0768376c98365d5318",
+    "dml_acr/score.py": "465f1eeffb7d93cbce14cd150e88e0281869b8edb32bf08c8acf3439b431011b",
+    "dml_acr/support.py": "5d8339ddd0226be023fdf5dc4cf43679c6702032925a5af48753cb53c551bafc",
+    "dml_acr/support_legacy.py": "822f1510bbc21dfcc5f63470a06e774b9ae54f194862b77c3693091ba7183b18",
+    "dml_acr/visualization.py": "b58778654f8ec441047cbe085daea7c3f857f989b43b6cc0745b96de6858d37e"
+  }
+}

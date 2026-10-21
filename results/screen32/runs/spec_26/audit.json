@@ -1,0 +1,1738 @@
+{
+  "preprocessing": {
+    "input_rows": 13336,
+    "balanced_firms_before_missing": 2028,
+    "firms_dropped_for_missing": 3,
+    "analysis_firms": 1991,
+    "analysis_industries": 141,
+    "unclassified_firms": 25,
+    "common_lower_dose": 2.0123251455339957,
+    "covariate_time": "baseline",
+    "industry_categories": [
+      "Finance",
+      "ICT_58_63",
+      "MFG_10",
+      "MFG_11_13",
+      "MFG_14_16",
+      "MFG_17_19",
+      "MFG_20_21",
+      "MFG_22_23",
+      "MFG_24_25",
+      "MFG_26_27",
+      "MFG_28",
+      "MFG_29_30",
+      "MFG_31_33",
+      "Other",
+      "Primary_Infra",
+      "Professional_Business",
+      "Trade"
+    ],
+    "dummy_columns": [
+      "ind_dummy_ICT_58_63",
+      "ind_dummy_MFG_10",
+      "ind_dummy_MFG_11_13",
+      "ind_dummy_MFG_14_16",
+      "ind_dummy_MFG_17_19",
+      "ind_dummy_MFG_20_21",
+      "ind_dummy_MFG_22_23",
+      "ind_dummy_MFG_24_25",
+      "ind_dummy_MFG_26_27",
+      "ind_dummy_MFG_28",
+      "ind_dummy_MFG_29_30",
+      "ind_dummy_MFG_31_33",
+      "ind_dummy_Other",
+      "ind_dummy_Primary_Infra",
+      "ind_dummy_Professional_Business",
+      "ind_dummy_Trade"
+    ]
+  },
+  "years": [
+    {
+      "year": 2020,
+      "grid_points": 1244,
+      "supported_points": {
+        "total": 422,
+        "sme": 416,
+        "large": 417
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1991,
+          "n_in_range_firms": 1312,
+          "n_used_firms": 1312,
+          "n_gap_firms": 0,
+          "coverage": 0.6589653440482169,
+          "weight_sum": 1.0,
+          "active_endpoints": 143
+        },
+        "sme": {
+          "n_target_firms": 955,
+          "n_in_range_firms": 629,
+          "n_used_firms": 629,
+          "n_gap_firms": 0,
+          "coverage": 0.6586387434554973,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "large": {
+          "n_target_firms": 1011,
+          "n_in_range_firms": 669,
+          "n_used_firms": 669,
+          "n_gap_firms": 0,
+          "coverage": 0.6617210682492581,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "common": {
+          "n_target_firms": 1966,
+          "n_in_range_firms": 1300,
+          "n_used_firms": 1300,
+          "n_gap_firms": 0,
+          "coverage": 0.6612410986775178,
+          "weight_sum": 1.0,
+          "active_endpoints": 128
+        }
+      },
+      "gps": {
+        "cache_hit": true,
+        "cache_key": "629dc84266708ab77111566f",
+        "n_training_rows": 141,
+        "features": [
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 93,
+            "test_rows": 48,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 95,
+            "test_rows": 46,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.2099940726187999
+      },
+      "mu": {
+        "cache_hit": true,
+        "cache_key": "72b2f24aebcc4f1d34895599",
+        "features": [
+          "large_dummy",
+          "small_dummy",
+          "firm_rnd_ratio",
+          "ln_firm_avg_pay",
+          "ln_firm_ast",
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31386269385864357
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31386269385864357
+          },
+          {
+            "file": "rep000_fold02.joblib",
+            "repetition": 0,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31386269385864357
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31386269385864357
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31386269385864357
+          },
+          {
+            "file": "rep001_fold02.joblib",
+            "repetition": 1,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31386269385864357
+          },
+          {
+            "file": "rep002_fold00.joblib",
+            "repetition": 2,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31386269385864357
+          },
+          {
+            "file": "rep002_fold01.joblib",
+            "repetition": 2,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31386269385864357
+          },
+          {
+            "file": "rep002_fold02.joblib",
+            "repetition": 2,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31386269385864357
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": false,
+        "cache_key": "84e2e008d3c34b2ee06fb633"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 6833112,
+        "n_centers": 143,
+        "predicted_rows": 8055,
+        "original_prediction_rows": 854139
+      },
+      "stored_bootstrap_matrix_shape": [
+        999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 29826144
+    },
+    {
+      "year": 2021,
+      "grid_points": 1244,
+      "supported_points": {
+        "total": 422,
+        "sme": 416,
+        "large": 417
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1991,
+          "n_in_range_firms": 1312,
+          "n_used_firms": 1312,
+          "n_gap_firms": 0,
+          "coverage": 0.6589653440482169,
+          "weight_sum": 1.0,
+          "active_endpoints": 143
+        },
+        "sme": {
+          "n_target_firms": 955,
+          "n_in_range_firms": 629,
+          "n_used_firms": 629,
+          "n_gap_firms": 0,
+          "coverage": 0.6586387434554973,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "large": {
+          "n_target_firms": 1011,
+          "n_in_range_firms": 669,
+          "n_used_firms": 669,
+          "n_gap_firms": 0,
+          "coverage": 0.6617210682492581,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "common": {
+          "n_target_firms": 1966,
+          "n_in_range_firms": 1300,
+          "n_used_firms": 1300,
+          "n_gap_firms": 0,
+          "coverage": 0.6612410986775178,
+          "weight_sum": 1.0,
+          "active_endpoints": 128
+        }
+      },
+      "gps": {
+        "cache_hit": true,
+        "cache_key": "629dc84266708ab77111566f",
+        "n_training_rows": 141,
+        "features": [
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 93,
+            "test_rows": 48,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 95,
+            "test_rows": 46,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.2099940726187999
+      },
+      "mu": {
+        "cache_hit": true,
+        "cache_key": "0befd6abe827305b476f99cd",
+        "features": [
+          "large_dummy",
+          "small_dummy",
+          "firm_rnd_ratio",
+          "ln_firm_avg_pay",
+          "ln_firm_ast",
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.1673260403677703
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.1673260403677703
+          },
+          {
+            "file": "rep000_fold02.joblib",
+            "repetition": 0,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.1673260403677703
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.1673260403677703
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.1673260403677703
+          },
+          {
+            "file": "rep001_fold02.joblib",
+            "repetition": 1,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.1673260403677703
+          },
+          {
+            "file": "rep002_fold00.joblib",
+            "repetition": 2,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.1673260403677703
+          },
+          {
+            "file": "rep002_fold01.joblib",
+            "repetition": 2,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.1673260403677703
+          },
+          {
+            "file": "rep002_fold02.joblib",
+            "repetition": 2,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.1673260403677703
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": true,
+        "cache_key": "84e2e008d3c34b2ee06fb633"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 6833112,
+        "n_centers": 143,
+        "predicted_rows": 8736,
+        "original_prediction_rows": 854139
+      },
+      "stored_bootstrap_matrix_shape": [
+        999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 29826144
+    },
+    {
+      "year": 2023,
+      "grid_points": 1244,
+      "supported_points": {
+        "total": 422,
+        "sme": 416,
+        "large": 417
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1991,
+          "n_in_range_firms": 1312,
+          "n_used_firms": 1312,
+          "n_gap_firms": 0,
+          "coverage": 0.6589653440482169,
+          "weight_sum": 1.0,
+          "active_endpoints": 143
+        },
+        "sme": {
+          "n_target_firms": 955,
+          "n_in_range_firms": 629,
+          "n_used_firms": 629,
+          "n_gap_firms": 0,
+          "coverage": 0.6586387434554973,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "large": {
+          "n_target_firms": 1011,
+          "n_in_range_firms": 669,
+          "n_used_firms": 669,
+          "n_gap_firms": 0,
+          "coverage": 0.6617210682492581,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "common": {
+          "n_target_firms": 1966,
+          "n_in_range_firms": 1300,
+          "n_used_firms": 1300,
+          "n_gap_firms": 0,
+          "coverage": 0.6612410986775178,
+          "weight_sum": 1.0,
+          "active_endpoints": 128
+        }
+      },
+      "gps": {
+        "cache_hit": true,
+        "cache_key": "629dc84266708ab77111566f",
+        "n_training_rows": 141,
+        "features": [
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 93,
+            "test_rows": 48,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 95,
+            "test_rows": 46,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.2099940726187999
+      },
+      "mu": {
+        "cache_hit": true,
+        "cache_key": "7d8011d2f5f8d126becb45b5",
+        "features": [
+          "large_dummy",
+          "small_dummy",
+          "firm_rnd_ratio",
+          "ln_firm_avg_pay",
+          "ln_firm_ast",
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.18719564553107615
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.18719564553107615
+          },
+          {
+            "file": "rep000_fold02.joblib",
+            "repetition": 0,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.18719564553107615
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.18719564553107615
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.18719564553107615
+          },
+          {
+            "file": "rep001_fold02.joblib",
+            "repetition": 1,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.18719564553107615
+          },
+          {
+            "file": "rep002_fold00.joblib",
+            "repetition": 2,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.18719564553107615
+          },
+          {
+            "file": "rep002_fold01.joblib",
+            "repetition": 2,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.18719564553107615
+          },
+          {
+            "file": "rep002_fold02.joblib",
+            "repetition": 2,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.18719564553107615
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": true,
+        "cache_key": "84e2e008d3c34b2ee06fb633"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 6833112,
+        "n_centers": 143,
+        "predicted_rows": 11369,
+        "original_prediction_rows": 854139
+      },
+      "stored_bootstrap_matrix_shape": [
+        999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 29826144
+    },
+    {
+      "year": 2024,
+      "grid_points": 1244,
+      "supported_points": {
+        "total": 422,
+        "sme": 416,
+        "large": 417
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1991,
+          "n_in_range_firms": 1312,
+          "n_used_firms": 1312,
+          "n_gap_firms": 0,
+          "coverage": 0.6589653440482169,
+          "weight_sum": 1.0,
+          "active_endpoints": 143
+        },
+        "sme": {
+          "n_target_firms": 955,
+          "n_in_range_firms": 629,
+          "n_used_firms": 629,
+          "n_gap_firms": 0,
+          "coverage": 0.6586387434554973,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "large": {
+          "n_target_firms": 1011,
+          "n_in_range_firms": 669,
+          "n_used_firms": 669,
+          "n_gap_firms": 0,
+          "coverage": 0.6617210682492581,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "common": {
+          "n_target_firms": 1966,
+          "n_in_range_firms": 1300,
+          "n_used_firms": 1300,
+          "n_gap_firms": 0,
+          "coverage": 0.6612410986775178,
+          "weight_sum": 1.0,
+          "active_endpoints": 128
+        }
+      },
+      "gps": {
+        "cache_hit": true,
+        "cache_key": "629dc84266708ab77111566f",
+        "n_training_rows": 141,
+        "features": [
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 93,
+            "test_rows": 48,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 95,
+            "test_rows": 46,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.2099940726187999
+      },
+      "mu": {
+        "cache_hit": true,
+        "cache_key": "4562426a8df51eb5d713e7f4",
+        "features": [
+          "large_dummy",
+          "small_dummy",
+          "firm_rnd_ratio",
+          "ln_firm_avg_pay",
+          "ln_firm_ast",
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.25868141283750185
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.25868141283750185
+          },
+          {
+            "file": "rep000_fold02.joblib",
+            "repetition": 0,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.25868141283750185
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.25868141283750185
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.25868141283750185
+          },
+          {
+            "file": "rep001_fold02.joblib",
+            "repetition": 1,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.25868141283750185
+          },
+          {
+            "file": "rep002_fold00.joblib",
+            "repetition": 2,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.25868141283750185
+          },
+          {
+            "file": "rep002_fold01.joblib",
+            "repetition": 2,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.25868141283750185
+          },
+          {
+            "file": "rep002_fold02.joblib",
+            "repetition": 2,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.25868141283750185
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": true,
+        "cache_key": "84e2e008d3c34b2ee06fb633"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 6833112,
+        "n_centers": 143,
+        "predicted_rows": 9903,
+        "original_prediction_rows": 854139
+      },
+      "stored_bootstrap_matrix_shape": [
+        999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 29826144
+    },
+    {
+      "year": 2025,
+      "grid_points": 1244,
+      "supported_points": {
+        "total": 422,
+        "sme": 416,
+        "large": 417
+      },
+      "averaging": {
+        "total": {
+          "n_target_firms": 1991,
+          "n_in_range_firms": 1312,
+          "n_used_firms": 1312,
+          "n_gap_firms": 0,
+          "coverage": 0.6589653440482169,
+          "weight_sum": 1.0,
+          "active_endpoints": 143
+        },
+        "sme": {
+          "n_target_firms": 955,
+          "n_in_range_firms": 629,
+          "n_used_firms": 629,
+          "n_gap_firms": 0,
+          "coverage": 0.6586387434554973,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "large": {
+          "n_target_firms": 1011,
+          "n_in_range_firms": 669,
+          "n_used_firms": 669,
+          "n_gap_firms": 0,
+          "coverage": 0.6617210682492581,
+          "weight_sum": 1.0,
+          "active_endpoints": 126
+        },
+        "common": {
+          "n_target_firms": 1966,
+          "n_in_range_firms": 1300,
+          "n_used_firms": 1300,
+          "n_gap_firms": 0,
+          "coverage": 0.6612410986775178,
+          "weight_sum": 1.0,
+          "active_endpoints": 128
+        }
+      },
+      "gps": {
+        "cache_hit": true,
+        "cache_key": "629dc84266708ab77111566f",
+        "n_training_rows": 141,
+        "features": [
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade"
+        ],
+        "folds": [
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 0,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 1,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 93,
+            "test_rows": 48,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 94,
+            "test_rows": 47,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          },
+          {
+            "repetition": 2,
+            "train_rows": 95,
+            "test_rows": 46,
+            "mean_alpha": 10.0,
+            "variance_alpha": 10.0
+          }
+        ],
+        "oof_mse": 0.2099940726187999
+      },
+      "mu": {
+        "cache_hit": true,
+        "cache_key": "862bb480889b0030860aa57c",
+        "features": [
+          "large_dummy",
+          "small_dummy",
+          "firm_rnd_ratio",
+          "ln_firm_avg_pay",
+          "ln_firm_ast",
+          "ln_cum_patent",
+          "ind_college_share_pre",
+          "ind_large_est_share_pre",
+          "ind_avg_age_pre",
+          "ind_age50_share_pre",
+          "ind_female_share_pre",
+          "ind_permanent_share_pre",
+          "ind_avg_tenure_pre",
+          "ind_avg_hours_pre",
+          "ind_ln_avg_pay_pre",
+          "ind_dummy_ICT_58_63",
+          "ind_dummy_MFG_10",
+          "ind_dummy_MFG_11_13",
+          "ind_dummy_MFG_14_16",
+          "ind_dummy_MFG_17_19",
+          "ind_dummy_MFG_20_21",
+          "ind_dummy_MFG_22_23",
+          "ind_dummy_MFG_24_25",
+          "ind_dummy_MFG_26_27",
+          "ind_dummy_MFG_28",
+          "ind_dummy_MFG_29_30",
+          "ind_dummy_MFG_31_33",
+          "ind_dummy_Other",
+          "ind_dummy_Primary_Infra",
+          "ind_dummy_Professional_Business",
+          "ind_dummy_Trade",
+          "office_ratio"
+        ],
+        "models": [
+          {
+            "file": "rep000_fold00.joblib",
+            "repetition": 0,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31674195903855556
+          },
+          {
+            "file": "rep000_fold01.joblib",
+            "repetition": 0,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31674195903855556
+          },
+          {
+            "file": "rep000_fold02.joblib",
+            "repetition": 0,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31674195903855556
+          },
+          {
+            "file": "rep001_fold00.joblib",
+            "repetition": 1,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31674195903855556
+          },
+          {
+            "file": "rep001_fold01.joblib",
+            "repetition": 1,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31674195903855556
+          },
+          {
+            "file": "rep001_fold02.joblib",
+            "repetition": 1,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31674195903855556
+          },
+          {
+            "file": "rep002_fold00.joblib",
+            "repetition": 2,
+            "fold": 0,
+            "train_rows": 1310,
+            "test_rows": 681,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31674195903855556
+          },
+          {
+            "file": "rep002_fold01.joblib",
+            "repetition": 2,
+            "fold": 1,
+            "train_rows": 1297,
+            "test_rows": 694,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31674195903855556
+          },
+          {
+            "file": "rep002_fold02.joblib",
+            "repetition": 2,
+            "fold": 2,
+            "train_rows": 1375,
+            "test_rows": 616,
+            "best_params": {
+              "subsample": 1.0,
+              "n_estimators": 100,
+              "max_depth": 2,
+              "learning_rate": 0.03,
+              "colsample_bytree": 1.0
+            },
+            "cv_score": -0.31674195903855556
+          }
+        ]
+      },
+      "support": {
+        "cache_hit": true,
+        "cache_key": "84e2e008d3c34b2ee06fb633"
+      },
+      "prediction": {
+        "disk_prediction_bytes": 6833112,
+        "n_centers": 143,
+        "predicted_rows": 8515,
+        "original_prediction_rows": 854139
+      },
+      "stored_bootstrap_matrix_shape": [
+        999,
+        7
+      ],
+      "avoided_dense_grid_bootstrap_bytes": 29826144
+    }
+  ],
+  "joint": {
+    "max_t_critical_value": 2.8707463238494526,
+    "family_tests": 20,
+    "pre_joint_wald_p_value": 0.05290165031925558,
+    "pre_joint_covariance_rank": 6,
+    "n_joint_clusters": 141
+  }
+}

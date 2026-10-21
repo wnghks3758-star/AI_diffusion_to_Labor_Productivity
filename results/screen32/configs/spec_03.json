@@ -1,0 +1,128 @@
+{
+  "data_path": "data/main_data/firm_year_all_ind_dart_add_control_gpt_continuous.xlsx",
+  "base_year": 2022,
+  "years": [
+    2020,
+    2021,
+    2023,
+    2024,
+    2025
+  ],
+  "dose": "office_ratio",
+  "outcome": "ln_firm_prod",
+  "dose_transform": "log_percent",
+  "pre_sign": "legacy",
+  "covariate_time": "current",
+  "gps_features": [
+    "ln_ind_avg_pay",
+    "ln_ind_ast",
+    "ind_rnd_ratio",
+    "ln_cum_patent",
+    "ind_college_share_pre",
+    "ind_large_est_share_pre",
+    "ind_avg_age_pre",
+    "ind_age50_share_pre",
+    "ind_female_share_pre",
+    "ind_permanent_share_pre",
+    "ind_avg_tenure_pre",
+    "ind_avg_hours_pre",
+    "ind_ln_avg_pay_pre"
+  ],
+  "mu_features": [
+    "large_dummy",
+    "small_dummy",
+    "firm_rnd_ratio",
+    "ln_firm_avg_pay",
+    "ln_firm_ast",
+    "ln_ind_avg_pay",
+    "ln_ind_ast",
+    "ind_rnd_ratio",
+    "ln_cum_patent",
+    "ind_college_share_pre",
+    "ind_large_est_share_pre",
+    "ind_avg_age_pre",
+    "ind_age50_share_pre",
+    "ind_female_share_pre",
+    "ind_permanent_share_pre",
+    "ind_avg_tenure_pre",
+    "ind_avg_hours_pre",
+    "ind_ln_avg_pay_pre"
+  ],
+  "gps_level": "industry",
+  "gps_model": "spline",
+  "gps_n_knots": 3,
+  "gps_degree": 3,
+  "ridge_alphas": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "gps_variance_floor": 0.0001,
+  "mu_model": "xgboost",
+  "mu_params": {
+    "tree_method": "hist",
+    "n_estimators": 160,
+    "max_depth": 3,
+    "learning_rate": 0.05
+  },
+  "mu_search_space": {
+    "n_estimators": [
+      100,
+      160
+    ],
+    "max_depth": [
+      2,
+      3
+    ],
+    "learning_rate": [
+      0.03,
+      0.08
+    ],
+    "subsample": [
+      0.8,
+      1.0
+    ],
+    "colsample_bytree": [
+      0.8,
+      1.0
+    ]
+  },
+  "mu_search_n_iter": 4,
+  "tuning_scope": "global_cv",
+  "n_splits": 3,
+  "n_repeats": 3,
+  "inner_splits": 3,
+  "include_industry_dummies": true,
+  "industry_min_groups": 4,
+  "industry_min_obs": 6,
+  "industry_scheme": "refined",
+  "small_industry_max_firms": 1,
+  "size_quantile": 0.5,
+  "ess": 10.0,
+  "min_ess_prime": 8.0,
+  "trim_threshold": 0.1,
+  "density_floor": 0.005,
+  "bandwidth_scale": 0.7,
+  "min_bandwidth": 0.01,
+  "diff_step": 0.002,
+  "max_dose": 10.0,
+  "gap_policy": "strict",
+  "size_difference": "means",
+  "bootstrap_unit": "industry",
+  "n_bootstrap": 999,
+  "alpha": 0.05,
+  "seed": 42,
+  "model_jobs": 2,
+  "model_threads": 1,
+  "support_batch_points": 256,
+  "grid_chunk_points": 4096,
+  "prediction_batch_points": 8,
+  "max_prediction_rows": 50000,
+  "bootstrap_batch_size": 256,
+  "cache_dir": "work/cache/dml_acr",
+  "save_bootstrap_draws": false,
+  "label": "spec_03_base_ess10_bw07"
+}

@@ -3,3 +3,6 @@ work/
 .ipynb_checkpoints/
 __pycache__/
 validation/environment_check.executed.ipynb
+results/**/checkpoints/
+results/**/worker.log
+results/**/progress.jsonl

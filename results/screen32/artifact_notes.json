@@ -1,0 +1,4 @@
+{
+  "diagnostic_metadata_correction": "Own-average moderation pool counts now sum SME and Large counts; signed weight_sum is undefined. Point estimates, SEs, p-values and pattern flags are unchanged.",
+  "intermediate_drive_zips": "spec_XX.zip are intermediate snapshots. Use 02_all_32_results_final.zip and final CSVs as the authoritative complete artifacts."
+}

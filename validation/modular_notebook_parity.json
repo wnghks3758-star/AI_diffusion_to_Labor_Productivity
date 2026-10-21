@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "year": 2023,
+  "identical_nuisances": true,
+  "comparisons": [
+    {
+      "policy": "strict",
+      "effect": "total",
+      "point_difference": -2.42861286636753e-17,
+      "se_difference": 2.7755575615628914e-17
+    },
+    {
+      "policy": "strict",
+      "effect": "sme",
+      "point_difference": -3.469446951953614e-17,
+      "se_difference": 0.0
+    },
+    {
+      "policy": "strict",
+      "effect": "large",
+      "point_difference": 0.0,
+      "se_difference": 5.551115123125783e-17
+    },
+    {
+      "policy": "strict",
+      "effect": "moderation",
+      "point_difference": 5.551115123125783e-17,
+      "se_difference": 2.7755575615628914e-17
+    },
+    {
+      "policy": "bridge",
+      "effect": "total",
+      "point_difference": -1.3877787807814457e-17,
+      "se_difference": 2.7755575615628914e-17
+    },
+    {
+      "policy": "bridge",
+      "effect": "sme",
+      "point_difference": -3.9898639947466563e-17,
+      "se_difference": 2.7755575615628914e-17
+    },
+    {
+      "policy": "bridge",
+      "effect": "large",
+      "point_difference": 0.0,
+      "se_difference": 0.0
+    },
+    {
+      "policy": "bridge",
+      "effect": "moderation",
+      "point_difference": 2.7755575615628914e-17,
+      "se_difference": 0.0
+    }
+  ],
+  "scope": "Streamed annual aggregation versus notebook event_only with the same nuisance predictions."
+}
