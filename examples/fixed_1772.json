@@ -1,0 +1,61 @@
+{
+  "label": "1772_fixed",
+  "mu_search_n_iter": 0,
+  "mu_params_by_year": {
+    "2020": {
+      "subsample": 0.8,
+      "reg_lambda": 5.0,
+      "reg_alpha": 0.5,
+      "n_estimators": 200,
+      "min_child_weight": 3,
+      "max_depth": 2,
+      "learning_rate": 0.01,
+      "gamma": 1.0,
+      "colsample_bytree": 0.8
+    },
+    "2021": {
+      "subsample": 0.5,
+      "reg_lambda": 10.0,
+      "reg_alpha": 0.1,
+      "n_estimators": 200,
+      "min_child_weight": 7,
+      "max_depth": 3,
+      "learning_rate": 0.01,
+      "gamma": 0.5,
+      "colsample_bytree": 0.6
+    },
+    "2023": {
+      "subsample": 0.5,
+      "reg_lambda": 10.0,
+      "reg_alpha": 10.0,
+      "n_estimators": 300,
+      "min_child_weight": 7,
+      "max_depth": 3,
+      "learning_rate": 0.01,
+      "gamma": 0.1,
+      "colsample_bytree": 0.5
+    },
+    "2024": {
+      "subsample": 0.5,
+      "reg_lambda": 10.0,
+      "reg_alpha": 10.0,
+      "n_estimators": 300,
+      "min_child_weight": 7,
+      "max_depth": 3,
+      "learning_rate": 0.01,
+      "gamma": 0.1,
+      "colsample_bytree": 0.5
+    },
+    "2025": {
+      "subsample": 0.5,
+      "reg_lambda": 10.0,
+      "reg_alpha": 10.0,
+      "n_estimators": 300,
+      "min_child_weight": 7,
+      "max_depth": 3,
+      "learning_rate": 0.01,
+      "gamma": 0.1,
+      "colsample_bytree": 0.5
+    }
+  }
+}
