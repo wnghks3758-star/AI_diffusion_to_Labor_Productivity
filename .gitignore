@@ -13,6 +13,7 @@
 /audit/results/paper_search_401_600/
 /audit/Paper_Search_401_600_ko.md
 /audit/results/*_checkpoint_*.zip
+/audit/results/paper_search_601_800/
 __pycache__/
 *.pyc
 .pytest_cache/

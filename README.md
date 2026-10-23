@@ -155,3 +155,25 @@ python report_paper_search.py report --out audit/results/paper_search_401_600
 후속 설정 200개를 실행 전에 고정하고 같은 중단 기준을 적용합니다. 이번 배치
 4,000개 검정 보정과 세 배치 누적 12,000개 검정 보정을 분리하며,
 결과·보고서는 [해당 Drive 폴더](https://drive.google.com/drive/folders/1qXWiQe-pU79NqTiaHmg88XvIn5S4A4Fv)에 저장합니다.
+
+## 601~800번과 조건 충족 결과 통합
+
+앞선 세 배치의 결과 ZIP을 각각 원래 경로에 풀고 실행합니다. 이전 600개와
+중복되지 않는 200개를 고정하고, 같은 저장 기준과 즉시 중단 규칙을 적용합니다.
+이 배치 보정은 4,000개, 논문 방식 네 배치 누적 보정은 16,000개 검정입니다.
+
+```bash
+python search_paper_fourth.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_fourth.py run --workers 3
+python report_paper_search.py checkpoint --out audit/results/paper_search_601_800
+python report_paper_search.py report --out audit/results/paper_search_601_800
+python report_focused_history.py --batch audit/results/paper_search_601_800
+```
+
+축약 통합 보고서는 기본 저장 기준에 더해 **SME 2025 양수**와
+**2025년 Large−SME 음수·p<0.05**인 설정만 수록합니다. SME의 양수 유의성은
+따로 표시합니다. 이전 방식과 논문 방식은 구분하고 보관본 중복은 제거합니다.
+`report_focused_history.collect(roots={"legacy": Path(...), "paper": Path(...)})`로
+다른 작업공간의 보관 위치를 지정할 수 있습니다. 결과는
+[Labor_Productivity의 전용 폴더](https://drive.google.com/drive/folders/1X_NQZhN5uPzMo3_GeHmlmAeB_2YJ6ai4)에
+저장하며 원자료와 학습 모델은 업로드하지 않습니다. Git에는 코드만 포함합니다.
