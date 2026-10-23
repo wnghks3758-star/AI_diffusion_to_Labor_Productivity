@@ -24,6 +24,43 @@ RF는 항상 외부 학습 자료 안에서 분산 표적까지 만드는 nested
 `kernel_convention="np"`에서는 기존 bandwidth 열이 **실제 커널 반폭**을 나타내며,
 규칙의 bandwidth는 진단의 `kernel_rule_bandwidth`에 기록됩니다.
 
+**151개 산업에서 직접 커널 GPS(`psmethod=2`) 검증:**
+[검증 보고서](audit/PSMethod2_151_ko.md)와 재현 스크립트를 추가했습니다.
+이 경로는 정규밀도나 밀도 하한 없이 `E[K_h(D-d)|X]`를 직접 학습합니다.
+
+```bash
+python validate_kernel_gps.py --simulations 100
+```
+
+산업 단위 4-Fold × 5회 예측·가중치 진단과 151개 산업 모의실험을 수행하고,
+실패까지 `audit/results/psmethod2_151/`에 저장합니다. 효과의 유의성을 탐색하지 않습니다.
+이 파일은 별도 검증용 API이며 `run.py`의 `gps_model="random_forest"`는 여전히
+정규 GPS입니다. `run.py`에서 `psmethod=2`를 선택하는 옵션은 아직 없습니다.
+개별 처치쌍에는 다음 API를 사용합니다. `frame`은 `prepare_year()`의 결과입니다.
+
+```python
+from dataclasses import replace
+import numpy as np
+from labor_did.data import cluster_bandwidth
+from labor_did.kernel_gps import fit_kernel_gps, atet_from_kernel_scores
+
+c2 = replace(config, kernel_convention="np", n_repeats=5, gps_params={})
+points = np.array([dcontrol, dtreat])  # 반드시 오름차순, 서로 다른 값
+halfwidth = cluster_bandwidth(frame, c2)  # sqrt(5) 변환이 이미 포함됨
+fit = fit_kernel_gps(frame, points, halfwidth, c2, mode="separate")
+ps = fit.firm_scores(repetition=0)
+# mu_control은 같은 산업 Fold로 교차적합한 비교 강도에서의 결과 예측값
+estimate = atet_from_kernel_scores(
+    frame, dtreat, dcontrol, halfwidth, ps[:, 1], ps[:, 0], mu_control,
+)
+print(estimate)  # supported와 산업 ESS를 반드시 함께 확인
+```
+
+`fit.audit["folds"]`에는 정렬된 산업 목록에 대한 학습·검증 위치가 있습니다.
+Mu도 이 분할을 사용해야 합니다. GPS만 이 API로 바꾸고 기존 Mu의 다른 분할과
+섞은 결과를 논문 교차적합 추론이라고 해석하면 안 됩니다.
+예시의 처치쌍은 `dcontrol < dtreat`인 경우이며 밀도 0은 숨기지 않고 오류로 반환합니다.
+
 ![1772의 전체·규모별 효과와 조절효과](examples/1772_event_study.svg)
 
 ## 1. 설치와 실행
