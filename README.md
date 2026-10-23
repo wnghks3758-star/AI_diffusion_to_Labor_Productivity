@@ -119,3 +119,23 @@ GPS와 Mu의 산업 변수, Mu의 기업 변수를 **각각 하나씩 제외**�
 이는 결과를 기준으로 설정을 선택하는 **탐색**입니다. 점별 원래 p값과 이번 배치의
 계획된 4,000개 ACRT 검정에 대한 Bonferroni 보정값을 별도로 제공합니다.
 사전 비유의가 평행추세를 증명하지 않으며, 이전 탐색까지 보정한 결과도 아닙니다.
+
+## 추가 200개: 201~400번
+
+```bash
+python search_paper_more.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_more.py run --workers 3
+python report_paper_search.py checkpoint --out audit/results/paper_search_201_400
+python report_paper_search.py report --out audit/results/paper_search_201_400
+```
+
+이전 200개와 중복되지 않는 설정을 고정 seed로 생성합니다. 이전 183·191번 주변의
+개별 변수 추가·제외 20개 조합과 새로운 변수·학습기 조합 20개에 각각 5개
+bandwidth·트리밍 조합을 적용합니다. 판정과 중단 규칙은 이전 배치와 같습니다.
+기업 변수 전체 제외 시 비활성 변수 목록을 정규화해 실질적인 중복도 검사합니다.
+
+원래 p값, 이번 배치 4,000개 검정 보정, 두 배치 누적 8,000개 검정 보정을
+별도로 제공합니다. 이전 결과를 보고 후보를 정한 후속 탐색이며, 누적 보정도
+이 두 배치 이전의 탐색을 포함하지 않습니다. 결과와 보고서는
+[Google Drive](https://drive.google.com/drive/folders/1pO4_k0HPp9X4uDpw5f3yGeM3Pya1VL6Q)에 저장합니다.
+추가 배치의 분석 산출물은 Git에 포함하지 않습니다.

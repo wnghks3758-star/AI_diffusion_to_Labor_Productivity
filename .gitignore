@@ -8,6 +8,9 @@
 /audit/results/paper_search_200/retained/*/audit.json
 /audit/results/paper_search_200/retained/*/ATET_0.png
 /audit/results/paper_search_200/retained/*/finite_difference_ACRT_-1.png
+/audit/results/paper_search_201_400/
+/audit/Paper_Search_201_400_ko.md
+/audit/results/*_checkpoint_*.zip
 __pycache__/
 *.pyc
 .pytest_cache/
