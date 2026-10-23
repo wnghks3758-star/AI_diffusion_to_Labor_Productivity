@@ -1,6 +1,13 @@
 .venv/
 .cache/
 /results/
+/audit/exports/
+/audit/results/paper_search_200/.scratch/
+/audit/results/paper_search_checkpoint_*.zip
+/audit/results/paper_search_200/retained/*/years/
+/audit/results/paper_search_200/retained/*/audit.json
+/audit/results/paper_search_200/retained/*/ATET_0.png
+/audit/results/paper_search_200/retained/*/finite_difference_ACRT_-1.png
 __pycache__/
 *.pyc
 .pytest_cache/

@@ -1,0 +1,17 @@
+{
+  "complete": true,
+  "inference_column": "p_bonferroni_search",
+  "pre_all_nonsignificant": true,
+  "initial_significant_decline": false,
+  "recovery": false,
+  "sme_first_positive_year": null,
+  "large_first_positive_year": null,
+  "sme_crosses_positive_earlier": false,
+  "sme_2025_significantly_positive": false,
+  "moderation_negative_significant": false,
+  "pattern_match": false,
+  "preferred_match": false,
+  "criteria_passed": 1,
+  "sme_2025_estimate": -0.028352429865536675,
+  "sme_2025_p": 1.0
+}

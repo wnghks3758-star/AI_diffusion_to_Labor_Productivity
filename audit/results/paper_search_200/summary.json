@@ -1,0 +1,18 @@
+{
+  "attempted": 200,
+  "retained": 5,
+  "pattern_matches": 0,
+  "preferred_matches": 0,
+  "adjusted_pattern_matches": 0,
+  "adjusted_preferred_matches": 0,
+  "counts": {
+    "initial_2023": 194,
+    "pre_2021": 1,
+    "retained": 5
+  },
+  "plan_sha256": "56bced8435f81358caa6b2e62e38860c7da14804d0c79e0ad566123a54206eed",
+  "family_size": 4000,
+  "overall_source_sha256": "13c940c2403a681cfddefddb0d8f58498769805c8a315e871aeffb0d28ae8fdc",
+  "data_sha256": "4b3ed1ab28851b2ed497ff538b2c8cdd8b5c0891b7ab7daa129452a0dff9d52d",
+  "scope": "This batch only; earlier searches excluded from multiplicity correction."
+}

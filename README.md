@@ -86,3 +86,36 @@ python run_paper.py \
 ```bash
 python -m unittest discover -s tests -v
 ```
+
+## 개별 변수·설정 200개 탐색
+
+```bash
+# 실행 전 설정을 확정한 뒤, 중단 기준을 통과한 결과만 저장
+python search_paper.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper.py run --workers 3
+
+# 중간 결과 ZIP / 완료 후 보고서(PDF·DOCX는 pandoc 및 XeLaTeX 필요)
+python report_paper_search.py checkpoint
+python report_paper_search.py report
+```
+
+GPS와 Mu의 산업 변수, Mu의 기업 변수를 **각각 하나씩 제외**하거나 개별 조합으로
+포함·제외합니다. 40개 변수·학습기 조합과 5개 bandwidth·트리밍 조합을 비교합니다.
+정확한 200개 설정은 실행 전에 생성되는 `audit/results/paper_search_200/plan.json`에
+고정하며, 이미 있는 계획을 덮어쓰지 않습니다. 다른 계획은 `--out`으로 분리하세요.
+
+2020·2021년 전체/SME/Large/조절효과가 모두 p≥0.05이고 2023년 전체가 유의한
+음수인 경우에만 2024·2025년까지 계산해 보존합니다. 한 기준이라도 실패하면
+즉시 해당 실행을 중단하고 임시 추정치·로그·캐시를 삭제합니다. 탈락별 추정값은
+저장하지 않고 중단 유형별 건수만 남깁니다. 재실행하면 완료된 5개 묶음은 건너뜁니다.
+현재 실행기는 2023년 초기 하락을 먼저 검사해 불필요한 사전 연도 계산을 줄입니다.
+이번 실제 배치에서 검사 순서만 바꾼 이력은 계획 파일에 기록했습니다.
+
+[이번 200개 탐색 보고서](audit/Paper_Search_200_ko.md): 저장 기준 통과 5개,
+전체 가설 충족 0개입니다. GitHub에는 통과 사례의 설정·결과·보고서 그래프를 담고,
+연도별 세부 진단까지 포함한 전체 결과 ZIP과 PDF·DOCX는
+[Google Drive 결과 폴더](https://drive.google.com/drive/folders/1V1cV3H4h0vxi9_C7aVwiV2a6EE8QEudB)에 저장합니다.
+
+이는 결과를 기준으로 설정을 선택하는 **탐색**입니다. 점별 원래 p값과 이번 배치의
+계획된 4,000개 ACRT 검정에 대한 Bonferroni 보정값을 별도로 제공합니다.
+사전 비유의가 평행추세를 증명하지 않으며, 이전 탐색까지 보정한 결과도 아닙니다.
