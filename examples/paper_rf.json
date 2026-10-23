@@ -1,0 +1,5 @@
+{
+  "label": "paper_rf",
+  "gps_model": "random_forest",
+  "mu_model": "random_forest"
+}

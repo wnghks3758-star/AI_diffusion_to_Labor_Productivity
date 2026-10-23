@@ -1,0 +1,13 @@
+{
+  "tests_passed": 29,
+  "official_r_fixed_synthetic_cases": 4,
+  "official_r_frozen_real_cases": 6,
+  "source_sha256": "13c940c2403a681cfddefddb0d8f58498769805c8a315e871aeffb0d28ae8fdc",
+  "interpolate_run_key": "487d480f6c4c1a9121db80ff93a64b31e2b0d924d72a8e20322395afa9183d1a",
+  "exclude_run_key": "2b44b65235f5516e45a545627b2b79d6d1e92a7e2810d1cf0d5d39b756247f9b",
+  "max_r_atet_difference": 1.006139616066548e-16,
+  "max_r_iid_se_difference": 3.694757715923258e-18,
+  "interpolate_exclude_max_estimate_difference": 0.0,
+  "default_and_exclude_results_per_run": 60,
+  "note": "R comparison fixes nuisances and uses cluster=NULL. Complete R package learner/cluster execution is not claimed."
+}
