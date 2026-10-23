@@ -50,6 +50,8 @@ class Config:
     sample_reference_features: list = field(default_factory=list)
     gps_level: str = "industry"
     gps_model: str = "spline"
+    gps_fit_scope: str = "legacy"  # Random forest always uses nested GPS fits.
+    gps_params: dict = field(default_factory=dict)
     gps_n_knots: int = 5
     gps_degree: int = 3
     ridge_alphas: list = field(
@@ -95,6 +97,8 @@ class Config:
     ess: float = 5.0
     min_ess_prime: float = 0.0
     trim_threshold: float = 0.1
+    trim_mode: str = "comparison"
+    kernel_convention: str = "unit"
     density_floor: float = 0.005
     bandwidth_scale: float = 0.45
     min_bandwidth: float = 0.01
@@ -135,7 +139,10 @@ class Config:
             "pre_sign": ("legacy", "chronological"),
             "covariate_time": ("current", "baseline"),
             "gps_level": ("industry",),
-            "gps_model": ("linear", "spline"),
+            "gps_model": ("linear", "spline", "random_forest"),
+            "gps_fit_scope": ("legacy", "nested"),
+            "trim_mode": ("comparison", "both"),
+            "kernel_convention": ("unit", "np"),
             "mu_model": ("xgboost", "ridge", "spline_ridge"),
             "industry_scheme": ("refined", "major", "none"),
             "gap_policy": ("bridge", "strict"),
@@ -146,6 +153,8 @@ class Config:
         for key, values in choices.items():
             if getattr(self, key) not in values:
                 raise ValueError(f"{key}: expected {values}")
+        if not isinstance(self.gps_params, dict):
+            raise ValueError("gps_params must be a parameter dictionary")
         for key in [
             "diff_step",
             "bandwidth_scale",

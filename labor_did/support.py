@@ -20,7 +20,7 @@ def scopes(frame):
 def scan_support(frame, grid, bandwidth, config):
     settings = {
         k: getattr(config, k)
-        for k in ["ess", "trim_threshold", "density_floor", "diff_step"]
+        for k in ["ess", "trim_threshold", "trim_mode", "density_floor", "diff_step"]
     }
     settings.update(
         bandwidth=bandwidth,
@@ -52,6 +52,7 @@ def scan_support(frame, grid, bandwidth, config):
                 config.trim_threshold,
                 config.density_floor,
                 options={"support_batch_points": config.support_batch_points},
+                trim_mode=config.trim_mode,
             )
             selected.append(values)
         result[scope] = np.concatenate(selected) if selected else np.empty(0)

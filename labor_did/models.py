@@ -135,6 +135,10 @@ def fit_gps(frame, config):
         raise ValueError("Missing GPS inputs")
     X = training[columns]
     y = training[config.dose].to_numpy(float)
+    if config.gps_fit_scope == "nested" or config.gps_model == "random_forest":
+        from .gps import fit_nested_gps
+
+        return fit_nested_gps(frame, training, columns, config)
     settings = {
         k: getattr(config, k)
         for k in [

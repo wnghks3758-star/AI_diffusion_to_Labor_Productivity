@@ -3,6 +3,27 @@
 **설정 하나를 바꾸고 실행하면 결과표·그래프·HTML 보고서가 나오는 독립 프로젝트입니다.**
 기본값은 `1772`입니다. 연속형 데이터도 포함되어 있어 별도 파일 이동이 필요 없습니다.
 
+**ATET 검토와 GPS 확장:** 저자의 R 패키지와의 차이·정당성·수치 검증은
+[비교 보고서](audit/ATET_comparison_ko.md)에 정리했습니다.
+`gps_model="random_forest"`, `gps_fit_scope="nested"`, `trim_mode="both"`,
+`kernel_convention="np"`를 선택할 수 있습니다. 기존 기본값은 유지합니다.
+
+```bash
+# 효과 탐색 없이 GPS 후보만 진단
+python benchmark_gps.py --years 2023 2025 --repeats 3
+
+# 다음 실행에서 GPS를 보수적인 Random Forest로 변경
+python run.py --config examples/fixed_1772.json \
+  --set 'gps_model="random_forest"' --set 'gps_fit_scope="nested"' \
+  --set 'gps_params={"n_estimators":300,"max_depth":3,"min_samples_leaf":8,"max_features":0.75}'
+```
+
+RF는 정규밀도의 평균·분산 회귀를 바꿉니다. 분포 가정 자체를 없애지는 않습니다.
+RF는 항상 외부 학습 자료 안에서 분산 표적까지 만드는 nested GPS를 사용합니다.
+`nested` GPS도 Mu의 튜닝 범위나 인과적 식별 가정을 자동으로 해결하지는 않습니다.
+`kernel_convention="np"`에서는 기존 bandwidth 열이 **실제 커널 반폭**을 나타내며,
+규칙의 bandwidth는 진단의 `kernel_rule_bandwidth`에 기록됩니다.
+
 ![1772의 전체·규모별 효과와 조절효과](examples/1772_event_study.svg)
 
 ## 1. 설치와 실행

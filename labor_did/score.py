@@ -3,20 +3,17 @@
 import numpy as np
 
 
-def normalized_acr_score(residual, omega_high, omega_low, diff_step):
-    """ACR of two self-normalized residual means and their ratio-linearized influence.
+def normalized_atet_score(residual, omega_high, omega_low):
+    """ATET from two self-normalized residual means, before any dose conversion.
 
     a_i = w_high_i / sum(w_high); b_i = w_low_i / sum(w_low).
-    theta = (sum(a*r) - sum(b*r)) / h.
-    IF_i = N * (a_i*(r_i-r_high) - b_i*(r_i-r_low)) / h.
+    theta = sum(a*r) - sum(b*r).
+    IF_i = N * (a_i*(r_i-r_high) - b_i*(r_i-r_low)).
     Nuisance predictions, selected support and final averaging weights are held fixed.
     """
-    h = float(diff_step)
     r, high, low = [
         np.asarray(x, dtype=float) for x in (residual, omega_high, omega_low)
     ]
-    if not np.isfinite(h) or h <= 0:
-        raise ValueError("diff_step must be finite and strictly positive.")
     if r.ndim != 1 or high.shape != r.shape or low.shape != r.shape or not len(r):
         raise ValueError("Residual and weight vectors must have equal nonzero length.")
     if not np.isfinite(r).all() or any(
@@ -31,8 +28,8 @@ def normalized_acr_score(residual, omega_high, omega_low, diff_step):
     b = low / low.max()
     b /= b.sum()
     mean_high, mean_low = float(a @ r), float(b @ r)
-    point = (mean_high - mean_low) / h
-    influence = len(r) * (a * (r - mean_high) - b * (r - mean_low)) / h
+    point = mean_high - mean_low
+    influence = len(r) * (a * (r - mean_high) - b * (r - mean_low))
     return (
         point,
         influence,
@@ -46,3 +43,14 @@ def normalized_acr_score(residual, omega_high, omega_low, diff_step):
             "influence_mean": float(influence.mean()),
         },
     )
+
+
+def normalized_acr_score(residual, omega_high, omega_low, diff_step):
+    """Legacy public API; ATET computation lives in normalized_atet_score."""
+    h = float(diff_step)
+    if not np.isfinite(h) or h <= 0:
+        raise ValueError("diff_step must be finite and strictly positive.")
+    point, influence, diagnostic = normalized_atet_score(
+        residual, omega_high, omega_low
+    )
+    return point / h, influence / h, diagnostic

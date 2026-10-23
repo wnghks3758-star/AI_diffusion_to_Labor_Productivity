@@ -45,6 +45,41 @@ def synthetic_panel():
 
 
 class Workflow(unittest.TestCase):
+    def test_random_forest_np_kernel_two_arm_pipeline(self):
+        with TemporaryDirectory() as temp, contextlib.redirect_stdout(io.StringIO()):
+            root = Path(temp)
+            synthetic_panel().to_excel(root / "data.xlsx", index=False)
+            c = Config(
+                data_path=str(root / "data.xlsx"),
+                cache_dir=str(root / "cache"),
+                years=[2023],
+                gps_model="random_forest",
+                gps_features=["ln_ind_avg_pay", "ln_ind_ast"],
+                gps_params={"n_estimators": 12, "max_depth": 2, "min_samples_leaf": 3},
+                kernel_convention="np",
+                trim_mode="both",
+                n_splits=2,
+                inner_splits=2,
+                n_repeats=1,
+                n_bootstrap=49,
+                mu_search_n_iter=0,
+                mu_params={"n_estimators": 8, "max_depth": 2},
+                industry_scheme="none",
+                include_industry_dummies=False,
+                diff_step=0.05,
+                ess=0.5,
+                trim_threshold=0.5,
+            )
+            result = run(c, root / "result")
+            self.assertTrue(np.isfinite(result.estimate).all())
+            audit = json.loads((root / "result/audit.json").read_text())["years"][0]
+            self.assertEqual(audit["gps"]["fit_scope"], "nested")
+            self.assertEqual(audit["trim_mode"], "both")
+            self.assertEqual(audit["kernel_convention"], "np")
+            self.assertAlmostEqual(
+                audit["kernel_halfwidth"], np.sqrt(5) * audit["kernel_rule_bandwidth"]
+            )
+
     def test_year_fixed_parameters_skip_random_search(self):
         with TemporaryDirectory() as temp:
             frame = synthetic_panel().query("Year == 2023").copy()
