@@ -139,3 +139,19 @@ bandwidth·트리밍 조합을 적용합니다. 판정과 중단 규칙은 이�
 이 두 배치 이전의 탐색을 포함하지 않습니다. 결과와 보고서는
 [Google Drive](https://drive.google.com/drive/folders/1pO4_k0HPp9X4uDpw5f3yGeM3Pya1VL6Q)에 저장합니다.
 추가 배치의 분석 산출물은 Git에 포함하지 않습니다.
+
+## 이어서 401~600번
+
+먼저 Drive의 201~400번 결과 ZIP을 `audit/results/paper_search_201_400/`에
+풀어 두세요. 이 배치의 계획과 기준 설정 파일을 이용해 앞선 400개와 중복을 검사합니다.
+
+```bash
+python search_paper_next.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_next.py run --workers 3
+python report_paper_search.py checkpoint --out audit/results/paper_search_401_600
+python report_paper_search.py report --out audit/results/paper_search_401_600
+```
+
+후속 설정 200개를 실행 전에 고정하고 같은 중단 기준을 적용합니다. 이번 배치
+4,000개 검정 보정과 세 배치 누적 12,000개 검정 보정을 분리하며,
+결과·보고서는 [해당 Drive 폴더](https://drive.google.com/drive/folders/1qXWiQe-pU79NqTiaHmg88XvIn5S4A4Fv)에 저장합니다.

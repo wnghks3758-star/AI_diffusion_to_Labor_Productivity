@@ -207,13 +207,19 @@ def make_plan(dest=DEST, previous=PREVIOUS):
 
 
 def run_family(entries, dest):
+    plan_path = Path(dest) / "plan.json"
+    cumulative_size = (
+        json.loads(plan_path.read_text()).get("cumulative_correction_family_size", 8000)
+        if plan_path.exists()
+        else 8000
+    )
     result = engine.run_family(entries, dest)
     for label in result["retained"]:
         folder = Path(dest) / "retained" / label
         t = pd.read_csv(folder / "estimates.csv")
         active = t.estimand.eq(engine.ESTIMAND) & t.effect.isin(engine.PRIMARY)
         t["p_bonferroni_cumulative"] = np.where(
-            active, np.minimum(1.0, t.p_value * 8000), np.nan
+            active, np.minimum(1.0, t.p_value * cumulative_size), np.nan
         )
         t.to_csv(folder / "estimates.csv", index=False)
         engine.primary(t).to_csv(folder / "summary.csv", index=False)

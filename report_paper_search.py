@@ -210,8 +210,14 @@ def report(dest=DEST, exports=None):
     if "cumulative_count" in plan:
         summary.update(
             cumulative_attempted=plan["cumulative_count"],
-            cumulative_retained=plan["previous_summary"]["retained"] + len(flags),
-            cumulative_raw_pattern_matches=plan["previous_summary"]["pattern_matches"]
+            cumulative_retained=plan["previous_summary"].get(
+                "cumulative_retained", plan["previous_summary"]["retained"]
+            )
+            + len(flags),
+            cumulative_raw_pattern_matches=plan["previous_summary"].get(
+                "cumulative_raw_pattern_matches",
+                plan["previous_summary"]["pattern_matches"],
+            )
             + matches,
             cumulative_family_size=plan["cumulative_correction_family_size"],
             cumulative_adjusted_pattern_matches=int(
@@ -219,7 +225,7 @@ def report(dest=DEST, exports=None):
             )
             if len(flags)
             else 0,
-            scope="Batch 201--400; additional cumulative Bonferroni column covers batches 1--400 only.",
+            scope=f"This batch; cumulative Bonferroni column covers the first {plan['cumulative_count']} paper-aligned specifications only.",
         )
     write_json(dest / "summary.json", summary)
     counts = progress["counts"]
