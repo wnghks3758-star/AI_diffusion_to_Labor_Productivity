@@ -456,7 +456,7 @@ def report(dest=DEST, exports=None):
         for p in sorted(dest.rglob("*")):
             if p.is_file() and ".scratch" not in p.parts:
                 z.write(p, p.relative_to(dest))
-        z.write(md, md.name)
+        z.writestr(md.name, md.read_text().replace(f"({image_root}/retained/", "(retained/"))
     return summary
 
 
