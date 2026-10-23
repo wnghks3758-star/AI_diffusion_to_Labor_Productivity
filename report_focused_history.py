@@ -136,9 +136,16 @@ def collect(roots=DEFAULT_ROOTS):
     return list(cases.values())
 
 
-def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
+def render(out=OUT, roots=DEFAULT_ROOTS, batch=None, stem="Focused_Integrated_800"):
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
+    plan = json.loads((Path(batch) / "plan.json").read_text()) if batch else {}
+    count = plan.get("count", 200)
+    cumulative = plan.get("cumulative_count", 800)
+    batch_labels = {e["config"]["label"] for e in plan.get("entries", [])}
+    numbers = [e["number"] for e in plan.get("entries", [])]
+    batch_range = f"{min(numbers)}~{max(numbers)}" if numbers else "601~800"
+    paper_only = set(roots) == {"paper"}
     cases = collect(roots)
     selected = sorted(
         [c for c in cases if c["flags"]["selected"]],
@@ -182,14 +189,40 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
             )
         )
         estimates.append(c["table"].assign(label=c["label"], method=c["method"]))
-    pd.DataFrame(rows).to_csv(out / "selected_cases.csv", index=False)
+    pd.DataFrame(
+        rows,
+        columns=list(rows[0])
+        if rows
+        else [
+            "label",
+            "method",
+            "selected",
+            "sme2025",
+            "sme2025_p",
+            "moderation2025",
+            "moderation2025_p",
+        ],
+    ).to_csv(out / "selected_cases.csv", index=False)
     if estimates:
         pd.concat(estimates, ignore_index=True).to_csv(
             out / "selected_estimates.csv", index=False
         )
+    else:
+        pd.DataFrame(
+            columns=[
+                "label",
+                "method",
+                "year",
+                "effect",
+                "estimand",
+                "estimate",
+                "p_value",
+            ]
+        ).to_csv(out / "selected_estimates.csv", index=False)
     write_json(out / "summary.json", summary)
     lines = [
-        "# 저장 기준·SME 2025 양수·2025년 조절효과 유의: 통합 축약 보고서",
+        "# 저장 기준·SME 2025 양수·2025년 조절효과 유의: "
+        + ("논문 방식 결과" if paper_only else "통합 축약 보고서"),
         "",
         f"중복 보관본을 제외한 요청 조건 충족 설정은 **{len(selected)}개**입니다. "
         f"서로 다른 결과표는 {summary['unique_result_tables']}개이며, 동일한 결과를 내는 서로 다른 설정도 설정별로 수록했습니다. "
@@ -200,14 +233,18 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
         "④ 2025년 Large−SME<0 및 p<0.05입니다. SME의 양수 자체에는 유의성을 요구하지 않았습니다. "
         "모든 p값은 별도 표시가 없으면 보정 전 값입니다. 전체 회복 가설 충족과는 다른 축약 선정 기준입니다.",
         "",
-        "이전 방식(legacy)과 논문 방식(paper)을 분리합니다. 이전 방식은 기존 이분산 GPS·밀도 하한·당해연도 통제 설정 등이 포함된 역사적 결과입니다. "
-        "논문 방식은 2022년 기준 통제, 산업 Fold·군집 추론, psmethod=1 공통 Fold 분산 GPS, 밀도 하한 없음·ESS 진단만 사용합니다. "
+        (
+            "이번 보고서는 새로 만든 논문 기반 추정 방식만 대상으로 하며, 이전 방식에서 선정했던 30개 설정은 포함하지 않습니다. "
+            if paper_only
+            else "이전 방식(legacy)과 논문 방식(paper)을 분리합니다. 이전 방식은 기존 이분산 GPS·밀도 하한·당해연도 통제 설정 등이 포함된 역사적 결과입니다. "
+        )
+        + "논문 방식은 2022년 기준 통제, 산업 Fold·군집 추론, psmethod=1 공통 Fold 분산 GPS, 밀도 하한 없음·ESS 진단만 사용합니다. "
         "두 방식의 수치를 같은 추정법의 반복 결과로 해석하거나 합산하지 않습니다.",
         "",
         "자료 범위는 현 작업공간에 원래 설정과 20개 연도별 주효과가 함께 보존되어 재검증 가능한 결과입니다. "
         "삭제된 탈락 추정치는 복원하거나 나열하지 않습니다. 원래 설정 JSON을 그대로 제공하며 추정치를 새로 계산하지 않았습니다.",
         "",
-        "## 추가 200개 탐색",
+        f"## 추가 {count}개 탐색",
         "",
     ]
     if summary["new_batch"]:
@@ -222,17 +259,17 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
             "retained": "저장 기준 통과·결과 보관",
         }
         new_selected = sum(
-            c["method"] == "paper" and 601 <= int(c["label"].rsplit("_", 1)[-1]) <= 800
+            c["method"] == "paper" and c["label"] in batch_labels
             for c in selected
             if c["label"].startswith("paper_search_")
         )
         lines += [
-            f"601~800번: {b['attempted']}/200개 실행, 상태 {status}. "
+            f"{batch_range}번: {b['attempted']}/{count}개 실행, 상태 {status}. "
             f"기본 저장 기준 통과 {len(b['retained'])}개, 본 보고서의 추가 조건 충족 {new_selected}개.",
             "",
             "저장 기준에 실패하면 해당 설정을 즉시 중단하고 추정치·로그·학습 캐시를 삭제했습니다. "
             "확정 설정표와 중단 사유별 건수만 남깁니다. "
-            "새 탐색은 이전 600개와 중복되지 않으며, 변수별 포함 여부·학습기·Fold·산업 더미·bandwidth·trim을 변경했습니다.",
+            f"새 탐색은 이전 {plan.get('previous_count', 600)}개와 중복되지 않으며, 변수별 포함 여부·학습기·Fold·산업 더미·bandwidth·trim을 변경했습니다.",
             "",
             markdown_table(
                 pd.DataFrame(
@@ -247,7 +284,7 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
             "",
         ]
     lines += ["## 조건 충족 설정 목록", ""]
-    for method in ["legacy", "paper"]:
+    for method in [m for m in ["legacy", "paper"] if m in roots]:
         group = [c for c in selected if c["method"] == method]
         lines += [
             f"### {'이전 방식' if method == 'legacy' else '논문 방식'}: {len(group)}개",
@@ -350,7 +387,7 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
         "조건에 맞춘 반복 탐색과 사후 선정 결과입니다. 선택된 원래 p값을 확증적 유의성으로 읽을 수 없습니다. "
         "사전 비유의 역시 평행추세의 증명이 아닙니다. 위 조건에는 단조 회복·더 빠른 양수 전환 등 전체 가설의 나머지 요건을 추가하지 않았습니다.",
         "",
-        "논문 방식은 계획된 800개×20개=16,000개 검정 기준 누적 Bonferroni 보정값을 새 배치 전체 결과에 제공합니다. "
+        f"논문 방식은 계획된 {cumulative:,}개×20개={cumulative * 20:,}개 검정 기준 누적 Bonferroni 보정값을 새 배치 전체 결과에 제공합니다. "
         "과거 방식의 전체 탐색 규모는 그 보정에 포함되지 않습니다. 이전 설정의 기존 보정 열은 원본 CSV에 유지하며 서로 다른 검정 집합의 보정값을 혼합하지 않습니다. "
         "표본·모형 가정·ACRT 변환과 산업 군집 확장에 관한 기존의 한계도 유지됩니다.",
         "",
@@ -358,7 +395,7 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
         "cases/: 설정 JSON·추정 결과·그래프. summary.json: 대상 범위·건수. 원자료·기업별 관측치·학습 모델은 포함하지 않습니다.",
         "",
     ]
-    md = out / "Focused_Integrated_800_ko.md"
+    md = out / f"{stem}_ko.md"
     md.write_text("\n".join(lines))
     for ext, extra in [
         (
@@ -380,11 +417,11 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
         ("docx", []),
     ]:
         subprocess.run(
-            ["pandoc", md.name, *extra, "-o", f"Focused_Integrated_800_ko.{ext}"],
+            ["pandoc", md.name, *extra, "-o", f"{stem}_ko.{ext}"],
             cwd=out,
             check=True,
         )
-    archive = out / "Focused_Integrated_800_Results.zip"
+    archive = out / f"{stem}_Results.zip"
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as z:
         for p in sorted(out.rglob("*")):
             if p.is_file() and p != archive:
@@ -396,5 +433,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, default=OUT)
     parser.add_argument("--batch", type=Path)
+    parser.add_argument("--paper-only", action="store_true")
+    parser.add_argument("--stem", default="Focused_Integrated_800")
     args = parser.parse_args()
-    print(json.dumps(render(args.out, batch=args.batch), ensure_ascii=False, indent=2))
+    roots = {"paper": DEFAULT_ROOTS["paper"]} if args.paper_only else DEFAULT_ROOTS
+    print(
+        json.dumps(
+            render(args.out, roots=roots, batch=args.batch, stem=args.stem),
+            ensure_ascii=False,
+            indent=2,
+        )
+    )

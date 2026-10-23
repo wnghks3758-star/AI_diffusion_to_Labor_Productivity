@@ -19,3 +19,5 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 /audit/Paper_Search_601_800_ko.md
+/audit/results/paper_search_801_1100/
+/audit/Paper_Search_801_1100_ko.md

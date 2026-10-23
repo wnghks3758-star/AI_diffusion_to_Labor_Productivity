@@ -96,10 +96,12 @@ def report(dest=DEST, exports=None):
     exports = Path(exports or ROOT / "audit/exports" / dest.name)
     exports.mkdir(parents=True, exist_ok=True)
     plan = json.loads((dest / "plan.json").read_text())
+    count = plan.get("count", 200)
+    family_size = plan.get("correction_family_size", count * 20)
     stem = plan.get("report_stem", "Paper_Search_200")
     image_root = dest.relative_to(ROOT / "audit").as_posix()
     progress = json.loads((dest / "progress.json").read_text())
-    assert progress["status"] == "completed" and progress["attempted"] == 200
+    assert progress["status"] == "completed" and progress["attempted"] == count
     rows, tables = [], []
     for label in progress["retained"]:
         folder = dest / "retained" / label
@@ -107,6 +109,9 @@ def report(dest=DEST, exports=None):
         raw = evaluate(table)
         adjusted = evaluate(table, "p_bonferroni_search")
         initial = primary(table).query("year == 2023 and effect == 'total'").iloc[0]
+        moderation = (
+            primary(table).query("year == 2025 and effect == 'moderation'").iloc[0]
+        )
         config = json.loads((folder / "config.json").read_text())
         rows.append(
             dict(
@@ -126,6 +131,15 @@ def report(dest=DEST, exports=None):
                 trim=config["trim"],
                 total_2023_estimate=float(initial.estimate),
                 total_2023_p=float(initial.p_value),
+                moderation_2025_estimate=float(moderation.estimate),
+                moderation_2025_p=float(moderation.p_value),
+                focused_2025_match=bool(
+                    raw["pre_all_nonsignificant"]
+                    and raw["initial_significant_decline"]
+                    and raw["sme_2025_estimate"] > 0
+                    and moderation.estimate < 0
+                    and moderation.p_value < 0.05
+                ),
             )
         )
         tables.append(table.assign(label=label))
@@ -150,6 +164,9 @@ def report(dest=DEST, exports=None):
         "trim",
         "total_2023_estimate",
         "total_2023_p",
+        "moderation_2025_estimate",
+        "moderation_2025_p",
+        "focused_2025_match",
     ]
     columns = list(dict.fromkeys(columns))
     flags = pd.DataFrame(rows).reindex(columns=columns)
@@ -190,10 +207,15 @@ def report(dest=DEST, exports=None):
     matches = int(flags.pattern_match.sum()) if len(flags) else 0
     preferred = int(flags.preferred_match.sum()) if len(flags) else 0
     summary = dict(
-        attempted=200,
+        attempted=count,
         retained=len(flags),
         pattern_matches=matches,
         preferred_matches=preferred,
+        sme_2025_positive=int(flags.sme_2025_estimate.gt(0).sum()) if len(flags) else 0,
+        sme_2025_significantly_positive=int(flags.sme_2025_significantly_positive.sum())
+        if len(flags)
+        else 0,
+        focused_2025_matches=int(flags.focused_2025_match.sum()) if len(flags) else 0,
         adjusted_pattern_matches=int(flags.adjusted_pattern_match.sum())
         if len(flags)
         else 0,
@@ -202,7 +224,7 @@ def report(dest=DEST, exports=None):
         else 0,
         counts=progress["counts"],
         plan_sha256=file_hash(dest / "plan.json"),
-        family_size=4000,
+        family_size=family_size,
         overall_source_sha256=plan["source_sha256"],
         data_sha256=plan["data_sha256"],
         scope="This batch only; earlier searches excluded from multiplicity correction.",
@@ -232,10 +254,11 @@ def report(dest=DEST, exports=None):
     update = plan.get("execution_order_update")
     if update:
         n = update["completed_at_update"]
-        order_note = f"첫 {n}개는 2020→2021→2023 순서로 검사했습니다. 초기 하락 기준에서 중단되는 경우가 대부분이어서 남은 {200 - n}개는 2023→2020→2021 순서로 검사해 계산을 줄였습니다. 변수·모형·수치 설정 200개와 판정 기준은 바꾸지 않았으며, plan.original.json과 plan.json의 entries는 완전히 같습니다. 진행 중이던 미완료 묶음은 같은 설정으로 다시 계산했습니다. 검사를 먼저 통과하지 못하면 이후 조건은 계산하지 않으므로 중단 유형별 건수는 그 순서에 의존합니다."
+        order_note = f"첫 {n}개는 2020→2021→2023 순서로 검사했습니다. 초기 하락 기준에서 중단되는 경우가 대부분이어서 남은 {count - n}개는 2023→2020→2021 순서로 검사해 계산을 줄였습니다. 변수·모형·수치 설정 {count}개와 판정 기준은 바꾸지 않았으며, plan.original.json과 plan.json의 entries는 완전히 같습니다. 진행 중이던 미완료 묶음은 같은 설정으로 다시 계산했습니다. 검사를 먼저 통과하지 못하면 이후 조건은 계산하지 않으므로 중단 유형별 건수는 그 순서에 의존합니다."
     else:
         order_note = "2023년 초기 하락, 2020년 사전 조건, 2021년 사전 조건 순서로 검사했습니다. 한 조건이라도 실패하면 이후 연도는 계산하지 않습니다."
-    result_line = f"200개 설정 중 사전 기준과 초기 하락 기준을 모두 통과한 설정은 {len(flags)}개입니다. 전체 가설 충족은 {matches}개, 2025년 SME 유의한 양수까지 충족한 설정은 {preferred}개입니다."
+    result_line = f"{count}개 설정 중 사전 기준과 초기 하락 기준을 모두 통과한 설정은 {len(flags)}개입니다. 전체 가설 충족은 {matches}개, 2025년 SME 유의한 양수까지 충족한 설정은 {preferred}개입니다."
+    result_line += f" 저장 기준 통과 후 SME 2025 양수는 {summary['sme_2025_positive']}개이며, 2025년 Large−SME 음수·p<0.05까지 충족한 설정은 {summary['focused_2025_matches']}개입니다."
     if "cumulative_count" in plan:
         result_line += f" 이전 배치와 합하면 누적 {plan['cumulative_count']}개 중 기본 기준 통과 {summary['cumulative_retained']}개, 전체 가설 충족 {summary['cumulative_raw_pattern_matches']}개입니다."
     text = [
@@ -258,7 +281,7 @@ def report(dest=DEST, exports=None):
         markdown_table(
             pd.DataFrame(
                 [
-                    ["총 시도", 200],
+                    ["총 시도", count],
                     ["2020년 사전 기준 중단", counts.get("pre_2020", 0)],
                     ["2021년 사전 기준 중단", counts.get("pre_2021", 0)],
                     ["2023년 전체 유의한 하락 미충족", counts.get("initial_2023", 0)],
@@ -298,7 +321,7 @@ def report(dest=DEST, exports=None):
     ]
     if not len(flags):
         text += [
-            "이번 200개에서는 사전 비유의와 2023년 전체의 유의한 하락을 동시에 만족한 설정이 없었습니다. 따라서 저장 기준을 통과한 추정 결과나 전체 가설 충족 사례가 없습니다. 요청한 중단 규칙에 따라 2024·2025년 추가 추정은 수행하지 않았으며, 탈락 추정치와 개별 그래프는 저장하지 않았습니다.",
+            f"이번 {count}개에서는 사전 비유의와 2023년 전체의 유의한 하락을 동시에 만족한 설정이 없었습니다. 따라서 저장 기준을 통과한 추정 결과나 전체 가설 충족 사례가 없습니다. 요청한 중단 규칙에 따라 2024·2025년 추가 추정은 수행하지 않았으며, 탈락 추정치와 개별 그래프는 저장하지 않았습니다.",
             "",
         ]
     else:
@@ -397,7 +420,7 @@ def report(dest=DEST, exports=None):
         PAGE_BREAK,
         "## 탐색적 해석과 파일",
         "",
-        "변수와 설정을 결과 기준으로 선택한 탐색이므로 선택된 원래 p값을 확증적 검정으로 해석할 수 없습니다. 저장 기준 자체도 결과를 선택합니다. 이번 200개×20개 ACRT 검정을 계획된 4,000개 검정으로 잡은 Bonferroni 보정값(p_bonferroni_search)을 별도로 제공합니다. 중단·삭제된 검정도 계획된 검정 수에서 제외하지 않았습니다. 이는 이번 배치에 대한 보정이며 이전의 여러 탐색까지 포함하지 않습니다. 원래 점별 추론의 정규성·식별 가정과 ACRT 변환·산업 군집 확장에 관한 한계도 남습니다.",
+        f"변수와 설정을 결과 기준으로 선택한 탐색이므로 선택된 원래 p값을 확증적 검정으로 해석할 수 없습니다. 저장 기준 자체도 결과를 선택합니다. 이번 {count}개×20개 ACRT 검정을 계획된 {family_size:,}개 검정으로 잡은 Bonferroni 보정값(p_bonferroni_search)을 별도로 제공합니다. 중단·삭제된 검정도 계획된 검정 수에서 제외하지 않았습니다. 이는 이번 배치에 대한 보정이며 이전의 여러 탐색까지 포함하지 않습니다. 원래 점별 추론의 정규성·식별 가정과 ACRT 변환·산업 군집 확장에 관한 한계도 남습니다.",
         "",
         plan.get("correction_note_ko", ""),
         "",
@@ -456,7 +479,9 @@ def report(dest=DEST, exports=None):
         for p in sorted(dest.rglob("*")):
             if p.is_file() and ".scratch" not in p.parts:
                 z.write(p, p.relative_to(dest))
-        z.writestr(md.name, md.read_text().replace(f"({image_root}/retained/", "(retained/"))
+        z.writestr(
+            md.name, md.read_text().replace(f"({image_root}/retained/", "(retained/")
+        )
     return summary
 
 

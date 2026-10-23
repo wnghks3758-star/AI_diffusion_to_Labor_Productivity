@@ -177,3 +177,23 @@ python report_focused_history.py --batch audit/results/paper_search_601_800
 다른 작업공간의 보관 위치를 지정할 수 있습니다. 결과는
 [Labor_Productivity의 전용 폴더](https://drive.google.com/drive/folders/1X_NQZhN5uPzMo3_GeHmlmAeB_2YJ6ai4)에
 저장하며 원자료와 학습 모델은 업로드하지 않습니다. Git에는 코드만 포함합니다.
+
+## 논문 방식 801~1100번: 추가 300개
+
+앞선 네 배치의 계획·요약을 원래 경로에 풀어 둔 뒤 실행합니다. 추정식과 데이터는
+그대로 유지하며, 60개 변수·학습기 조합에 5개 bandwidth·trim 조합을 적용합니다.
+새 실행기는 계획의 건수로 완료 여부와 보정 크기를 정합니다. 이번 배치 6,000개,
+논문 방식 1,100개 설정 누적 22,000개 검정을 각각 보정합니다.
+
+```bash
+python search_paper_fifth.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_fifth.py run --workers 3
+python report_paper_search.py checkpoint --out audit/results/paper_search_801_1100
+python report_paper_search.py report --out audit/results/paper_search_801_1100
+python report_focused_history.py --paper-only --batch audit/results/paper_search_801_1100 --out audit/exports/Paper_Only_Focused_1100 --stem Paper_Only_Focused_1100
+```
+
+이번 축약 보고서는 **논문 방식만** 대상으로 합니다. 이전 방식의 선정 30개를
+포함하지 않습니다. `retained_flags.csv`에는 SME 2025·조절효과 2025 추정치와
+p값 및 축약 선정 여부도 기록합니다. 원자료·학습 모델을 제외한 결과와 문서는
+[Labor_Productivity의 이번 실행 폴더](https://drive.google.com/drive/folders/1A9L8adFaQfHog1sM6w_fQO9Ex2oCJDeM)에 저장합니다.
