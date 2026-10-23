@@ -268,7 +268,7 @@ def report(dest=DEST, exports=None):
         "",
         "## 탐색과 중단 기준",
         "",
-        "가설 판정 대상은 기존 방식으로 연결한 finite-difference ACRT입니다. 고정 두 처치점의 ATET는 별도 결과로 보존하며 두 추정 대상을 혼용하지 않았습니다. "
+        "가설 판정 대상은 새 논문 기반 ATET 추정에 기존의 유한차분·합산 단계를 적용한 finite-difference ACRT입니다. 고정 두 처치점의 ATET는 별도 결과로 보존하며 두 추정 대상을 혼용하지 않았습니다. "
         + plan.get(
             "design_description_ko",
             "200개 설정은 실행 전에 확정했습니다. 기본 설정을 제외한 199개는 비교 설정입니다. 40개 변수·학습기 조합에 각각 5개 bandwidth·트리밍 조합을 적용했습니다.",
