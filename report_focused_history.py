@@ -212,13 +212,22 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
     ]
     if summary["new_batch"]:
         b = summary["new_batch"]
+        status = "완료" if b["status"] == "completed" else "진행 중"
+        count_labels = {
+            "initial_2023": "2023년 전체 유의한 하락 미충족",
+            "pre_2020": "2020년 사전 기준 중단",
+            "pre_2021": "2021년 사전 기준 중단",
+            "numerical_failure": "수치 계산 실패",
+            "execution_error": "실행 오류",
+            "retained": "저장 기준 통과·결과 보관",
+        }
         new_selected = sum(
             c["method"] == "paper" and 601 <= int(c["label"].rsplit("_", 1)[-1]) <= 800
             for c in selected
             if c["label"].startswith("paper_search_")
         )
         lines += [
-            f"601~800번: {b['attempted']}/200개 실행, 상태 {b['status']}. "
+            f"601~800번: {b['attempted']}/200개 실행, 상태 {status}. "
             f"기본 저장 기준 통과 {len(b['retained'])}개, 본 보고서의 추가 조건 충족 {new_selected}개.",
             "",
             "저장 기준에 실패하면 해당 설정을 즉시 중단하고 추정치·로그·학습 캐시를 삭제했습니다. "
@@ -226,7 +235,14 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None):
             "새 탐색은 이전 600개와 중복되지 않으며, 변수별 포함 여부·학습기·Fold·산업 더미·bandwidth·trim을 변경했습니다.",
             "",
             markdown_table(
-                pd.DataFrame(list(b["counts"].items()), columns=["집계", "건수"])
+                pd.DataFrame(
+                    [
+                        (text, b["counts"][key])
+                        for key, text in count_labels.items()
+                        if key in b["counts"]
+                    ],
+                    columns=["집계", "건수"],
+                )
             ),
             "",
         ]
