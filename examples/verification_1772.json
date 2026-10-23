@@ -1,0 +1,36 @@
+{
+  "sample_hash_match": true,
+  "analysis_firms": 2028,
+  "analysis_industries": 151,
+  "fresh_mu_2020_full_budget": true,
+  "fresh_mu_2020_selected_parameters": {
+    "subsample": 0.8,
+    "reg_lambda": 5.0,
+    "reg_alpha": 0.5,
+    "n_estimators": 200,
+    "min_child_weight": 3,
+    "max_depth": 2,
+    "learning_rate": 0.01,
+    "gamma": 1.0,
+    "colsample_bytree": 0.8
+  },
+  "fresh_gps_all_five_years": true,
+  "mu_other_years": "Fresh fits using the stored original year-specific hyperparameters; no randomized re-tuning.",
+  "compared_columns": [
+    "estimate",
+    "se",
+    "p_value",
+    "ci_lower",
+    "ci_upper",
+    "bandwidth",
+    "coverage"
+  ],
+  "matched_rows": 40,
+  "max_absolute_difference": 0.0,
+  "tolerance_absolute": 2e-09,
+  "tolerance_relative": 2e-09,
+  "fresh_mu_all_five_years": true,
+  "fresh_mu_total_models": 1000,
+  "tests_passed": 12,
+  "cli_grid_completed": 4
+}

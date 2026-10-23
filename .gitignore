@@ -1,5 +1,7 @@
 .venv/
-work/
-.ipynb_checkpoints/
+.cache/
+results/
 __pycache__/
-validation/environment_check.executed.ipynb
+*.pyc
+.pytest_cache/
+.ruff_cache/
