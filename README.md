@@ -307,3 +307,31 @@ python report_repeat_1538.py report
 추정치·군집 점수는 보존하며, 재구성 가능한 대규모 격자 CSV와 학습 모델은
 최종 산출물에서 제외합니다. 결과와 문서는
 [전용 Drive 폴더](https://drive.google.com/drive/folders/1wwsSkayhhFLoMg9k2YcyKB8huSC5ITEb)에 저장합니다.
+
+## 1538번: 관측 처치점 ACRT와 직접 커널 GPS
+
+PS1의 격자 보간과 관측 처치점 직접 계산, PS2의 관측 처치점 직접 계산을 비교합니다.
+PS1은 원래 XGBoost GPS, PS2는 처치점별 별도 Random Forest 커널 회귀입니다.
+Mu·산업 Fold·bandwidth·trim·기업 규모 정의는 유지합니다. PS2에서도 Gaussian GPS를
+적합 묶음에서 계산할 수 있으나 그 평균·분산은 PS2 가중치에 사용하지 않습니다.
+공유한 것은 Mu 적합과 예측입니다. 기존 `paper_did` 코어는 수정하지 않았습니다.
+
+```bash
+python compare_1538_observed.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python compare_1538_observed.py run --workers 2
+python report_1538_observed.py checkpoint
+python report_1538_observed.py report
+```
+
+원래 1538번의 설정·연도별 추정치·computability CSV가 앞선 배치 경로에 필요합니다.
+`observed_acrt.py`는 기업 수 가중치, 직접 커널 OOF 학습, 공통 대상 집계를 담당합니다.
+커널 모형은 처치점별로 학습·예측 후 버리고 OOF 숫자만 보관하며, 결과변수에 의존하지
+않는 GPS는 같은 실제 산업 입력일 때 연도 사이에 재사용합니다. 평균 대상만 제한하고
+각 처치점의 효과 곡선을 추정하는 원래 기업 표본은 유지합니다.
+
+방법 검증에서는 유의성으로 선별하지 않고 모든 연도·실패를 기록합니다. 전체 기업을
+요구하면 실패가 전파되는 `full_observed_strict`, 각 방법의 계산 가능한 대상만의
+`native_supported`, PS1 두 방식의 `common_ps1`, 세 방식의 `common_all`을 구분합니다.
+관측점 직접 결과에는 보간·밀도 하한·ESS 제외를 넣지 않습니다. PS2는 학습기도 RF로
+바뀌므로 차이를 psmethod 하나의 효과로 해석하지 않습니다. 결과는
+[전용 Drive 폴더](https://drive.google.com/drive/folders/11PL5JNK_tp5MkgcHMIqbeqCp5YTiZNIJ)에 저장합니다.
