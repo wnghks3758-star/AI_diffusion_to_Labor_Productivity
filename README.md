@@ -1,337 +1,121 @@
-# 기업 생산성 · 산업 단위 연속처치 DiD
+# PS1 · 관측 처치점에서 직접 계산하는 ACRT
 
-**새 실행 명령은 `python run_paper.py`입니다.** 저자 ATET의 수치 계산에 맞추고,
-기업별 결과와 산업 단위 처치 구조를 유지했습니다. 이 브랜치는
-`feature/paper-aligned-did`이며 기존 실행기는 [1772 문서](README_1772.md)에 있습니다.
+브랜치: `feature/ps1-observed-acrt`
 
-## 설치와 기본 실행
+실행 명령: `python run_observed.py`
+
+기본 설정: 1538번 — GPS·Mu XGBoost, bandwidth 배율 0.5, trim 0.01, 차분 간격 0.0005.
+
+각 산업의 실제 처치값 D에서 ATET(D, D−차분간격)를 구해 ACRT로 변환하고,
+기업 수로 가중해 전체·SME·Large 및 Large−SME를 계산합니다.
+관측점 사이의 보간은 사용하지 않습니다. 이전 분석 결과 파일을 내려받을 필요 없이
+이 브랜치의 코드·설정·포함된 연속처치 데이터만으로 실행합니다.
+
+## 설치와 실행
+
+Python 3.12를 사용하세요. macOS/Linux:
 
 ```bash
-git clone --single-branch --branch feature/paper-aligned-did https://github.com/wnghks3758-star/AI_diffusion_to_Labor_Productivity.git
-cd AI_diffusion_to_Labor_Productivity
+git clone --single-branch --branch feature/ps1-observed-acrt https://github.com/wnghks3758-star/AI_diffusion_to_Labor_Productivity.git labor-productivity-ps1-observed
+cd labor-productivity-ps1-observed
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python run_paper.py --out results/my_trial
+python run_observed.py
 ```
 
-Windows의 가상환경 활성화 명령은 `.venv\Scripts\activate`입니다.
-연속처치 데이터가 포함되어 있어 경로를 옮길 필요가 없습니다.
+Windows PowerShell에서는 위 clone·cd 후 다음을 실행합니다. 활성화 스크립트 없이도 됩니다.
 
-설정은 [paper_settings.json](paper_settings.json) 한 파일에서 변경합니다.
-기본값은 GPS Spline·Mu XGBoost, 산업 GPS·기업 결과, 2022년 통제변수,
-산업 3-Fold, SD bandwidth × 0.7, R np 커널·양쪽 트리밍입니다.
-ESS는 진단만 남기고 밀도 하한은 적용하지 않습니다.
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe run_observed.py
+```
 
-## 자주 바꾸는 설정
+Windows/Linux는 CPU 전용 XGBoost, macOS는 표준 XGBoost 패키지를 설치합니다.
+모형 계산은 CPU로 수행하며 실제 설치된 배포판과 버전을 기록합니다.
+macOS에서 OpenMP 라이브러리 오류가 발생하면 `brew install libomp` 후 다시 실행하세요.
+
+## 설정 변경
+
+[observed_settings.json](observed_settings.json)을 수정하면 됩니다.
+GPS와 Mu의 산업 변수 목록은 같은 순서로 함께 수정합니다.
+기업 변수는 Mu의 `mu_firm_features`에서 개별 포함·제외할 수 있습니다.
+
+| 설정 | 기본값 / 의미 |
+| --- | --- |
+| `gps_model`, `mu_model` | 각각 `xgboost`; spline, random_forest, lasso, ridge, linear도 지원 |
+| `gps_params`, `mu_params` | 각각 별도 학습기 파라미터 |
+| `gps_features`, `mu_industry_features` | 동일한 산업 변수 목록 |
+| `mu_firm_features`, `include_firm_controls` | 기업 변수 목록 / 전체 사용 여부 |
+| `gps_n_splits`, `gps_fold_seed` | 4 / 107 |
+| `mu_n_splits`, `mu_fold_seed` | 3 / 73 |
+| `bandwidth_factor`, `trim` | 0.5 / 0.01 |
+| `diff_step` | 0.0005; 직접 평가에서는 차분 폭만 결정 |
+| `size_variable`, `size_threshold` | sale / median |
+| `size_years`, `size_time_aggregation` | 기준연도 이하 패널 기간 / mean |
+| `years`, `base_year` | 분석연도 목록 / 2022 |
+| `model_threads` | 학습기 CPU 스레드 수 1 |
+
+GPS 학습기를 바꾸어도 이 실행기의 GPS는 PS1의 조건부 정규밀도입니다.
+Spline 변환은 모델을 spline으로 선택할 때 적용합니다.
+분석연도 변경은 균형 표본과 사용 가능한 사전 규모 기간도 바꿀 수 있습니다.
+기본 실행은 한 번의 산업 분할이며, 반복 분할 50회 집계는 이 명령에 포함되지 않습니다.
+
+파일 수정 없이 숫자 설정을 덮어쓸 수도 있습니다. 설정마다 다른 출력 경로를 쓰세요.
 
 ```bash
-# GPS를 Random Forest로 변경: 밀도는 계속 조건부 정규밀도(psmethod=1)
-python run_paper.py --set 'gps_model="random_forest"' --out results/gps_rf
-
-# Mu를 Lasso로 변경
-python run_paper.py --set 'mu_model="lasso"' --out results/mu_lasso
-
-# Mu에서 기업 변수와 기업 규모 더미를 모두 제외: 규모별 분석 자체는 유지
-python run_paper.py --set include_firm_controls=false --out results/no_firm
-
-# 계산 불가 구간을 보간하는 기본값 대신, 그 구간의 기업을 제외
-python run_paper.py --set 'gap_policy="exclude"' --out results/exclude
-
-# ATET만 빠르게 시험
-python run_paper.py --set compute_acrt=false --out results/atet_only
-
-# 직접 지정한 처치값 비교: 값은 현재 변환된 D 척도
-python run_paper.py --set 'pair_scale="value"' \
-  --set 'atet_pairs=[[2.8,3.5]]' --out results/atet_pair
-
-# 명시한 학습기 조합을 비교하고 모든 결과·실패 기록
-python run_paper.py --grid 'gps_model=["spline","random_forest","lasso"]' \
-  --set compute_acrt=false --out results/gps_comparison
+python run_observed.py --set diff_step=0.00001 --out results/smaller_step
+python run_observed.py --set gps_n_splits=5 --set mu_n_splits=3 --out results/folds_5_3
+python run_observed.py --config my_settings.json --out results/my_trial
 ```
 
-두 모형 모두 `spline`, `random_forest`, `lasso`, `ridge`, `linear`, `xgboost`를 지원합니다.
-모형별 파라미터는 `gps_params`, `mu_params`로 전달합니다. 예시:
+## 계산 가능 범위
+
+기본 `--support supported`는 각 집단에서 계산 가능한 관측 처치점에 속한 기업을
+평균 대상으로 삼고 그 비율을 coverage로 기록합니다. 이 값은 전체 기업 효과와
+구분해야 합니다. 실패 처치점을 보간하거나 밀도 하한으로 대체하지 않습니다.
+
+`--support strict`는 원래 모든 기업의 처치점이 계산 가능해야 집계를 제공합니다.
+필요한 한 점이라도 실패하면 해당 효과는 failed·NaN이며 종료 코드는 2입니다.
+모든 실패 지점과 두 방식의 집계는 기본 실행에서도 함께 보존합니다.
+유의성으로 결과를 선별하거나 실행을 중단하지 않습니다.
 
 ```bash
-python run_paper.py \
-  --set 'gps_model="random_forest"' \
-  --set 'gps_params={"n_estimators":300,"max_depth":3,"min_samples_leaf":8}' \
-  --set 'mu_params={"n_estimators":500,"max_depth":3,"learning_rate":0.02}' \
-  --out results/custom
+python run_observed.py --support strict --out results/strict
 ```
 
-## 결과와 재현
+## 결과 확인
 
-- `summary.csv`: 전체·SME·Large·조절효과의 ATET와 ACRT.
-- `estimates.csv`: 공통 노출분포를 사용한 집계까지 포함한 전체 결과.
-- `report.html`, `*.png`: 표·그림·실행 설정.
-- `years/연도/`: 계산 가능 구간, 처치점별 결과, Fold·모형 진단, 군집 점수.
-- `config.json`, `sample.json`, `status.json`: 전체 설정·표본·구현/자료 해시.
+기본 결과 폴더는 `results/ps1_observed/`입니다.
 
-동일한 코드·설정·데이터로 다시 실행하면 완료 결과나 연도별 체크포인트를 재사용합니다.
-다른 설정을 같은 출력 폴더에 쓰려 하면 중단하므로 새 `--out`을 지정하세요.
+- `report.html`: 브라우저로 여는 결과 표·그래프·설정.
+- `summary.csv`: 선택한 support 정책의 연도별 전체·SME·Large·조절효과, SE, p값, coverage.
+- `estimates.csv`: supported와 strict 집계 모두.
+- `atet.csv`: 설정한 고정 처치쌍 ATET.
+- `years/연도/endpoints.csv`, `availability.csv`: 관측점별 효과·실패 사유·ESS·포함 기업 수.
+- `years/연도/cluster_scores.npz`: 산업 기여도; 합산 후 SE와 규모 차이의 공분산 계산에 사용.
+- `config.json`, `sample.json`, `audit.json`, `status.json`: 전체 설정·표본·산업 Fold·버전·자료/코드 해시.
 
-[단계별 코드와 설정 설명](paper_did/README.ko.md) ·
-[실제 시험 보고서](audit/Paper_Aligned_Trial_ko.md) ·
-[저자 ATET 구현 비교](audit/ATET_comparison_ko.md)
+같은 자료·설정·코드로 같은 폴더에 다시 실행하면 완료 결과와 연도 체크포인트를
+재사용합니다. 다른 설정을 같은 폴더에 쓰면 중단합니다.
+학습 모델 캐시는 `.cache/ps1_observed/`에 보관합니다.
 
-![기본 시험 ACRT](audit/figures/paper_acrt.png)
+p값과 구간은 보정 전 점별 추론입니다. 기존 산업 단위 GPS·산업 검증 Fold·산업 군집
+기여도 합산 방식을 유지합니다. GPS와 Mu의 공변량 집합 차이, 산업 단위 처치에 대한
+식별, 평활 편향·트리밍·ACRT 변환은 적용상의 검토 사항입니다.
+`gap_policy`·균등 격자 설정·보조 bootstrap 설정은 이 직접 계산 경로에 사용하지 않습니다.
 
-기본 시험은 기업 2,028개·산업 151개로 수행했습니다. ACRT 평균의 포함 범위는
-계산 가능한 처치 구간의 기업 2,024개(99.80%)입니다. 미포함 기업과 실패도 기록했습니다.
-저자 패키지의 전체 재현은 아닙니다. Spline·XGBoost 선택, GPS/Mu 공변량 차이,
-산업 단위 학습·분할·표준오차, ACRT 변환·보간·합산은 구분해 설명합니다.
+## 코드 구성과 검증
+
+- [run_observed.py](run_observed.py): 설정·명령행·결과 출력.
+- [ps1_observed.py](ps1_observed.py): 관측점 계산·연도별 저장·HTML/그래프.
+- [observed_acrt.py](observed_acrt.py): 기업 수 가중치·관측점 합산·산업 점수.
+- [paper_did/models.py](paper_did/models.py): 산업 단위 GPS/Mu 분할과 학습.
+- [paper_did/numerics.py](paper_did/numerics.py): SD bandwidth·√5 커널·ATET 점수.
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-## 개별 변수·설정 200개 탐색
-
-```bash
-# 실행 전 설정을 확정한 뒤, 중단 기준을 통과한 결과만 저장
-python search_paper.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper.py run --workers 3
-
-# 중간 결과 ZIP / 완료 후 보고서(PDF·DOCX는 pandoc 및 XeLaTeX 필요)
-python report_paper_search.py checkpoint
-python report_paper_search.py report
-```
-
-GPS와 Mu의 산업 변수, Mu의 기업 변수를 **각각 하나씩 제외**하거나 개별 조합으로
-포함·제외합니다. 40개 변수·학습기 조합과 5개 bandwidth·트리밍 조합을 비교합니다.
-정확한 200개 설정은 실행 전에 생성되는 `audit/results/paper_search_200/plan.json`에
-고정하며, 이미 있는 계획을 덮어쓰지 않습니다. 다른 계획은 `--out`으로 분리하세요.
-
-2020·2021년 전체/SME/Large/조절효과가 모두 p≥0.05이고 2023년 전체가 유의한
-음수인 경우에만 2024·2025년까지 계산해 보존합니다. 한 기준이라도 실패하면
-즉시 해당 실행을 중단하고 임시 추정치·로그·캐시를 삭제합니다. 탈락별 추정값은
-저장하지 않고 중단 유형별 건수만 남깁니다. 재실행하면 완료된 5개 묶음은 건너뜁니다.
-현재 실행기는 2023년 초기 하락을 먼저 검사해 불필요한 사전 연도 계산을 줄입니다.
-이번 실제 배치에서 검사 순서만 바꾼 이력은 계획 파일에 기록했습니다.
-
-[이번 200개 탐색 보고서](audit/Paper_Search_200_ko.md): 저장 기준 통과 5개,
-전체 가설 충족 0개입니다. GitHub에는 통과 사례의 설정·결과·보고서 그래프를 담고,
-연도별 세부 진단까지 포함한 전체 결과 ZIP과 PDF·DOCX는
-[Google Drive 결과 폴더](https://drive.google.com/drive/folders/1V1cV3H4h0vxi9_C7aVwiV2a6EE8QEudB)에 저장합니다.
-
-이는 결과를 기준으로 설정을 선택하는 **탐색**입니다. 점별 원래 p값과 이번 배치의
-계획된 4,000개 ACRT 검정에 대한 Bonferroni 보정값을 별도로 제공합니다.
-사전 비유의가 평행추세를 증명하지 않으며, 이전 탐색까지 보정한 결과도 아닙니다.
-
-## 추가 200개: 201~400번
-
-```bash
-python search_paper_more.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_more.py run --workers 3
-python report_paper_search.py checkpoint --out audit/results/paper_search_201_400
-python report_paper_search.py report --out audit/results/paper_search_201_400
-```
-
-이전 200개와 중복되지 않는 설정을 고정 seed로 생성합니다. 이전 183·191번 주변의
-개별 변수 추가·제외 20개 조합과 새로운 변수·학습기 조합 20개에 각각 5개
-bandwidth·트리밍 조합을 적용합니다. 판정과 중단 규칙은 이전 배치와 같습니다.
-기업 변수 전체 제외 시 비활성 변수 목록을 정규화해 실질적인 중복도 검사합니다.
-
-원래 p값, 이번 배치 4,000개 검정 보정, 두 배치 누적 8,000개 검정 보정을
-별도로 제공합니다. 이전 결과를 보고 후보를 정한 후속 탐색이며, 누적 보정도
-이 두 배치 이전의 탐색을 포함하지 않습니다. 결과와 보고서는
-[Google Drive](https://drive.google.com/drive/folders/1pO4_k0HPp9X4uDpw5f3yGeM3Pya1VL6Q)에 저장합니다.
-추가 배치의 분석 산출물은 Git에 포함하지 않습니다.
-
-## 이어서 401~600번
-
-먼저 Drive의 201~400번 결과 ZIP을 `audit/results/paper_search_201_400/`에
-풀어 두세요. 이 배치의 계획과 기준 설정 파일을 이용해 앞선 400개와 중복을 검사합니다.
-
-```bash
-python search_paper_next.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_next.py run --workers 3
-python report_paper_search.py checkpoint --out audit/results/paper_search_401_600
-python report_paper_search.py report --out audit/results/paper_search_401_600
-```
-
-후속 설정 200개를 실행 전에 고정하고 같은 중단 기준을 적용합니다. 이번 배치
-4,000개 검정 보정과 세 배치 누적 12,000개 검정 보정을 분리하며,
-결과·보고서는 [해당 Drive 폴더](https://drive.google.com/drive/folders/1qXWiQe-pU79NqTiaHmg88XvIn5S4A4Fv)에 저장합니다.
-
-## 601~800번과 조건 충족 결과 통합
-
-앞선 세 배치의 결과 ZIP을 각각 원래 경로에 풀고 실행합니다. 이전 600개와
-중복되지 않는 200개를 고정하고, 같은 저장 기준과 즉시 중단 규칙을 적용합니다.
-이 배치 보정은 4,000개, 논문 방식 네 배치 누적 보정은 16,000개 검정입니다.
-
-```bash
-python search_paper_fourth.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_fourth.py run --workers 3
-python report_paper_search.py checkpoint --out audit/results/paper_search_601_800
-python report_paper_search.py report --out audit/results/paper_search_601_800
-python report_focused_history.py --batch audit/results/paper_search_601_800
-```
-
-축약 통합 보고서는 기본 저장 기준에 더해 **SME 2025 양수**와
-**2025년 Large−SME 음수·p<0.05**인 설정만 수록합니다. SME의 양수 유의성은
-따로 표시합니다. 이전 방식과 논문 방식은 구분하고 보관본 중복은 제거합니다.
-`report_focused_history.collect(roots={"legacy": Path(...), "paper": Path(...)})`로
-다른 작업공간의 보관 위치를 지정할 수 있습니다. 결과는
-[Labor_Productivity의 전용 폴더](https://drive.google.com/drive/folders/1X_NQZhN5uPzMo3_GeHmlmAeB_2YJ6ai4)에
-저장하며 원자료와 학습 모델은 업로드하지 않습니다. Git에는 코드만 포함합니다.
-
-## 논문 방식 801~1100번: 추가 300개
-
-앞선 네 배치의 계획·요약을 원래 경로에 풀어 둔 뒤 실행합니다. 추정식과 데이터는
-그대로 유지하며, 60개 변수·학습기 조합에 5개 bandwidth·trim 조합을 적용합니다.
-새 실행기는 계획의 건수로 완료 여부와 보정 크기를 정합니다. 이번 배치 6,000개,
-논문 방식 1,100개 설정 누적 22,000개 검정을 각각 보정합니다.
-
-```bash
-python search_paper_fifth.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_fifth.py run --workers 3
-python report_paper_search.py checkpoint --out audit/results/paper_search_801_1100
-python report_paper_search.py report --out audit/results/paper_search_801_1100
-python report_focused_history.py --paper-only --batch audit/results/paper_search_801_1100 --out audit/exports/Paper_Only_Focused_1100 --stem Paper_Only_Focused_1100
-```
-
-이번 축약 보고서는 **논문 방식만** 대상으로 합니다. 이전 방식의 선정 30개를
-포함하지 않습니다. `retained_flags.csv`에는 SME 2025·조절효과 2025 추정치와
-p값 및 축약 선정 여부도 기록합니다. 원자료·학습 모델을 제외한 결과와 문서는
-[Labor_Productivity의 이번 실행 폴더](https://drive.google.com/drive/folders/1A9L8adFaQfHog1sM6w_fQO9Ex2oCJDeM)에 저장합니다.
-
-## 규모 정의·변수·모형 중심 1101~1300번
-
-기존 규모 정의는 이미 `sale`의 2020~2022년 기업별 평균을 산업 내 median과
-비교하는 방식입니다. 기본 설정의 분류와 행·열 순서가 원래 코드와 일치하는지
-검증한 뒤 다음 설정을 추가했습니다. ATET 점수와 추론 공식은 유지합니다.
-
-| 설정 | 선택지 / 기본값 |
-| --- | --- |
-| `size_variable` | `sale`(기본), `assets_annual` 등 입력 열 |
-| `size_years` | `None`: 기준연도 이하 전체; 또는 `[2022]`, `[2021, 2022]` 등 |
-| `size_time_aggregation` | 기업별 기간 요약 `mean`(기본) / `median` |
-| `size_threshold` | 기업별 요약값의 산업 내 `median`(기본) / `mean` |
-| `size_missing_policy` | `legacy`(기본: 기존 처리), `unclassified` |
-| `size_small_industry_max_firms` | 산업 내 기업 수가 이 값 이하이면 미분류; 기본 1 |
-
-선택한 규모 기간은 2022년 이하여야 합니다. 임계값 이상은 Large이며 분류는
-모든 분석연도에 고정합니다. 기간 내 결측은 요약에서 제외하고, 모든 값이 없으면
-새 탐색에서는 미분류로 둡니다. 미분류 기업도 전체 추정에는 포함합니다.
-규모 정의가 달라지면 SME·Large의 구성과 추정 대상도 바뀝니다.
-
-```bash
-python search_paper_size.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_size.py run --workers 3
-python report_paper_search.py checkpoint --out audit/results/paper_search_1101_1300
-python report_paper_search.py report --out audit/results/paper_search_1101_1300
-python report_focused_history.py --paper-only --batch audit/results/paper_search_1101_1300 --out audit/exports/Paper_Only_Focused_1300 --stem Paper_Only_Focused_1300
-```
-
-200개는 10개 변수·학습기 조합 × 20개 규모 기본 정의입니다. 단일 연도는 기업별
-mean과 median이 같아 mean만 사용하고, 복수 연도에서는 둘을 비교합니다.
-`size_definitions.csv`에는 전체 계획의 규모 정의 28종과 집단 수·적용 설정 수가
-있으며 탈락한 설정의 추정 결과는 포함하지 않습니다. bandwidth·trim·Fold·산업
-더미 기준을 고정하여 규모·변수·학습기 비교를 우선합니다. 기본 동작 보존 검사를
-통과했지만 새 설정 지원으로 소스 해시는 변경됩니다. 기존 실행의 정확한 원본은
-해당 계획과 이전 Git 커밋에 보존되어 있습니다. 중간 결과와 문서는
-[전용 Drive 폴더](https://drive.google.com/drive/folders/1-cRDrxKKCrs0YfK7Bs-vnAW7rXOgQUG_)에 저장합니다.
-
-## 이전 통과 설정에서 규모 변수만 변경: 1301~1500번
-
-논문 방식의 과거 저장 기준 통과 설정을 다시 확인하고, 번호 순으로 고르게
-200개를 고릅니다. 각 설정에서 `size_variable`만 `sale`에서 `assets_annual`로
-바꾸며 변수 목록·모델·Fold·seed·bandwidth·trim·기간·median 기준은 보존합니다.
-전체 원본과 새 설정을 비교해 변경 필드가 정확히 하나인지 검사합니다.
-
-```bash
-python search_paper_size_from_passed.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_size_from_passed.py run --workers 3
-python report_paper_search.py checkpoint --out audit/results/paper_search_1301_1500
-python report_paper_search.py report --out audit/results/paper_search_1301_1500
-python report_focused_history.py --paper-only --batch audit/results/paper_search_1301_1500 --out audit/exports/Paper_Only_Focused_1500 --stem Paper_Only_Focused_1500
-```
-
-앞선 여섯 배치의 계획·요약 및 원본 통과 설정의 config/estimates 파일이 필요합니다.
-`parent_map.csv`에 원본 번호·해시·변경 필드를 기록하고, 새로 통과한 경우만
-`parent_comparisons.csv`에 원본·변경 후 결과를 제공합니다. 서로 다른 규모 집단의
-점추정치 비교이며 두 추정치 차이의 유의성 검정은 아닙니다. 새 실행이 탈락하면
-그 추정치·그래프·모델은 남기지 않습니다. 결과는
-[이번 Drive 폴더](https://drive.google.com/drive/folders/1tllbIcivifha393zQJLHHAN-znJP0jla)에 저장합니다.
-
-## GPS·Mu XGBoost와 독립 Fold: 1501~1700번
-
-두 모델을 XGBoost로 고정하고 bandwidth 배율 0.5, trim 0.01을 사용합니다.
-규모는 원래 sale·2020~2022년 기업 평균·산업 내 median입니다. 40개 산업 변수
-부분집합을 두 모델에 동일하게 적용하고, 각 GPS 설정마다 Mu 기업 변수·모델
-파라미터·Fold를 바꾼 5개 설정을 비교합니다. 기업 변수는 개별 포함·제외합니다.
-
-`gps_n_splits`, `mu_n_splits`, `gps_fold_seed`, `mu_fold_seed`를 각각 설정할 수
-있습니다. `None`이면 기존 `n_splits`와 `seed`를 사용합니다. 각 산업은 두 모델에서
-각각 자기 검증 표본의 학습에서 제외됩니다. GPS 분산은 GPS 검증 Fold의 잔차 MSE이며,
-Mu는 별도의 산업 Fold로 기업 결과를 예측합니다. 이 독립 분할은 R 기본의 공통
-Fold에 대한 확장입니다. 기본 공통 분할의 기존 수치 결과는 보존했습니다.
-GPS OOF 캐시는 산업 입력·모델·분할이 같을 때만 재사용하고 Y나 Mu 설정에 의존하지
-않습니다. ATET 점수·추론 공식과 초기 탈락 시 결과 삭제 규칙은 유지합니다.
-
-```bash
-python search_paper_xgb_joint.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_xgb_joint.py run --workers 3
-python report_paper_search.py checkpoint --out audit/results/paper_search_1501_1700
-python report_paper_search.py report --out audit/results/paper_search_1501_1700
-python report_focused_history.py --paper-only --batch audit/results/paper_search_1501_1700 --out audit/exports/Paper_Only_Focused_1700 --stem Paper_Only_Focused_1700
-```
-
-계획 파일에는 200개 설정을 실행 전에 확정합니다. 초기 기준 통과 설정만 보고서에
-기술하며, 결과에 따른 탐색의 p값은 탐색적 지표로 해석합니다. 기존 여섯 배치와
-1301~1500번 배치의 계획·마지막 요약이 새 계획 생성에 필요합니다.
-
-## 1538번: 차분 간격과 50회 반복 분할 비교
-
-1538번의 설정을 기준으로 차분 간격만 `1e-5`, 반복 분할만 50회, 둘 다 변경한
-세 경우를 비교합니다. GPS 4-Fold·Mu 3-Fold와 모델 파라미터를 유지하고, 각 모델의
-산업 분할 seed만 바꿉니다. 첫 반복은 원래 분할이며 같은 50개 분할을 공유합니다.
-결과는 효과별 중앙값, 표준오차는
-`sqrt(median(SE_r**2 + (theta_r - median(theta))**2))`로 집계합니다.
-표준오차를 √50으로 나누거나, 유리한 반복을 선택하지 않습니다. 기존 저장 기준은
-집계한 추정치에 적용하며 탈락 설정의 추정 결과는 삭제합니다.
-
-```bash
-python repeat_paper_1538.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python repeat_paper_1538.py run --workers 3
-python report_repeat_1538.py checkpoint
-python report_repeat_1538.py report
-```
-
-앞선 1501~1700번 결과 ZIP의 `retained/paper_search_1538/`을 원래 위치에 복원한 뒤
-실행하세요. 계획·seed·해시와 진행 상태는 `results/paper_1538_sensitivity/`,
-문서는 `audit/exports/paper_1538_sensitivity/`에 저장합니다. 반복별 구간 진단·
-추정치·군집 점수는 보존하며, 재구성 가능한 대규모 격자 CSV와 학습 모델은
-최종 산출물에서 제외합니다. 결과와 문서는
-[전용 Drive 폴더](https://drive.google.com/drive/folders/1wwsSkayhhFLoMg9k2YcyKB8huSC5ITEb)에 저장합니다.
-
-## 1538번: 관측 처치점 ACRT와 직접 커널 GPS
-
-PS1의 격자 보간과 관측 처치점 직접 계산, PS2의 관측 처치점 직접 계산을 비교합니다.
-PS1은 원래 XGBoost GPS, PS2는 처치점별 별도 Random Forest 커널 회귀입니다.
-Mu·산업 Fold·bandwidth·trim·기업 규모 정의는 유지합니다. PS2에서도 Gaussian GPS를
-적합 묶음에서 계산할 수 있으나 그 평균·분산은 PS2 가중치에 사용하지 않습니다.
-공유한 것은 Mu 적합과 예측입니다. 기존 `paper_did` 코어는 수정하지 않았습니다.
-
-```bash
-python compare_1538_observed.py plan
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python compare_1538_observed.py run --workers 2
-python report_1538_observed.py checkpoint
-python report_1538_observed.py report
-```
-
-원래 1538번의 설정·연도별 추정치·computability CSV가 앞선 배치 경로에 필요합니다.
-`observed_acrt.py`는 기업 수 가중치, 직접 커널 OOF 학습, 공통 대상 집계를 담당합니다.
-커널 모형은 처치점별로 학습·예측 후 버리고 OOF 숫자만 보관하며, 결과변수에 의존하지
-않는 GPS는 같은 실제 산업 입력일 때 연도 사이에 재사용합니다. 평균 대상만 제한하고
-각 처치점의 효과 곡선을 추정하는 원래 기업 표본은 유지합니다.
-
-방법 검증에서는 유의성으로 선별하지 않고 모든 연도·실패를 기록합니다. 전체 기업을
-요구하면 실패가 전파되는 `full_observed_strict`, 각 방법의 계산 가능한 대상만의
-`native_supported`, PS1 두 방식의 `common_ps1`, 세 방식의 `common_all`을 구분합니다.
-관측점 직접 결과에는 보간·밀도 하한·ESS 제외를 넣지 않습니다. PS2는 학습기도 RF로
-바뀌므로 차이를 psmethod 하나의 효과로 해석하지 않습니다. 결과는
-[전용 Drive 폴더](https://drive.google.com/drive/folders/11PL5JNK_tp5MkgcHMIqbeqCp5YTiZNIJ)에 저장합니다.
+실행 코드와 설정을 이 브랜치에 제공하며 새 분석 산출물·학습 모델은 Git에 포함하지 않습니다.
