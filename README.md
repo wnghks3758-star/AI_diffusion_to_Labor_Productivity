@@ -132,6 +132,35 @@ p값과 구간은 보정 전 점별 추론입니다. 기존 산업 단위 GPS·�
 식별, 평활 편향·트리밍·ACRT 변환은 적용상의 검토 사항입니다.
 `gap_policy`·균등 격자 설정·보조 bootstrap 설정은 이 직접 계산 경로에 사용하지 않습니다.
 
+## 관측점 PS1 50회 안정성 실험
+
+`repeat_observed.py`는 1538번을 기준으로 GPS/Mu Fold seed와 두 학습기의
+`random_state`를 함께 바꿉니다. 첫 반복은 원래 seed입니다. 변수·그 밖의 모델
+파라미터·bandwidth·trim·차분 폭은 유지합니다. 유의성으로 반복을 선별하지 않습니다.
+실행 전 계획 파일을 만들며 기존 계획을 덮어쓰지 않습니다.
+
+Linux 환경에서:
+
+```bash
+python repeat_observed.py plan
+python repeat_observed.py run --workers 3
+python report_repeat_observed.py summary
+```
+
+기본 폴더는 `results/ps1_observed_repeat50/`입니다. `report.html`에 공통 대상의
+50회 중앙값·그래프를 만들고, `repeat_estimates.csv`에 모든 반복을 보존합니다.
+`common_targets.json`은 결과변수를 사용하지 않는 GPS·커널·트리밍 사전 점검으로
+정한 50회 공통 평균 대상입니다. 각 반복의 자체 대상(native)도 함께 기록합니다.
+
+중앙값 SE는 `sqrt(median(SE_r**2 + (theta_r - median(theta))**2))`이며,
+SE를 √50으로 나누지 않습니다. 이 실험은 동일 표본의 분할·학습 안정성 진단입니다.
+95% 인과 구간과 반복 점추정치의 분포 범위는 구분합니다.
+
+원래 Linux 환경을 유지하려면 이미지를 다시 빌드한 뒤 `repeat_observed.py`의 plan/run과
+`report_repeat_observed.py summary`를 컨테이너에서 실행하고 `--out /output`을 지정하세요.
+PDF·Word까지 생성하는 `report_repeat_observed.py report`는 Pandoc·XeLaTeX·Noto Sans CJK KR이
+설치된 환경에서 사용합니다. `summary`의 HTML·그림·CSV 생성에는 이 추가 도구가 필요하지 않습니다.
+
 ## 코드 구성과 검증
 
 - [run_observed.py](run_observed.py): 설정·명령행·결과 출력.
