@@ -197,3 +197,40 @@ python report_focused_history.py --paper-only --batch audit/results/paper_search
 포함하지 않습니다. `retained_flags.csv`에는 SME 2025·조절효과 2025 추정치와
 p값 및 축약 선정 여부도 기록합니다. 원자료·학습 모델을 제외한 결과와 문서는
 [Labor_Productivity의 이번 실행 폴더](https://drive.google.com/drive/folders/1A9L8adFaQfHog1sM6w_fQO9Ex2oCJDeM)에 저장합니다.
+
+## 규모 정의·변수·모형 중심 1101~1300번
+
+기존 규모 정의는 이미 `sale`의 2020~2022년 기업별 평균을 산업 내 median과
+비교하는 방식입니다. 기본 설정의 분류와 행·열 순서가 원래 코드와 일치하는지
+검증한 뒤 다음 설정을 추가했습니다. ATET 점수와 추론 공식은 유지합니다.
+
+| 설정 | 선택지 / 기본값 |
+| --- | --- |
+| `size_variable` | `sale`(기본), `assets_annual` 등 입력 열 |
+| `size_years` | `None`: 기준연도 이하 전체; 또는 `[2022]`, `[2021, 2022]` 등 |
+| `size_time_aggregation` | 기업별 기간 요약 `mean`(기본) / `median` |
+| `size_threshold` | 기업별 요약값의 산업 내 `median`(기본) / `mean` |
+| `size_missing_policy` | `legacy`(기본: 기존 처리), `unclassified` |
+| `size_small_industry_max_firms` | 산업 내 기업 수가 이 값 이하이면 미분류; 기본 1 |
+
+선택한 규모 기간은 2022년 이하여야 합니다. 임계값 이상은 Large이며 분류는
+모든 분석연도에 고정합니다. 기간 내 결측은 요약에서 제외하고, 모든 값이 없으면
+새 탐색에서는 미분류로 둡니다. 미분류 기업도 전체 추정에는 포함합니다.
+규모 정의가 달라지면 SME·Large의 구성과 추정 대상도 바뀝니다.
+
+```bash
+python search_paper_size.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_size.py run --workers 3
+python report_paper_search.py checkpoint --out audit/results/paper_search_1101_1300
+python report_paper_search.py report --out audit/results/paper_search_1101_1300
+python report_focused_history.py --paper-only --batch audit/results/paper_search_1101_1300 --out audit/exports/Paper_Only_Focused_1300 --stem Paper_Only_Focused_1300
+```
+
+200개는 10개 변수·학습기 조합 × 20개 규모 기본 정의입니다. 단일 연도는 기업별
+mean과 median이 같아 mean만 사용하고, 복수 연도에서는 둘을 비교합니다.
+`size_definitions.csv`에는 전체 계획의 규모 정의 28종과 집단 수·적용 설정 수가
+있으며 탈락한 설정의 추정 결과는 포함하지 않습니다. bandwidth·trim·Fold·산업
+더미 기준을 고정하여 규모·변수·학습기 비교를 우선합니다. 기본 동작 보존 검사를
+통과했지만 새 설정 지원으로 소스 해시는 변경됩니다. 기존 실행의 정확한 원본은
+해당 계획과 이전 Git 커밋에 보존되어 있습니다. 중간 결과와 문서는
+[전용 Drive 폴더](https://drive.google.com/drive/folders/1-cRDrxKKCrs0YfK7Bs-vnAW7rXOgQUG_)에 저장합니다.

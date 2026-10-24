@@ -14,7 +14,12 @@ import pandas as pd
 
 from labor_did.io import file_hash, write_json
 from paper_did.pipeline import ROOT
-from report_paper_search import PAGE_BREAK, markdown_table, report_plot
+from report_paper_search import (
+    PAGE_BREAK,
+    markdown_table,
+    report_plot,
+    size_description,
+)
 
 EFFECTS = ["total", "sme", "large", "moderation"]
 YEARS = [2020, 2021, 2023, 2024, 2025]
@@ -241,6 +246,9 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None, stem="Focused_Integrated_80
         + "논문 방식은 2022년 기준 통제, 산업 Fold·군집 추론, psmethod=1 공통 Fold 분산 GPS, 밀도 하한 없음·ESS 진단만 사용합니다. "
         "두 방식의 수치를 같은 추정법의 반복 결과로 해석하거나 합산하지 않습니다.",
         "",
+        plan.get("numeric_description_ko", "") if plan.get("size_search") else "",
+        "규모 정의를 변경하면 SME·Large의 구성과 추정 대상도 달라집니다. 서로 다른 규모 정의의 결과를 동일한 기업 집단의 반복 추정으로 해석하지 않습니다." if plan.get("size_search") else "",
+        "",
         "자료 범위는 현 작업공간에 원래 설정과 20개 연도별 주효과가 함께 보존되어 재검증 가능한 결과입니다. "
         "삭제된 탈락 추정치는 복원하거나 나열하지 않습니다. 원래 설정 JSON을 그대로 제공하며 추정치를 새로 계산하지 않았습니다.",
         "",
@@ -311,6 +319,8 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None, stem="Focused_Integrated_80
             ]
     for c in selected:
         cfg, t, f = c["config"], c["table"], c["flags"]
+        sample_path = c["path"].parent / "sample.json"
+        sample = json.loads(sample_path.read_text()) if sample_path.exists() else {}
         folder = f"cases/{c['method']}/{c['label']}"
         mu_ind = cfg.get(
             "mu_industry_features",
@@ -333,6 +343,8 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None, stem="Focused_Integrated_80
             f"GPS {cfg.get('gps_model')} / Mu {cfg.get('mu_model')}; BW 배율 {cfg.get('bandwidth_factor', cfg.get('bandwidth_scale'))}; "
             f"trim {cfg.get('trim', cfg.get('trim_threshold'))}; Fold {cfg.get('n_splits')}; seed {cfg.get('seed')}; "
             f"통제 시점 {cfg.get('covariate_time')}. 최소 coverage {f['minimum_coverage']:.2%}.",
+            "",
+            size_description(cfg, sample.get("size_classification")),
             "",
             f"산업 분류 {cfg.get('industry_scheme')}, 최소 산업수 {cfg.get('industry_min_groups')}, "
             f"최소 관측수 {cfg.get('industry_min_obs')}, 산업 더미 {cfg.get('include_industry_dummies')}. "

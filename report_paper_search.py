@@ -15,6 +15,39 @@ from search_paper import CORE, DEST, PRIMARY, ROOT, evaluate, primary
 PAGE_BREAK = '\n\n```{=latex}\n\\clearpage\n```\n\n```{=openxml}\n<w:p><w:r><w:br w:type="page"/></w:r></w:p>\n```\n'
 
 
+def size_description(config, audit=None):
+    audit = audit or {}
+    years = config.get("size_years")
+    period = ",".join(map(str, years)) if years else f"≤{config.get('base_year', 2022)}"
+    text = (f"규모: {config.get('size_variable', 'sale')}; 기간 {period}; 기업별 기간 요약 {config.get('size_time_aggregation', 'mean')}; "
+            f"산업 내 기준 {config.get('size_threshold', 'median')}; 결측 처리 {config.get('size_missing_policy', 'legacy')}.")
+    if audit:
+        text += f" SME {audit['sme_firms']}개, Large {audit['large_firms']}개, 미분류 {audit['unclassified_firms']}개."
+    return text
+
+
+def size_definitions(dest, plan):
+    from collections import Counter
+
+    from labor_did.data import load_data
+    from paper_did.config import PaperConfig
+    from paper_did.pipeline import prepare
+    from paper_did.size import classify_size
+
+    keys = ["size_variable", "size_years", "size_time_aggregation", "size_threshold", "size_missing_policy", "size_small_industry_max_firms"]
+    definitions = Counter(json.dumps({k: e["config"][k] for k in keys}, sort_keys=True) for e in plan["entries"])
+    raw, _ = load_data(str(ROOT / plan["entries"][0]["config"]["data_path"]), str(ROOT / ".cache/size_validation"))
+    panel, _, _ = prepare(raw, PaperConfig())
+    rows = []
+    for key, count in definitions.items():
+        config = PaperConfig(**json.loads(key))
+        _, audit = classify_size(panel, config)
+        rows.append({**audit, "planned_specifications": count})
+    write_json(Path(dest) / "size_definitions.json", rows)
+    pd.DataFrame(rows).to_csv(Path(dest) / "size_definitions.csv", index=False)
+    return rows
+
+
 def markdown_table(frame):
     # Avoid an additional optional tabulate dependency.
     head = "| " + " | ".join(map(str, frame.columns)) + " |"
@@ -81,6 +114,8 @@ def checkpoint(dest=DEST):
             "plan.json",
             "plan.original.json",
             "runner.original.py",
+            "size_definitions.json",
+            "size_definitions.csv",
         ]:
             if (dest / name).exists():
                 archive.write(dest / name, name)
@@ -113,6 +148,8 @@ def report(dest=DEST, exports=None):
             primary(table).query("year == 2025 and effect == 'moderation'").iloc[0]
         )
         config = json.loads((folder / "config.json").read_text())
+        sample = json.loads((folder / "sample.json").read_text()) if (folder / "sample.json").exists() else {}
+        size_audit = sample.get("size_classification", {})
         rows.append(
             dict(
                 label=label,
@@ -140,6 +177,13 @@ def report(dest=DEST, exports=None):
                     and moderation.estimate < 0
                     and moderation.p_value < 0.05
                 ),
+                size_variable=config.get("size_variable", "sale"),
+                size_years=json.dumps(config.get("size_years")),
+                size_threshold=config.get("size_threshold", "median"),
+                size_time_aggregation=config.get("size_time_aggregation", "mean"),
+                size_sme_firms=size_audit.get("sme_firms"),
+                size_large_firms=size_audit.get("large_firms"),
+                size_unclassified_firms=size_audit.get("unclassified_firms"),
             )
         )
         tables.append(table.assign(label=label))
@@ -167,6 +211,8 @@ def report(dest=DEST, exports=None):
         "moderation_2025_estimate",
         "moderation_2025_p",
         "focused_2025_match",
+        "size_variable", "size_years", "size_threshold", "size_time_aggregation",
+        "size_sme_firms", "size_large_firms", "size_unclassified_firms",
     ]
     columns = list(dict.fromkeys(columns))
     flags = pd.DataFrame(rows).reindex(columns=columns)
@@ -216,6 +262,7 @@ def report(dest=DEST, exports=None):
         if len(flags)
         else 0,
         focused_2025_matches=int(flags.focused_2025_match.sum()) if len(flags) else 0,
+        retained_by_size_variable=flags.size_variable.value_counts().astype(int).to_dict() if len(flags) else {},
         adjusted_pattern_matches=int(flags.adjusted_pattern_match.sum())
         if len(flags)
         else 0,
@@ -250,6 +297,7 @@ def report(dest=DEST, exports=None):
             scope=f"This batch; cumulative Bonferroni column covers the first {plan['cumulative_count']} paper-aligned specifications only.",
         )
     write_json(dest / "summary.json", summary)
+    size_rows = size_definitions(dest, plan) if plan.get("size_search") else []
     counts = progress["counts"]
     update = plan.get("execution_order_update")
     if update:
@@ -319,6 +367,16 @@ def report(dest=DEST, exports=None):
         "## 기준을 통과한 설정",
         "",
     ]
+    if size_rows:
+        display = []
+        for r in size_rows:
+            years = r["years"]
+            period = str(years[0]) if len(years) == 1 else f"{str(years[0])[-2:]}–{str(years[-1])[-2:]}"
+            display.append(["S" if r["variable"] == "sale" else "A", period, r["time_aggregation"], r["threshold"],
+                            f"{r['sme_firms']}/{r['large_firms']}/{r['unclassified_firms']}", r["planned_specifications"]])
+        index = text.index("## 유지한 추정 원칙과 전체 가설")
+        text[index:index] = ["## 규모 정의별 집단 구성", "", "S=sale, A=assets_annual입니다. 기업별 기간 요약 후 산업 내 기준을 계산했습니다. 이 표는 전체 계획의 규모 정의와 집단 수이며 탈락한 설정의 추정 결과를 포함하지 않습니다.", "",
+                            markdown_table(pd.DataFrame(display, columns=["변수", "기간", "기업 요약", "산업 기준", "SME/Large/미분류", "계획 수"])), ""]
     if not len(flags):
         text += [
             f"이번 {count}개에서는 사전 비유의와 2023년 전체의 유의한 하락을 동시에 만족한 설정이 없었습니다. 따라서 저장 기준을 통과한 추정 결과나 전체 가설 충족 사례가 없습니다. 요청한 중단 규칙에 따라 2024·2025년 추가 추정은 수행하지 않았으며, 탈락 추정치와 개별 그래프는 저장하지 않았습니다.",
@@ -335,11 +393,15 @@ def report(dest=DEST, exports=None):
         }
         overview = []
         for row in sorted(rows, key=lambda r: (-r["criteria_passed"], r["label"])):
+            size_tag = ("S" if row["size_variable"] == "sale" else "A") + "/" + ("med" if row["size_threshold"] == "median" else "avg")
+            short_years = json.loads(row["size_years"])
+            if short_years:
+                size_tag += "/" + (str(short_years[0]) if len(short_years) == 1 else f"{str(short_years[0])[-2:]}–{str(short_years[-1])[-2:]}")
             overview.append(
                 [
                     row["label"].rsplit("_", 1)[-1],
-                    labels[row["mu_model"]],
-                    f"{row['bandwidth_factor']}/{row['trim']}",
+                    f"{labels[row['gps_model']]}/{labels[row['mu_model']]}" if plan.get("size_search") else labels[row["mu_model"]],
+                    size_tag if plan.get("size_search") else f"{row['bandwidth_factor']}/{row['trim']}",
                     f"{row['total_2023_estimate']:.4f} ({row['total_2023_p']:.4f})",
                     f"{row['sme_2025_estimate']:.4f} ({row['sme_2025_p']:.4f})",
                     row["criteria_passed"],
@@ -347,14 +409,15 @@ def report(dest=DEST, exports=None):
             )
         text += [
             "아래 표는 저장 기준을 통과한 설정만 요약합니다. 괄호는 보정 전 p값이고, 충족 수는 6개 가설 조건 중 통과한 수입니다.",
+            "규모 기준 표기: S=sale, A=assets_annual, med=산업 내 median, avg=산업 내 mean. 기업별 기간 요약과 실제 집단 수는 각 설정에 별도로 표시합니다." if plan.get("size_search") else "",
             "",
             markdown_table(
                 pd.DataFrame(
                     overview,
                     columns=[
                         "번호",
-                        "Mu",
-                        "BW/Trim",
+                        "GPS/Mu" if plan.get("size_search") else "Mu",
+                        "규모 기준" if plan.get("size_search") else "BW/Trim",
                         "전체2023 (p)",
                         "SME2025 (p)",
                         "충족수",
@@ -367,6 +430,7 @@ def report(dest=DEST, exports=None):
             label = row["label"]
             folder = dest / "retained" / label
             c = json.loads((folder / "config.json").read_text())
+            sample = json.loads((folder / "sample.json").read_text()) if (folder / "sample.json").exists() else {}
             table = primary(pd.read_csv(folder / "estimates.csv"))
             report_plot(table, folder, c)
             text += [
@@ -376,6 +440,8 @@ def report(dest=DEST, exports=None):
                 f"전체 가설: {row['pattern_match']}, 선호 조건: {row['preferred_match']}, 조건 충족 수: {row['criteria_passed']}/6, 최소 평균 대상 비율: {row['minimum_coverage']:.2%}.",
                 "",
                 f"GPS {c['gps_model']} / Mu {c['mu_model']}; bandwidth 배율 {c['bandwidth_factor']}; trim {c['trim']}; Fold {c['n_splits']}; seed {c['seed']}.",
+                "",
+                size_description(c, sample.get("size_classification")),
                 "",
                 f"Spline knot {c['spline_n_knots']}·차수 {c['spline_degree']}; 산업 분류 {c['industry_scheme']}·최소 산업수 {c['industry_min_groups']}·최소 관측수 {c['industry_min_obs']}; 산업 더미 {c['include_industry_dummies']}; GPS 파라미터 {json.dumps(c['gps_params'])}; Mu 파라미터 {json.dumps(c['mu_params'])}.",
                 "",
@@ -474,6 +540,9 @@ def report(dest=DEST, exports=None):
         "progress.json",
     ]:
         shutil.copy2(dest / name, exports / name)
+    for name in ["size_definitions.csv", "size_definitions.json"]:
+        if (dest / name).exists():
+            shutil.copy2(dest / name, exports / name)
     archive = exports / f"{stem}_Results.zip"
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as z:
         for p in sorted(dest.rglob("*")):

@@ -16,6 +16,7 @@ from labor_did.pipeline import holm
 from .config import PaperConfig
 from .estimation import PRIMARY, compute_year
 from .models import source_hash
+from .size import classify_size
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -42,6 +43,10 @@ def prepare(raw, c):
         mu_model="xgboost",
     )
     panel, sample = prepare_panel(raw, legacy)
+    panel, size_audit = classify_size(panel, c)
+    sample["size_classification"] = size_audit
+    if c.size_missing_policy == "unclassified":
+        sample["size_missing_handling"] = "Missing size observations remain in total and are unclassified for size contrasts"
     sample["covariate_time"] = c.covariate_time
     sample["mu_includes_firm_controls"] = c.include_firm_controls
     sample["missing_policy"] = c.missing_policy

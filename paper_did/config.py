@@ -60,6 +60,12 @@ class PaperConfig:
     diff_step: float = 0.0005
     gap_policy: str = "interpolate"
     size_difference: str = "means"
+    size_variable: str = "sale"
+    size_years: list | None = None
+    size_time_aggregation: str = "mean"
+    size_threshold: str = "median"
+    size_missing_policy: str = "legacy"
+    size_small_industry_max_firms: int = 1
     alpha: float = 0.05
     n_bootstrap: int = 5000
     bootstrap_batch_size: int = 256
@@ -82,6 +88,9 @@ class PaperConfig:
             size_difference=("means", "common"),
             gap_policy=("interpolate", "exclude", "bridge", "strict"),
             missing_policy=("median_indicator", "error"),
+            size_time_aggregation=("mean", "median"),
+            size_threshold=("median", "mean"),
+            size_missing_policy=("legacy", "unclassified"),
         ).items():
             if getattr(self, name) not in choices:
                 raise ValueError(f"{name} must be one of {choices}")
@@ -113,6 +122,15 @@ class PaperConfig:
                 raise ValueError(f"{name} must be >=1")
         if not isinstance(self.seed, int) or self.seed < 0:
             raise ValueError("seed must be nonnegative")
+        if not isinstance(self.size_variable, str) or not self.size_variable or self.size_variable in {self.dose, self.outcome, "Y_diff"}:
+            raise ValueError("Specify a size variable distinct from dose/outcome")
+        if not isinstance(self.size_small_industry_max_firms, int) or isinstance(self.size_small_industry_max_firms, bool) or self.size_small_industry_max_firms < 0:
+            raise ValueError("size_small_industry_max_firms must be a nonnegative integer")
+        if self.size_years is not None:
+            if not self.size_years or len(set(self.size_years)) != len(self.size_years):
+                raise ValueError("Specify distinct size years")
+            if any(not isinstance(y, int) or isinstance(y, bool) or y > self.base_year for y in self.size_years):
+                raise ValueError("Size years must be integers at or before base_year")
         if (
             not self.years
             or len(set(self.years)) != len(self.years)
