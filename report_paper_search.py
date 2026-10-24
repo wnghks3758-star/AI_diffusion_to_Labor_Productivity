@@ -41,7 +41,15 @@ def size_definitions(dest, plan):
     rows = []
     for key, count in definitions.items():
         config = PaperConfig(**json.loads(key))
-        _, audit = classify_size(panel, config)
+        classified, audit = classify_size(panel, config)
+        if plan.get("size_variable_only") and len(definitions) == 1:
+            original_config = {**json.loads(key), "size_variable": plan["parent_size_variable"]}
+            original, _ = classify_size(panel, PaperConfig(**original_config))
+            old = original.groupby("firm_code").large_firm.first()
+            new = classified.groupby("firm_code").large_firm.first().reindex(old.index)
+            audit["reclassified_firms"] = int(old.ne(new).sum())
+            cross = pd.crosstab(old, new).rename_axis(index="parent_size", columns="new_size").stack().rename("firms").reset_index()
+            cross.to_csv(Path(dest) / "size_reclassification.csv", index=False)
         rows.append({**audit, "planned_specifications": count})
     write_json(Path(dest) / "size_definitions.json", rows)
     pd.DataFrame(rows).to_csv(Path(dest) / "size_definitions.csv", index=False)
@@ -153,6 +161,7 @@ def checkpoint(dest=DEST):
             "size_definitions.csv",
             "parent_map.csv",
             "parent_comparisons.csv",
+            "size_reclassification.csv",
         ]:
             if (dest / name).exists():
                 archive.write(dest / name, name)
@@ -423,6 +432,8 @@ def report(dest=DEST, exports=None):
         index = text.index("## 유지한 추정 원칙과 전체 가설")
         text[index:index] = ["## 규모 정의별 집단 구성", "", "S=sale, A=assets_annual입니다. 기업별 기간 요약 후 산업 내 기준을 계산했습니다. 이 표는 전체 계획의 규모 정의와 집단 수이며 탈락한 설정의 추정 결과를 포함하지 않습니다.", "",
                             markdown_table(pd.DataFrame(display, columns=["변수", "기간", "기업 요약", "산업 기준", "SME/Large/미분류", "계획 수"])), ""]
+        if plan.get("size_variable_only") and "reclassified_firms" in size_rows[0]:
+            text[index:index] = [f"규모 변수 변경으로 {size_rows[0]['reclassified_firms']}개 기업의 규모 분류가 바뀌었습니다. 집단 수가 같더라도 구성 기업은 다를 수 있으며, size_reclassification.csv에 원본·변경 분류의 교차 집계를 제공합니다(-1=미분류, 0=SME, 1=Large).", ""]
     if parent_rows:
         index = text.index("## 기준을 통과한 설정")
         text[index:index] = ["## 원본 설정과의 비교", "", "parent_map.csv는 전체 200개의 원본 번호와 변경 필드를 기록합니다. parent_comparisons.csv에는 새 저장 기준을 통과한 경우만 원본·변경 후의 2023년 전체, 2025년 SME·조절효과와 p값을 나란히 제공합니다. 규모 정의가 다르므로 동일한 기업 집단의 전후 변화나 차이의 유의성 검정으로 해석하지 않습니다.", ""]
@@ -591,7 +602,7 @@ def report(dest=DEST, exports=None):
         "progress.json",
     ]:
         shutil.copy2(dest / name, exports / name)
-    for name in ["size_definitions.csv", "size_definitions.json", "parent_map.csv", "parent_comparisons.csv"]:
+    for name in ["size_definitions.csv", "size_definitions.json", "parent_map.csv", "parent_comparisons.csv", "size_reclassification.csv"]:
         if (dest / name).exists():
             shutil.copy2(dest / name, exports / name)
     archive = exports / f"{stem}_Results.zip"
