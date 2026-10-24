@@ -283,3 +283,27 @@ python report_focused_history.py --paper-only --batch audit/results/paper_search
 계획 파일에는 200개 설정을 실행 전에 확정합니다. 초기 기준 통과 설정만 보고서에
 기술하며, 결과에 따른 탐색의 p값은 탐색적 지표로 해석합니다. 기존 여섯 배치와
 1301~1500번 배치의 계획·마지막 요약이 새 계획 생성에 필요합니다.
+
+## 1538번: 차분 간격과 50회 반복 분할 비교
+
+1538번의 설정을 기준으로 차분 간격만 `1e-5`, 반복 분할만 50회, 둘 다 변경한
+세 경우를 비교합니다. GPS 4-Fold·Mu 3-Fold와 모델 파라미터를 유지하고, 각 모델의
+산업 분할 seed만 바꿉니다. 첫 반복은 원래 분할이며 같은 50개 분할을 공유합니다.
+결과는 효과별 중앙값, 표준오차는
+`sqrt(median(SE_r**2 + (theta_r - median(theta))**2))`로 집계합니다.
+표준오차를 √50으로 나누거나, 유리한 반복을 선택하지 않습니다. 기존 저장 기준은
+집계한 추정치에 적용하며 탈락 설정의 추정 결과는 삭제합니다.
+
+```bash
+python repeat_paper_1538.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python repeat_paper_1538.py run --workers 3
+python report_repeat_1538.py checkpoint
+python report_repeat_1538.py report
+```
+
+앞선 1501~1700번 결과 ZIP의 `retained/paper_search_1538/`을 원래 위치에 복원한 뒤
+실행하세요. 계획·seed·해시와 진행 상태는 `results/paper_1538_sensitivity/`,
+문서는 `audit/exports/paper_1538_sensitivity/`에 저장합니다. 반복별 구간 진단·
+추정치·군집 점수는 보존하며, 재구성 가능한 대규모 격자 CSV와 학습 모델은
+최종 산출물에서 제외합니다. 결과와 문서는
+[전용 Drive 폴더](https://drive.google.com/drive/folders/1wwsSkayhhFLoMg9k2YcyKB8huSC5ITEb)에 저장합니다.
