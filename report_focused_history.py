@@ -342,7 +342,9 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None, stem="Focused_Integrated_80
             f"## {c['label']} ({c['method']})",
             "",
             f"GPS {cfg.get('gps_model')} / Mu {cfg.get('mu_model')}; BW 배율 {cfg.get('bandwidth_factor', cfg.get('bandwidth_scale'))}; "
-            f"trim {cfg.get('trim', cfg.get('trim_threshold'))}; Fold {cfg.get('n_splits')}; seed {cfg.get('seed')}; "
+            f"trim {cfg.get('trim', cfg.get('trim_threshold'))}; "
+            f"GPS Fold {cfg.get('gps_n_splits') or cfg.get('n_splits')}·seed {cfg.get('seed') if cfg.get('gps_fold_seed') is None else cfg['gps_fold_seed']}; "
+            f"Mu Fold {cfg.get('mu_n_splits') or cfg.get('n_splits')}·seed {cfg.get('seed') if cfg.get('mu_fold_seed') is None else cfg['mu_fold_seed']}; "
             f"통제 시점 {cfg.get('covariate_time')}. 최소 coverage {f['minimum_coverage']:.2%}.",
             "",
             size_description(cfg, sample.get("size_classification")),

@@ -256,3 +256,30 @@ python report_focused_history.py --paper-only --batch audit/results/paper_search
 점추정치 비교이며 두 추정치 차이의 유의성 검정은 아닙니다. 새 실행이 탈락하면
 그 추정치·그래프·모델은 남기지 않습니다. 결과는
 [이번 Drive 폴더](https://drive.google.com/drive/folders/1tllbIcivifha393zQJLHHAN-znJP0jla)에 저장합니다.
+
+## GPS·Mu XGBoost와 독립 Fold: 1501~1700번
+
+두 모델을 XGBoost로 고정하고 bandwidth 배율 0.5, trim 0.01을 사용합니다.
+규모는 원래 sale·2020~2022년 기업 평균·산업 내 median입니다. 40개 산업 변수
+부분집합을 두 모델에 동일하게 적용하고, 각 GPS 설정마다 Mu 기업 변수·모델
+파라미터·Fold를 바꾼 5개 설정을 비교합니다. 기업 변수는 개별 포함·제외합니다.
+
+`gps_n_splits`, `mu_n_splits`, `gps_fold_seed`, `mu_fold_seed`를 각각 설정할 수
+있습니다. `None`이면 기존 `n_splits`와 `seed`를 사용합니다. 각 산업은 두 모델에서
+각각 자기 검증 표본의 학습에서 제외됩니다. GPS 분산은 GPS 검증 Fold의 잔차 MSE이며,
+Mu는 별도의 산업 Fold로 기업 결과를 예측합니다. 이 독립 분할은 R 기본의 공통
+Fold에 대한 확장입니다. 기본 공통 분할의 기존 수치 결과는 보존했습니다.
+GPS OOF 캐시는 산업 입력·모델·분할이 같을 때만 재사용하고 Y나 Mu 설정에 의존하지
+않습니다. ATET 점수·추론 공식과 초기 탈락 시 결과 삭제 규칙은 유지합니다.
+
+```bash
+python search_paper_xgb_joint.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_xgb_joint.py run --workers 3
+python report_paper_search.py checkpoint --out audit/results/paper_search_1501_1700
+python report_paper_search.py report --out audit/results/paper_search_1501_1700
+python report_focused_history.py --paper-only --batch audit/results/paper_search_1501_1700 --out audit/exports/Paper_Only_Focused_1700 --stem Paper_Only_Focused_1700
+```
+
+계획 파일에는 200개 설정을 실행 전에 확정합니다. 초기 기준 통과 설정만 보고서에
+기술하며, 결과에 따른 탐색의 p값은 탐색적 지표로 해석합니다. 기존 여섯 배치와
+1301~1500번 배치의 계획·마지막 요약이 새 계획 생성에 필요합니다.

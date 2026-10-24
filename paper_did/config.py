@@ -47,6 +47,10 @@ class PaperConfig:
     ridge_alphas: list = field(default_factory=lambda: np.logspace(-4, 1, 8).tolist())
     lasso_alphas: list = field(default_factory=lambda: np.logspace(-4, 1, 30).tolist())
     n_splits: int = 3
+    gps_n_splits: int | None = None
+    mu_n_splits: int | None = None
+    gps_fold_seed: int | None = None
+    mu_fold_seed: int | None = None
     inner_splits: int = 10
     seed: int = 1
     model_threads: int = 1
@@ -108,6 +112,14 @@ class PaperConfig:
             v = getattr(self, name)
             if not isinstance(v, int) or isinstance(v, bool) or v < 2:
                 raise ValueError(f"{name} must be >=2")
+        for name in ("gps_n_splits", "mu_n_splits"):
+            value = getattr(self, name)
+            if value is not None and (not isinstance(value, int) or isinstance(value, bool) or value < 2):
+                raise ValueError(f"{name} must be None or an integer >=2")
+        for name in ("gps_fold_seed", "mu_fold_seed"):
+            value = getattr(self, name)
+            if value is not None and (not isinstance(value, int) or isinstance(value, bool) or value < 0):
+                raise ValueError(f"{name} must be None or a nonnegative integer")
         for name in (
             "industry_min_groups",
             "industry_min_obs",
@@ -177,6 +189,12 @@ class PaperConfig:
                 + (self.mu_firm_features if self.include_firm_controls else [])
             )
         )
+
+    def fold_settings(self, role):
+        if role not in ("gps", "mu"):
+            raise ValueError("role must be gps or mu")
+        splits, seed = getattr(self, role + "_n_splits"), getattr(self, role + "_fold_seed")
+        return self.n_splits if splits is None else splits, self.seed if seed is None else seed
 
     def to_dict(self):
         return asdict(self)

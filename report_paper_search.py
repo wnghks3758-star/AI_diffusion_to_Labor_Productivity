@@ -214,6 +214,10 @@ def report(dest=DEST, exports=None):
                 mu_model=config["mu_model"],
                 bandwidth_factor=config["bandwidth_factor"],
                 trim=config["trim"],
+                gps_n_splits=config.get("gps_n_splits") or config["n_splits"],
+                mu_n_splits=config.get("mu_n_splits") or config["n_splits"],
+                gps_fold_seed=config["seed"] if config.get("gps_fold_seed") is None else config["gps_fold_seed"],
+                mu_fold_seed=config["seed"] if config.get("mu_fold_seed") is None else config["mu_fold_seed"],
                 total_2023_estimate=float(initial.estimate),
                 total_2023_p=float(initial.p_value),
                 moderation_2025_estimate=float(moderation.estimate),
@@ -255,6 +259,7 @@ def report(dest=DEST, exports=None):
         "mu_model",
         "bandwidth_factor",
         "trim",
+        "gps_n_splits", "mu_n_splits", "gps_fold_seed", "mu_fold_seed",
         "total_2023_estimate",
         "total_2023_p",
         "moderation_2025_estimate",
@@ -492,7 +497,7 @@ def report(dest=DEST, exports=None):
             c = json.loads((folder / "config.json").read_text())
             sample = json.loads((folder / "sample.json").read_text()) if (folder / "sample.json").exists() else {}
             table = primary(pd.read_csv(folder / "estimates.csv"))
-            report_plot(table, folder, c, height=5.0 if plan.get("size_variable_only") else 5.6)
+            report_plot(table, folder, c, height=5.0 if plan.get("size_variable_only") or plan.get("compact_case_plots") else 5.6)
             text += [
                 PAGE_BREAK,
                 f"### {label}",
@@ -501,7 +506,9 @@ def report(dest=DEST, exports=None):
                 "",
                 f"전체 가설: {row['pattern_match']}, 선호 조건: {row['preferred_match']}, 조건 충족 수: {row['criteria_passed']}/6, 최소 평균 대상 비율: {row['minimum_coverage']:.2%}.",
                 "",
-                f"GPS {c['gps_model']} / Mu {c['mu_model']}; bandwidth 배율 {c['bandwidth_factor']}; trim {c['trim']}; Fold {c['n_splits']}; seed {c['seed']}.",
+                f"GPS {c['gps_model']} / Mu {c['mu_model']}; bandwidth 배율 {c['bandwidth_factor']}; trim {c['trim']}; "
+                f"GPS Fold {c.get('gps_n_splits') or c['n_splits']}·seed {c['seed'] if c.get('gps_fold_seed') is None else c['gps_fold_seed']}; "
+                f"Mu Fold {c.get('mu_n_splits') or c['n_splits']}·seed {c['seed'] if c.get('mu_fold_seed') is None else c['mu_fold_seed']}.",
                 "",
                 size_description(c, sample.get("size_classification")),
                 "",

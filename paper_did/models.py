@@ -177,6 +177,33 @@ def fit_regression(X, y, groups, kind, params, c):
     return estimator, diagnostic
 
 
+def fit_gps_oof(ind, columns, c, implementation):
+    splits, seed = c.fold_settings("gps")
+    settings = dict(model=c.gps_model, params=c.gps_params, splits=splits, fold_seed=seed,
+                    learner_seed=c.seed, inner_splits=c.inner_splits, model_threads=c.model_threads, missing_policy=c.missing_policy,
+                    spline_n_knots=c.spline_n_knots, spline_degree=c.spline_degree,
+                    ridge_alphas=c.ridge_alphas, lasso_alphas=c.lasso_alphas, implementation=implementation)
+    key = input_key(ind[list(dict.fromkeys(["ind_code", c.dose] + columns))], settings)
+    file = Path(c.cache_dir) / "gps_oof" / f"{key}.joblib"
+    if file.exists():
+        result = joblib.load(file)
+        result["cache_hit"] = True
+        return result
+    mean, variance = np.full(len(ind), np.nan), np.full(len(ind), np.nan)
+    audits = []
+    for fold, (train, test) in enumerate(industry_folds(ind.ind_code, splits, seed)):
+        model, diagnostic = fit_regression(ind[columns].iloc[train], ind[c.dose].to_numpy()[train],
+                                           ind.ind_code.iloc[train], c.gps_model, c.gps_params, c)
+        mean[test] = model.predict(ind[columns].iloc[test])
+        variance[test] = reference_fold_variance(ind[c.dose].to_numpy()[test], mean[test])
+        audits.append(dict(fold=fold, train_industry_positions=train.tolist(), test_industry_positions=test.tolist(),
+                           gps=diagnostic, common_variance=float(variance[test[0]])))
+    result = dict(mean=mean, variance=variance, folds=audits, cache_key=key, cache_hit=False)
+    file.parent.mkdir(parents=True, exist_ok=True)
+    joblib.dump(result, file, compress=3)
+    return result
+
+
 def fit_nuisance(frame, c):
     gps_columns = columns_for(frame, c.gps_features, c)
     mu_columns = columns_for(frame, c.mu_features, c) + [c.dose]
@@ -200,6 +227,7 @@ def fit_nuisance(frame, c):
         "ridge_alphas",
         "lasso_alphas",
         "n_splits",
+        "gps_n_splits", "mu_n_splits", "gps_fold_seed", "mu_fold_seed",
         "inner_splits",
         "seed",
         "model_threads",
@@ -219,29 +247,18 @@ def fit_nuisance(frame, c):
         result = joblib.load(file)
         result["audit"]["cache_hit"] = True
         return result
-    mean = np.full(len(ind), np.nan)
-    variance = np.full(len(ind), np.nan)
     entries = []
-    audits = []
+    mu_audits = []
+    mu_splits, mu_seed = c.fold_settings("mu")
     with threadpool_limits(limits=1):
+        gps = fit_gps_oof(ind, gps_columns, c, fit_source)
         for fold, (train, test) in enumerate(
-            industry_folds(ind.ind_code, c.n_splits, c.seed)
+            industry_folds(ind.ind_code, mu_splits, mu_seed)
         ):
             train_codes = ind.ind_code.iloc[train]
             test_codes = ind.ind_code.iloc[test]
             tr = np.flatnonzero(frame.ind_code.isin(train_codes))
             te = np.flatnonzero(frame.ind_code.isin(test_codes))
-            gps, gd = fit_regression(
-                ind[gps_columns].iloc[train],
-                ind[c.dose].to_numpy()[train],
-                train_codes,
-                c.gps_model,
-                c.gps_params,
-                c,
-            )
-            pred = gps.predict(ind[gps_columns].iloc[test])
-            mean[test] = pred
-            variance[test] = reference_fold_variance(ind[c.dose].to_numpy()[test], pred)
             mu, md = fit_regression(
                 frame[mu_columns].iloc[tr],
                 frame.Y_diff.to_numpy()[tr],
@@ -251,24 +268,24 @@ def fit_nuisance(frame, c):
                 c,
             )
             entries.append(dict(model=mu, test=te, fold=fold))
-            audits.append(
+            mu_audits.append(
                 dict(
                     fold=fold,
                     train_industry_positions=train.tolist(),
                     test_industry_positions=test.tolist(),
                     train_firms=len(tr),
                     test_firms=len(te),
-                    gps=gd,
                     mu=md,
-                    common_variance=float(variance[test[0]]),
                 )
             )
     mapping = frame.ind_code.map(
         pd.Series(np.arange(len(ind)), index=ind.ind_code)
     ).to_numpy(int)
+    shared = c.fold_settings("gps") == c.fold_settings("mu")
+    paired = [{**g, **m} for g, m in zip(gps["folds"], mu_audits)] if shared else []
     result = dict(
-        mean=mean[mapping],
-        variance=variance[mapping],
+        mean=gps["mean"][mapping],
+        variance=gps["variance"][mapping],
         models=entries,
         mu_columns=mu_columns,
         key=key,
@@ -278,7 +295,12 @@ def fit_nuisance(frame, c):
             cache_hit=False,
             gps_columns=gps_columns,
             mu_columns=mu_columns,
-            folds=audits,
+            folds=paired,
+            gps_folds=gps["folds"], mu_folds=mu_audits,
+            gps_cache_hit=gps["cache_hit"], gps_cache_key=gps["cache_key"],
+            gps_n_splits=len(gps["folds"]), mu_n_splits=len(mu_audits),
+            gps_fold_seed=c.fold_settings("gps")[1], mu_fold_seed=mu_seed,
+            shared_fold_partition=shared,
             variance_source="outer validation industry residual MSE",
             density_floor=None,
         ),
