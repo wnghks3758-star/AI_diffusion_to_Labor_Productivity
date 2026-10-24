@@ -48,6 +48,41 @@ def size_definitions(dest, plan):
     return rows
 
 
+def parent_audit(dest, plan, retained=()):
+    from paper_did.config import PaperConfig
+
+    mapping, comparisons = [], []
+    for entry in plan["entries"]:
+        if "parent_label" not in entry:
+            continue
+        parent_config = ROOT / entry["parent_config_path"]
+        assert file_hash(parent_config) == entry["parent_config_sha256"]
+        old = PaperConfig(**json.loads(parent_config.read_text())).to_dict()
+        new = entry["config"]
+        changed = [k for k in old if old[k] != new[k] and k not in ["label", "cache_dir"]]
+        assert changed == ["size_variable"], changed
+        mapping.append(dict(label=new["label"], parent_label=entry["parent_label"],
+                            changed_fields="size_variable", old_size_variable=old["size_variable"],
+                            new_size_variable=new["size_variable"], parent_config_sha256=entry["parent_config_sha256"],
+                            parent_estimates_sha256=entry["parent_estimates_sha256"]))
+        if new["label"] not in retained:
+            continue
+        parent_results = ROOT / entry["parent_estimates_path"]
+        assert file_hash(parent_results) == entry["parent_estimates_sha256"]
+        record = dict(label=new["label"], parent_label=entry["parent_label"])
+        for prefix, path in [("parent", parent_results), ("new", Path(dest) / "retained" / new["label"] / "estimates.csv")]:
+            table = primary(pd.read_csv(path))
+            for year, effect in [(2023, "total"), (2025, "sme"), (2025, "moderation")]:
+                r = table[table.year.eq(year) & table.effect.eq(effect)].iloc[0]
+                record[f"{prefix}_{effect}_{year}"] = float(r.estimate)
+                record[f"{prefix}_{effect}_{year}_p"] = float(r.p_value)
+        comparisons.append(record)
+    if mapping:
+        pd.DataFrame(mapping).to_csv(Path(dest) / "parent_map.csv", index=False)
+        pd.DataFrame(comparisons, columns=list(comparisons[0]) if comparisons else ["label", "parent_label"]).to_csv(Path(dest) / "parent_comparisons.csv", index=False)
+    return comparisons
+
+
 def markdown_table(frame):
     # Avoid an additional optional tabulate dependency.
     head = "| " + " | ".join(map(str, frame.columns)) + " |"
@@ -116,6 +151,8 @@ def checkpoint(dest=DEST):
             "runner.original.py",
             "size_definitions.json",
             "size_definitions.csv",
+            "parent_map.csv",
+            "parent_comparisons.csv",
         ]:
             if (dest / name).exists():
                 archive.write(dest / name, name)
@@ -137,6 +174,7 @@ def report(dest=DEST, exports=None):
     image_root = dest.relative_to(ROOT / "audit").as_posix()
     progress = json.loads((dest / "progress.json").read_text())
     assert progress["status"] == "completed" and progress["attempted"] == count
+    entry_by_label = {e["config"]["label"]: e for e in plan["entries"]}
     rows, tables = [], []
     for label in progress["retained"]:
         folder = dest / "retained" / label
@@ -153,6 +191,7 @@ def report(dest=DEST, exports=None):
         rows.append(
             dict(
                 label=label,
+                parent_label=entry_by_label[label].get("parent_label", ""),
                 **raw,
                 adjusted_pattern_match=adjusted["pattern_match"],
                 adjusted_preferred_match=adjusted["preferred_match"],
@@ -189,6 +228,7 @@ def report(dest=DEST, exports=None):
         tables.append(table.assign(label=label))
     columns = [
         "label",
+        "parent_label",
         "complete",
         *CORE,
         "sme_crosses_positive_earlier",
@@ -300,6 +340,7 @@ def report(dest=DEST, exports=None):
         )
     write_json(dest / "summary.json", summary)
     size_rows = size_definitions(dest, plan) if plan.get("size_search") else []
+    parent_rows = parent_audit(dest, plan, progress["retained"]) if plan.get("size_variable_only") else []
     counts = progress["counts"]
     update = plan.get("execution_order_update")
     if update:
@@ -382,6 +423,9 @@ def report(dest=DEST, exports=None):
         index = text.index("## 유지한 추정 원칙과 전체 가설")
         text[index:index] = ["## 규모 정의별 집단 구성", "", "S=sale, A=assets_annual입니다. 기업별 기간 요약 후 산업 내 기준을 계산했습니다. 이 표는 전체 계획의 규모 정의와 집단 수이며 탈락한 설정의 추정 결과를 포함하지 않습니다.", "",
                             markdown_table(pd.DataFrame(display, columns=["변수", "기간", "기업 요약", "산업 기준", "SME/Large/미분류", "계획 수"])), ""]
+    if parent_rows:
+        index = text.index("## 기준을 통과한 설정")
+        text[index:index] = ["## 원본 설정과의 비교", "", "parent_map.csv는 전체 200개의 원본 번호와 변경 필드를 기록합니다. parent_comparisons.csv에는 새 저장 기준을 통과한 경우만 원본·변경 후의 2023년 전체, 2025년 SME·조절효과와 p값을 나란히 제공합니다. 규모 정의가 다르므로 동일한 기업 집단의 전후 변화나 차이의 유의성 검정으로 해석하지 않습니다.", ""]
     if not len(flags):
         text += [
             f"이번 {count}개에서는 사전 비유의와 2023년 전체의 유의한 하락을 동시에 만족한 설정이 없었습니다. 따라서 저장 기준을 통과한 추정 결과나 전체 가설 충족 사례가 없습니다. 요청한 중단 규칙에 따라 2024·2025년 추가 추정은 수행하지 않았으며, 탈락 추정치와 개별 그래프는 저장하지 않았습니다.",
@@ -441,6 +485,8 @@ def report(dest=DEST, exports=None):
             text += [
                 PAGE_BREAK,
                 f"### {label}",
+                "",
+                (f"원본: {entry_by_label[label]['parent_label']}. 규모 변수만 sale → assets_annual로 변경했으며 나머지 설정은 유지했습니다." if entry_by_label[label].get("parent_label") else ""),
                 "",
                 f"전체 가설: {row['pattern_match']}, 선호 조건: {row['preferred_match']}, 조건 충족 수: {row['criteria_passed']}/6, 최소 평균 대상 비율: {row['minimum_coverage']:.2%}.",
                 "",
@@ -545,7 +591,7 @@ def report(dest=DEST, exports=None):
         "progress.json",
     ]:
         shutil.copy2(dest / name, exports / name)
-    for name in ["size_definitions.csv", "size_definitions.json"]:
+    for name in ["size_definitions.csv", "size_definitions.json", "parent_map.csv", "parent_comparisons.csv"]:
         if (dest / name).exists():
             shutil.copy2(dest / name, exports / name)
     archive = exports / f"{stem}_Results.zip"

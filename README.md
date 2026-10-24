@@ -234,3 +234,25 @@ mean과 median이 같아 mean만 사용하고, 복수 연도에서는 둘을 비
 통과했지만 새 설정 지원으로 소스 해시는 변경됩니다. 기존 실행의 정확한 원본은
 해당 계획과 이전 Git 커밋에 보존되어 있습니다. 중간 결과와 문서는
 [전용 Drive 폴더](https://drive.google.com/drive/folders/1-cRDrxKKCrs0YfK7Bs-vnAW7rXOgQUG_)에 저장합니다.
+
+## 이전 통과 설정에서 규모 변수만 변경: 1301~1500번
+
+논문 방식의 과거 저장 기준 통과 설정을 다시 확인하고, 번호 순으로 고르게
+200개를 고릅니다. 각 설정에서 `size_variable`만 `sale`에서 `assets_annual`로
+바꾸며 변수 목록·모델·Fold·seed·bandwidth·trim·기간·median 기준은 보존합니다.
+전체 원본과 새 설정을 비교해 변경 필드가 정확히 하나인지 검사합니다.
+
+```bash
+python search_paper_size_from_passed.py plan
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python search_paper_size_from_passed.py run --workers 3
+python report_paper_search.py checkpoint --out audit/results/paper_search_1301_1500
+python report_paper_search.py report --out audit/results/paper_search_1301_1500
+python report_focused_history.py --paper-only --batch audit/results/paper_search_1301_1500 --out audit/exports/Paper_Only_Focused_1500 --stem Paper_Only_Focused_1500
+```
+
+앞선 여섯 배치의 계획·요약 및 원본 통과 설정의 config/estimates 파일이 필요합니다.
+`parent_map.csv`에 원본 번호·해시·변경 필드를 기록하고, 새로 통과한 경우만
+`parent_comparisons.csv`에 원본·변경 후 결과를 제공합니다. 서로 다른 규모 집단의
+점추정치 비교이며 두 추정치 차이의 유의성 검정은 아닙니다. 새 실행이 탈락하면
+그 추정치·그래프·모델은 남기지 않습니다. 결과는
+[이번 Drive 폴더](https://drive.google.com/drive/folders/1tllbIcivifha393zQJLHHAN-znJP0jla)에 저장합니다.
