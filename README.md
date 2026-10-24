@@ -6,6 +6,32 @@
 
 기본 설정: 1538번 — GPS·Mu XGBoost, bandwidth 배율 0.5, trim 0.01, 차분 간격 0.0005.
 
+## Windows에서 원래 Linux 결과 재현
+
+1538번은 GPS와 Mu의 `colsample_bytree`를 사용합니다. XGBoost 3.1.3은 C++의
+`std::shuffle`로 열을 추출하며 이 구현은 Windows와 Linux에서 다를 수 있습니다.
+같은 seed·자료·버전이어도 네이티브 Windows 학습 결과가 원래 Linux 결과와 달라집니다.
+두 운영체제에서 합성 자료로 비교하면 열 추출을 끈 경우의 모델 지문은 같고,
+열 추출을 켠 경우 달라지는 것을 CI에서 확인할 수 있습니다.
+
+원래 Linux 결과를 재현하려면 Docker Desktop의 Linux 컨테이너 모드를 사용하세요.
+아래 명령은 현재 프로젝트 폴더에서 Windows PowerShell로 실행합니다.
+기존 네이티브 결과는 유지하고 새 `results/linux_1538/`에 저장합니다.
+
+```powershell
+git pull
+docker build --platform linux/amd64 -t ps1-observed-repro:1538 .
+New-Item -ItemType Directory -Force .\results\linux_1538 | Out-Null
+$resultPath = (Resolve-Path .\results\linux_1538).Path
+docker run --rm --platform linux/amd64 --mount "type=bind,source=$resultPath,target=/output" ps1-observed-repro:1538
+```
+
+컨테이너는 Python 3.12.14·고정 패키지·Linux CPU 실행을 사용하고, 소스의 줄바꿈을
+LF로 정규화합니다. 원래 모델 파라미터는 변경하지 않습니다. Docker 실행은 Windows
+가상환경과 별도이므로 현재 가상환경의 패키지를 바꾸지 않습니다. 설정 JSON을 바꾸면
+이미지를 다시 빌드하세요. `python diagnose_observed.py --synthetic`로 운영체제별
+무작위 열 추출 차이를 진단할 수 있습니다.
+
 각 산업의 실제 처치값 D에서 ATET(D, D−차분간격)를 구해 ACRT로 변환하고,
 기업 수로 가중해 전체·SME·Large 및 Large−SME를 계산합니다.
 관측점 사이의 보간은 사용하지 않습니다. 이전 분석 결과 파일을 내려받을 필요 없이
