@@ -61,9 +61,10 @@ def cluster_bandwidth(frame, config):
     iqr = np.subtract(*np.percentile(d, [75, 25]))
     sigma = min(sd, iqr / 1.34) if iqr > 0 else sd
     scale = sd if config.bandwidth_statistic == "std" else sigma
-    return max(
+    h = max(
         2.34 * scale * len(d) ** (-0.25) * config.bandwidth_scale, config.min_bandwidth
     )
+    return h * (np.sqrt(5) if config.kernel_convention == "np" else 1.0)
 
 
 def prepare_panel(raw, config):

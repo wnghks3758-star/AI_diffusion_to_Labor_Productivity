@@ -163,5 +163,9 @@
   "save_bootstrap_draws": false,
   "label": "1772",
   "bandwidth_statistic": "sigma",
-  "mu_params_by_year": {}
+  "mu_params_by_year": {},
+  "gps_fit_scope": "legacy",
+  "gps_params": {},
+  "trim_mode": "comparison",
+  "kernel_convention": "unit"
 }

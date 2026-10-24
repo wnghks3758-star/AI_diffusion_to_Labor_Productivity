@@ -1,0 +1,5 @@
+case,python_both_atet,python_comparison_atet,python_both_trimmed
+no_trim,0.07778284763196656,0.07778284763196656,0
+treated_only,0.04399311073153711,6.611647578317737,1
+comparison_only,0.0,0.0,1
+heterogeneous_ratio,-0.21458408571822005,-0.21458408571822005,1

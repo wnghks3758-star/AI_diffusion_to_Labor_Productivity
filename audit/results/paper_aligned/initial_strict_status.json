@@ -1,0 +1,16 @@
+{
+  "status": "completed",
+  "run_key": "bd3d44eeaadfdc623b2f268656ff30932e47f215db520f842fee6ae9931b6eae",
+  "source_sha256": "7e1a24a5919883dda5c78f98b611acf73a138fa37d39a694592762f7a831bde8",
+  "data_sha256": "4b3ed1ab28851b2ed497ff538b2c8cdd8b5c0891b7ab7daa129452a0dff9d52d",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "xgboost-cpu": "3.1.3",
+    "joblib": "1.5.3"
+  },
+  "failed_results": 40
+}

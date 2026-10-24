@@ -1,0 +1,6 @@
+label,complete,pre_all_nonsignificant,initial_significant_decline,recovery,sme_crosses_positive_earlier,moderation_negative_significant,sme_2025_significantly_positive,pattern_match,preferred_match,criteria_passed,sme_2025_estimate,sme_2025_p,adjusted_pattern_match,adjusted_preferred_match,minimum_coverage,gps_model,mu_model,bandwidth_factor,trim
+paper_search_183,True,True,True,False,False,False,False,False,False,2,-0.0283524298655366,0.6649037170232421,False,False,0.9979402677651904,spline,random_forest,0.55,0.05
+paper_search_191,True,True,True,False,False,False,False,False,False,2,-0.0535336970293609,0.3693847466900348,False,False,0.9979402677651904,spline,ridge,0.7,0.1
+paper_search_193,True,True,True,False,False,False,False,False,False,2,-0.0040399086916723,0.9561119777161524,False,False,0.9979402677651904,spline,ridge,0.55,0.05
+paper_search_194,True,True,True,False,False,False,False,False,False,2,-0.0601132402786522,0.3071674795595476,False,False,0.9989701338825951,spline,ridge,0.85,0.1
+paper_search_195,True,True,True,False,False,False,False,False,False,2,-0.0638676053807797,0.3021032189083303,False,False,0.9989701338825951,spline,ridge,1.0,0.15

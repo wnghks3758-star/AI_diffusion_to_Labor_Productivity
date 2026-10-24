@@ -55,6 +55,7 @@ def input_key(frame, settings):
     # Invalidate numerical caches after an implementation change as well as a package change.
     for name in [
         "models.py",
+        "gps.py",
         "support.py",
         "weights.py",
         "data.py",
@@ -67,6 +68,11 @@ def input_key(frame, settings):
 
 
 def versions():
+    try:
+        importlib.metadata.version("xgboost-cpu")
+        xgboost_package = "xgboost-cpu"
+    except importlib.metadata.PackageNotFoundError:
+        xgboost_package = "xgboost"
     return {
         "python": platform.python_version(),
         **{
@@ -76,7 +82,7 @@ def versions():
                 "pandas",
                 "scipy",
                 "scikit-learn",
-                "xgboost-cpu",
+                xgboost_package,
                 "joblib",
             ]
         },

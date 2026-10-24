@@ -1,0 +1,8 @@
+{
+  "label": "author_kernel_trim_sensitivity",
+  "trim_mode": "both",
+  "kernel_convention": "np",
+  "bandwidth_statistic": "std",
+  "bandwidth_scale": 0.7,
+  "gps_fit_scope": "nested"
+}

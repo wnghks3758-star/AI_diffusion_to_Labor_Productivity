@@ -1,0 +1,16 @@
+year,scope,endpoints,changed_mask_with_both_trim,legacy_default_exact
+2020,total,199,0,True
+2020,sme,160,0,True
+2020,large,162,0,True
+2021,total,199,0,True
+2021,sme,160,0,True
+2021,large,162,0,True
+2023,total,199,0,True
+2023,sme,160,0,True
+2023,large,162,0,True
+2024,total,199,0,True
+2024,sme,160,0,True
+2024,large,162,0,True
+2025,total,199,0,True
+2025,sme,160,0,True
+2025,large,162,0,True

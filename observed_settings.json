@@ -1,0 +1,97 @@
+{
+  "data_path": "data/main_data/firm_year_all_ind_dart_add_control_gpt_continuous.xlsx",
+  "base_year": 2022,
+  "years": [
+    2020,
+    2021,
+    2023,
+    2024,
+    2025
+  ],
+  "dose": "office_ratio",
+  "outcome": "ln_firm_prod",
+  "dose_transform": "log_percent",
+  "covariate_time": "baseline",
+  "pre_sign": "legacy",
+  "gps_features": [
+    "ln_ind_avg_pay",
+    "ln_ind_ast",
+    "ind_large_est_share_pre",
+    "ind_avg_age_pre",
+    "ind_permanent_share_pre",
+    "ind_avg_tenure_pre",
+    "ind_ln_avg_pay_pre"
+  ],
+  "mu_industry_features": [
+    "ln_ind_avg_pay",
+    "ln_ind_ast",
+    "ind_large_est_share_pre",
+    "ind_avg_age_pre",
+    "ind_permanent_share_pre",
+    "ind_avg_tenure_pre",
+    "ind_ln_avg_pay_pre"
+  ],
+  "mu_firm_features": [
+    "small_dummy",
+    "ln_firm_avg_pay"
+  ],
+  "include_firm_controls": true,
+  "include_industry_dummies": true,
+  "industry_scheme": "refined",
+  "industry_min_groups": 4,
+  "industry_min_obs": 4,
+  "gps_model": "xgboost",
+  "mu_model": "xgboost",
+  "gps_params": {
+    "n_estimators": 75,
+    "max_depth": 3,
+    "min_child_weight": 5,
+    "learning_rate": 0.025,
+    "subsample": 0.7,
+    "colsample_bytree": 0.85,
+    "reg_lambda": 10.0,
+    "reg_alpha": 0.0,
+    "random_state": 2026102409
+  },
+  "mu_params": {
+    "n_estimators": 200,
+    "max_depth": 3,
+    "min_child_weight": 10,
+    "learning_rate": 0.075,
+    "subsample": 0.85,
+    "colsample_bytree": 0.7,
+    "reg_lambda": 1.0,
+    "reg_alpha": 0.05,
+    "random_state": 2026103439
+  },
+  "n_splits": 3,
+  "gps_n_splits": 4,
+  "mu_n_splits": 3,
+  "gps_fold_seed": 107,
+  "mu_fold_seed": 73,
+  "inner_splits": 10,
+  "seed": 1,
+  "model_threads": 1,
+  "bandwidth_factor": 0.5,
+  "trim": 0.01,
+  "missing_policy": "median_indicator",
+  "pair_scale": "quantile",
+  "atet_pairs": [
+    [
+      0.25,
+      0.75
+    ]
+  ],
+  "diff_step": 0.0005,
+  "size_variable": "sale",
+  "size_years": null,
+  "size_time_aggregation": "mean",
+  "size_threshold": "median",
+  "size_missing_policy": "legacy",
+  "size_small_industry_max_firms": 1,
+  "alpha": 0.05,
+  "prediction_batch_points": 8,
+  "max_prediction_rows": 50000,
+  "cache_dir": ".cache/ps1_observed",
+  "label": "ps1_observed_1538"
+}

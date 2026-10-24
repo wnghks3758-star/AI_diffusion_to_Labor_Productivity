@@ -35,6 +35,7 @@ def get_trimmed_weights(
     group_col="ind_code",
     trim_threshold=0.1,
     p_floor=5e-3,
+    trim_mode="comparison",
 ):
     """기존 기업 단위 trimming 후 두 항의 산업 단위 ESS를 계산한다."""
     D = df[var_name].to_numpy()
@@ -50,6 +51,14 @@ def get_trimmed_weights(
         if total_weight > 0
         else np.zeros(len(df), dtype=bool)
     )
+    candidates = raw_weight > 0
+    if trim_mode == "both":
+        mass = omega_d.sum()
+        valid_mask &= omega_d / mass <= trim_threshold if mass > 0 else False
+        candidates = candidates | (omega_d > 0)
+    elif trim_mode != "comparison":
+        raise ValueError("trim_mode must be comparison or both")
+    n_trimmed = int(np.count_nonzero(candidates & ~valid_mask))
     ratio = np.where(valid_mask, ratio, 0.0)
     omega_d = np.where(valid_mask, omega_d, 0.0)
     omega_dp = np.where(valid_mask, omega_dp, 0.0)
@@ -68,7 +77,7 @@ def get_trimmed_weights(
         "ess_d": effective_sample_size(treated_by_industry),
         "ess_dp": effective_sample_size(comparison_by_industry),
         "n_kept": int(np.count_nonzero((omega_d > 0) | (comparison_weight > 0))),
-        "n_trimmed": int(np.count_nonzero((raw_weight > 0) & ~valid_mask)),
+        "n_trimmed": n_trimmed,
     }
     return omega_d, comparison_weight, support
 
@@ -87,6 +96,7 @@ def select_supported_centers(
     return_weights=False,
     options=None,
     required_d=None,
+    trim_mode="comparison",
 ):
     """Batch kernel/GPS calculations; compress constant industry inputs with firm counts.
 
@@ -153,6 +163,19 @@ def select_supported_centers(
             raw, total, out=np.full_like(raw, np.inf), where=total > 0
         )
         valid = (normalized <= trim_threshold) & (total > 0)
+        candidates = raw > 0
+        if trim_mode == "both":
+            treated_total = np.sum(omega_d * counts, axis=1, keepdims=True)
+            treated_normalized = np.divide(
+                omega_d,
+                treated_total,
+                out=np.full_like(omega_d, np.inf),
+                where=treated_total > 0,
+            )
+            valid &= (treated_normalized <= trim_threshold) & (treated_total > 0)
+            candidates = candidates | (omega_d > 0)
+        elif trim_mode != "comparison":
+            raise ValueError("trim_mode must be comparison or both")
         ratio = np.where(valid, ratio, 0.0)
         omega_d = np.where(valid, omega_d, 0.0)
         omega_dp = np.where(valid, omega_dp, 0.0)
@@ -161,13 +184,17 @@ def select_supported_centers(
         comparison = omega_dp * ratio
         ess_d, ess_dp = industry_ess(omega_d), industry_ess(comparison)
         n_kept = np.sum(((omega_d > 0) | (comparison > 0)) * counts, axis=1).astype(int)
-        n_trimmed = np.sum(((raw > 0) & ~valid) * counts, axis=1).astype(int)
+        n_trimmed = np.sum((candidates & ~valid) * counts, axis=1).astype(int)
         near_ess = np.isclose(ess_d, min_ess, rtol=1e-12, atol=1e-12) | np.isclose(
             ess_dp, min_ess, rtol=1e-12, atol=1e-12
         )
         near_trim = np.isclose(normalized, trim_threshold, rtol=1e-12, atol=1e-12).any(
             axis=1
         )
+        if trim_mode == "both":
+            near_trim |= np.isclose(
+                treated_normalized, trim_threshold, rtol=1e-12, atol=1e-12
+            ).any(axis=1)
         for j, d in enumerate(centers):
             d_t, d_low = float(d), float(low[j])
             support = {
@@ -196,6 +223,7 @@ def select_supported_centers(
                     group_col,
                     trim_threshold,
                     p_floor,
+                    trim_mode=trim_mode,
                 )
                 support.update(original_weights[2])
                 support["supported"] = (

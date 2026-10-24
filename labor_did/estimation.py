@@ -85,6 +85,7 @@ def estimate_year(frame, year, config, on_stage=None):
                         "ind_code",
                         config.trim_threshold,
                         config.density_floor,
+                        trim_mode=config.trim_mode,
                     )
                     estimable = bool(len(sub) and a.sum() > 0 and b.sum() > 0)
                     targets_here = [(scope, own_weight)]
@@ -178,6 +179,11 @@ def estimate_year(frame, year, config, on_stage=None):
     selected_row["effect"] = "moderation"
     rows.append(selected_row)
     audit = {
+        "kernel_convention": config.kernel_convention,
+        "kernel_halfwidth": bandwidth,
+        "kernel_rule_bandwidth": bandwidth
+        / (np.sqrt(5) if config.kernel_convention == "np" else 1.0),
+        "trim_mode": config.trim_mode,
         "year": year,
         "grid_points": len(grid),
         "supported_points": {s: len(v) for s, v in supported.items()},

@@ -1,0 +1,20 @@
+{
+  "label": "paper_lasso_common",
+  "gps_model": "lasso",
+  "mu_model": "lasso",
+  "include_firm_controls": false,
+  "mu_industry_features": [
+    "ln_ind_avg_pay",
+    "ln_ind_ast",
+    "ind_rnd_ratio",
+    "ln_cum_patent",
+    "ind_college_share_pre",
+    "ind_large_est_share_pre",
+    "ind_avg_age_pre",
+    "ind_age50_share_pre",
+    "ind_female_share_pre",
+    "ind_permanent_share_pre",
+    "ind_avg_tenure_pre",
+    "ind_ln_avg_pay_pre"
+  ]
+}

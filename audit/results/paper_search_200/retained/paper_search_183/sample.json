@@ -1,0 +1,30 @@
+{
+  "analysis_firms": 2028,
+  "analysis_industries": 151,
+  "sample_firm_sha256": "795e79f3722bba624b15888849688b477fdb96ffd1bee2f606a83740be55a464",
+  "common_lower_dose": -2.234013207257788,
+  "common_lower_ess": 0,
+  "dummy_columns": [
+    "ind_dummy_ICT_58_63",
+    "ind_dummy_MFG_10",
+    "ind_dummy_MFG_11_13",
+    "ind_dummy_MFG_14_16",
+    "ind_dummy_MFG_17_19",
+    "ind_dummy_MFG_20_21",
+    "ind_dummy_MFG_22_23",
+    "ind_dummy_MFG_24_25",
+    "ind_dummy_MFG_26_27",
+    "ind_dummy_MFG_28",
+    "ind_dummy_MFG_29_30",
+    "ind_dummy_MFG_31_33",
+    "ind_dummy_Other",
+    "ind_dummy_Primary_Infra",
+    "ind_dummy_Professional_Business",
+    "ind_dummy_Trade",
+    "ind_dummy_Transport_Hospitality"
+  ],
+  "size_missing_handling": "original notebook convention; missing sale is compared as non-large",
+  "covariate_time": "baseline",
+  "mu_includes_firm_controls": true,
+  "missing_policy": "median_indicator"
+}

@@ -1,0 +1,11 @@
+{
+  "label": "gps_rf_nested",
+  "gps_model": "random_forest",
+  "gps_fit_scope": "nested",
+  "gps_params": {
+    "n_estimators": 300,
+    "max_depth": 3,
+    "min_samples_leaf": 8,
+    "max_features": 0.75
+  }
+}
