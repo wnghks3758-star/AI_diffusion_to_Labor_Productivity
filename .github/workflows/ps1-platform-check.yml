@@ -1,0 +1,24 @@
+name: PS1 platform sampling fingerprints
+on:
+  push:
+    branches: [feature/ps1-observed-acrt]
+  workflow_dispatch:
+jobs:
+  synthetic:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Fingerprint synthetic models only
+        run: python diagnose_observed.py --synthetic
