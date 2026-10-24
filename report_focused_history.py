@@ -274,6 +274,7 @@ def render(out=OUT, roots=DEFAULT_ROOTS, batch=None, stem="Focused_Integrated_80
         lines += [
             f"{batch_range}번: {b['attempted']}/{count}개 실행, 상태 {status}. "
             f"기본 저장 기준 통과 {len(b['retained'])}개, 본 보고서의 추가 조건 충족 {new_selected}개.",
+            "이번 배치에서는 모든 설정이 앞 단계에서 중단되어 2024·2025년은 추정하지 않았습니다." if not b["retained"] else "",
             "",
             "저장 기준에 실패하면 해당 설정을 즉시 중단하고 추정치·로그·학습 캐시를 삭제했습니다. "
             "확정 설정표와 중단 사유별 건수만 남깁니다. "

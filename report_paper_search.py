@@ -255,6 +255,8 @@ def report(dest=DEST, exports=None):
     summary = dict(
         attempted=count,
         retained=len(flags),
+        post_2024_2025_estimated_specs=len(flags),
+        positive_counts_scope="Retained specifications only; rejected specifications stop before 2024/2025",
         pattern_matches=matches,
         preferred_matches=preferred,
         sme_2025_positive=int(flags.sme_2025_estimate.gt(0).sum()) if len(flags) else 0,
@@ -306,7 +308,10 @@ def report(dest=DEST, exports=None):
     else:
         order_note = "2023년 초기 하락, 2020년 사전 조건, 2021년 사전 조건 순서로 검사했습니다. 한 조건이라도 실패하면 이후 연도는 계산하지 않습니다."
     result_line = f"{count}개 설정 중 사전 기준과 초기 하락 기준을 모두 통과한 설정은 {len(flags)}개입니다. 전체 가설 충족은 {matches}개, 2025년 SME 유의한 양수까지 충족한 설정은 {preferred}개입니다."
-    result_line += f" 저장 기준 통과 후 SME 2025 양수는 {summary['sme_2025_positive']}개이며, 2025년 Large−SME 음수·p<0.05까지 충족한 설정은 {summary['focused_2025_matches']}개입니다."
+    if len(flags):
+        result_line += f" 저장 기준 통과 후 SME 2025 양수는 {summary['sme_2025_positive']}개이며, 2025년 Large−SME 음수·p<0.05까지 충족한 설정은 {summary['focused_2025_matches']}개입니다."
+    else:
+        result_line += " 모든 설정이 앞 단계에서 중단되어 이번 배치의 2024·2025년은 추정하지 않았습니다."
     if "cumulative_count" in plan:
         result_line += f" 이전 배치와 합하면 누적 {plan['cumulative_count']}개 중 기본 기준 통과 {summary['cumulative_retained']}개, 전체 가설 충족 {summary['cumulative_raw_pattern_matches']}개입니다."
     text = [
