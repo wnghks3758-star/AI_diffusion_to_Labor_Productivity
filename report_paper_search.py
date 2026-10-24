@@ -102,13 +102,13 @@ def markdown_table(frame):
     return "\n".join([head, rule, *rows])
 
 
-def report_plot(table, folder, config):
+def report_plot(table, folder, config, height=5.6):
     """Stack three panels so their labels remain readable in an A4 document."""
     from labor_did.plot import plt
 
     with plt.rc_context({"font.size": 10}):
         fig, axes = plt.subplots(
-            3, 1, figsize=(7.2, 5.6), sharex=True, layout="constrained"
+            3, 1, figsize=(7.2, height), sharex=True, layout="constrained"
         )
         for ax, effects, label in zip(
             axes,
@@ -492,7 +492,7 @@ def report(dest=DEST, exports=None):
             c = json.loads((folder / "config.json").read_text())
             sample = json.loads((folder / "sample.json").read_text()) if (folder / "sample.json").exists() else {}
             table = primary(pd.read_csv(folder / "estimates.csv"))
-            report_plot(table, folder, c)
+            report_plot(table, folder, c, height=5.0 if plan.get("size_variable_only") else 5.6)
             text += [
                 PAGE_BREAK,
                 f"### {label}",
