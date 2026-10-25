@@ -16,24 +16,35 @@
   "gps_features": [
     "ln_ind_avg_pay",
     "ln_ind_ast",
+    "ind_rnd_ratio",
+    "ind_college_share_pre",
     "ind_large_est_share_pre",
     "ind_avg_age_pre",
+    "ind_age50_share_pre",
+    "ind_female_share_pre",
     "ind_permanent_share_pre",
     "ind_avg_tenure_pre",
+    "ind_avg_hours_pre",
     "ind_ln_avg_pay_pre"
   ],
   "mu_industry_features": [
     "ln_ind_avg_pay",
     "ln_ind_ast",
+    "ind_rnd_ratio",
+    "ind_college_share_pre",
     "ind_large_est_share_pre",
     "ind_avg_age_pre",
+    "ind_age50_share_pre",
+    "ind_female_share_pre",
     "ind_permanent_share_pre",
     "ind_avg_tenure_pre",
+    "ind_avg_hours_pre",
     "ind_ln_avg_pay_pre"
   ],
   "mu_firm_features": [
     "ln_firm_avg_pay",
-    "ln_firm_ast"
+    "ln_firm_ast",
+    "firm_rnd_ratio"
   ],
   "include_firm_controls": true,
   "include_industry_dummies": false,
