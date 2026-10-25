@@ -6,6 +6,32 @@
 
 기본 설정: 1538번 — GPS·Mu XGBoost, bandwidth 배율 0.5, trim 0.01, 차분 간격 0.0005.
 
+## Windows에서 원래 Linux 결과 재현
+
+1538번은 GPS와 Mu의 `colsample_bytree`를 사용합니다. XGBoost 3.1.3은 C++의
+`std::shuffle`로 열을 추출하며 이 구현은 Windows와 Linux에서 다를 수 있습니다.
+같은 seed·자료·버전이어도 네이티브 Windows 학습 결과가 원래 Linux 결과와 달라집니다.
+두 운영체제에서 합성 자료로 비교하면 열 추출을 끈 경우의 모델 지문은 같고,
+열 추출을 켠 경우 달라지는 것을 CI에서 확인할 수 있습니다.
+
+원래 Linux 결과를 재현하려면 Docker Desktop의 Linux 컨테이너 모드를 사용하세요.
+아래 명령은 현재 프로젝트 폴더에서 Windows PowerShell로 실행합니다.
+기존 네이티브 결과는 유지하고 새 `results/linux_1538/`에 저장합니다.
+
+```powershell
+git pull
+docker build --platform linux/amd64 -t ps1-observed-repro:1538 .
+New-Item -ItemType Directory -Force .\results\linux_1538 | Out-Null
+$resultPath = (Resolve-Path .\results\linux_1538).Path
+docker run --rm --platform linux/amd64 --mount "type=bind,source=$resultPath,target=/output" ps1-observed-repro:1538
+```
+
+컨테이너는 Python 3.12.14·고정 패키지·Linux CPU 실행을 사용하고, 소스의 줄바꿈을
+LF로 정규화합니다. 원래 모델 파라미터는 변경하지 않습니다. Docker 실행은 Windows
+가상환경과 별도이므로 현재 가상환경의 패키지를 바꾸지 않습니다. 설정 JSON을 바꾸면
+이미지를 다시 빌드하세요. `python diagnose_observed.py --synthetic`로 운영체제별
+무작위 열 추출 차이를 진단할 수 있습니다.
+
 각 산업의 실제 처치값 D에서 ATET(D, D−차분간격)를 구해 ACRT로 변환하고,
 기업 수로 가중해 전체·SME·Large 및 Large−SME를 계산합니다.
 관측점 사이의 보간은 사용하지 않습니다. 이전 분석 결과 파일을 내려받을 필요 없이
@@ -105,6 +131,35 @@ p값과 구간은 보정 전 점별 추론입니다. 기존 산업 단위 GPS·�
 기여도 합산 방식을 유지합니다. GPS와 Mu의 공변량 집합 차이, 산업 단위 처치에 대한
 식별, 평활 편향·트리밍·ACRT 변환은 적용상의 검토 사항입니다.
 `gap_policy`·균등 격자 설정·보조 bootstrap 설정은 이 직접 계산 경로에 사용하지 않습니다.
+
+## 관측점 PS1 50회 안정성 실험
+
+`repeat_observed.py`는 1538번을 기준으로 GPS/Mu Fold seed와 두 학습기의
+`random_state`를 함께 바꿉니다. 첫 반복은 원래 seed입니다. 변수·그 밖의 모델
+파라미터·bandwidth·trim·차분 폭은 유지합니다. 유의성으로 반복을 선별하지 않습니다.
+실행 전 계획 파일을 만들며 기존 계획을 덮어쓰지 않습니다.
+
+Linux 환경에서:
+
+```bash
+python repeat_observed.py plan
+python repeat_observed.py run --workers 3
+python report_repeat_observed.py summary
+```
+
+기본 폴더는 `results/ps1_observed_repeat50/`입니다. `report.html`에 공통 대상의
+50회 중앙값·그래프를 만들고, `repeat_estimates.csv`에 모든 반복을 보존합니다.
+`common_targets.json`은 결과변수를 사용하지 않는 GPS·커널·트리밍 사전 점검으로
+정한 50회 공통 평균 대상입니다. 각 반복의 자체 대상(native)도 함께 기록합니다.
+
+중앙값 SE는 `sqrt(median(SE_r**2 + (theta_r - median(theta))**2))`이며,
+SE를 √50으로 나누지 않습니다. 이 실험은 동일 표본의 분할·학습 안정성 진단입니다.
+95% 인과 구간과 반복 점추정치의 분포 범위는 구분합니다.
+
+원래 Linux 환경을 유지하려면 이미지를 다시 빌드한 뒤 `repeat_observed.py`의 plan/run과
+`report_repeat_observed.py summary`를 컨테이너에서 실행하고 `--out /output`을 지정하세요.
+PDF·Word까지 생성하는 `report_repeat_observed.py report`는 Pandoc·XeLaTeX·Noto Sans CJK KR이
+설치된 환경에서 사용합니다. `summary`의 HTML·그림·CSV 생성에는 이 추가 도구가 필요하지 않습니다.
 
 ## 코드 구성과 검증
 

@@ -1,0 +1,8 @@
+/.cache/
+/results/
+/search_runs/
+/.venv/
+/ACR/
+__pycache__/
+*.py[cod]
+*.log
